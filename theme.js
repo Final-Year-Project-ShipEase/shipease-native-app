@@ -34,8 +34,9 @@ const theme = createTheme({
     login: {
       backgroundColorLogin: '#00668C',
       textColorLogin: '#FCFCFC',
-      backgroundColorRegistration: '#2C14DD',
+      backgroundColorRegistration: '#00000026',
       textColorRegistration: '#00668C',
+      forgetPasswordTextColor: '#00668C',
     },
 
     otpVerification: {
@@ -56,6 +57,18 @@ const theme = createTheme({
       modalTitleText: '#E6E6E6',
       buttonColor: '#FFFFFF',
       buttonTextColor: '#000000',
+    },
+
+    changePasswordModal: {
+      outerViewColor: '#277d9d',
+      innerViewColor: '#ffffff',
+      modalViewColor: '#01678d',
+      backgroundColor: '#00668c',
+      inputColor: '#ffffff',
+      textColor: '#ffffff',
+      buttonBackgroundColor: '#ffffff',
+      buttonTextColor: '#2d2d2d',
+      iconColor: '#ffffff'
     },
   },
 });

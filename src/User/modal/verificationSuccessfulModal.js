@@ -13,7 +13,10 @@ import theme from '../../../theme';
 
 const VerificationSuccessfulModal = ({ visible, onClose }) => {
   const navigation = useNavigation();
-
+  const handleLoginSubmit = () => {
+    visible = false;
+    navigation.navigate('LoginScreen');
+  };
   return (
     <View style={styles.centeredView}>
       <Modal
@@ -40,9 +43,7 @@ const VerificationSuccessfulModal = ({ visible, onClose }) => {
             </Text>
             <Pressable
               style={styles.button}
-              onPress={() => {
-                navigation.navigate('LoginScreen');
-              }}
+              onPress={handleLoginSubmit}
             >
               <Text style={styles.textStyle}>Login</Text>
             </Pressable>
