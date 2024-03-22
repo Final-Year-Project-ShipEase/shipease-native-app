@@ -11,7 +11,7 @@ import LoginScreen from './src/User/loginScreen/loginScreen';
 import SignUpScreen from './src/User/signUpScreen/signUpScreen';
 import OPTVerification from './src/User/component/OtpScreen/otpVerification';
 import VerificationSuccessfulModal from './src/User/modal/verificationSuccessfulModal';
-import { Button } from 'react-native-paper';
+import ChangePasswordModal from './src/User/modal/changePasswordModal';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,7 +20,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Group screenOptions={{ headerShown: false }}>
+        {/* <Stack.Group screenOptions={{ headerShown: false }}>
             <Stack.Screen name="SplashScreen" component={SplashScreen} />
             <Stack.Screen
               name="OnBoardingScreenOne"
@@ -42,11 +42,22 @@ export default function App() {
             <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
             <Stack.Screen name="OTPVerification" component={OPTVerification} />
 
-            <Stack.Screen name="LoginScreen" component={LoginScreen} />
             <Stack.Screen
               name="VerificationSuccessfulModal"
               component={VerificationSuccessfulModal}
             />
+          </Stack.Group> */}
+
+          <Stack.Group   screenOptions={{ headerShown: false, headerTitleAlign: 'center' }}> 
+          <Stack.Screen name="SignUpScreen" component={SignUpScreen} />         
+          <Stack.Screen name="LoginScreen" component={LoginScreen} />
+          <Stack.Screen name="ChangePasswordModal" component={ChangePasswordModal} />
+          <Stack.Screen name="OTPVerification" component={OPTVerification} />
+
+<Stack.Screen
+  name="VerificationSuccessfulModal"
+  component={VerificationSuccessfulModal}
+/>
           </Stack.Group>
         </Stack.Navigator>
       </NavigationContainer>

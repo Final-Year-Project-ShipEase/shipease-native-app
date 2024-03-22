@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -8,29 +8,34 @@ import {
   Pressable,
   Dimensions,
 } from 'react-native';
-import { TextInput, Checkbox, Button } from 'react-native-paper';
+import { TextInput, Button } from 'react-native-paper';
 import theme from '../../../theme';
 import ScreenOne from '../../../assets/ScreenOne.png';
 import { useNavigation } from '@react-navigation/native';
+import ChangePasswordModal from '../modal/changePasswordModal';
 
-const SignUpScreen = () => {
+const LoginScreen = () => {
   const navigation = useNavigation();
+  const [showModal, setShowModal] = useState(false);
+
+  const handleForgetPassword = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    navigation.navigate('LoginScreen');
+  };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}>
         <Image source={ScreenOne} style={styles.image} resizeMode="contain" />
         <Text style={styles.title}>Welcome to Shipease</Text>
-        <Text style={styles.content}>Complete the sign up to get started</Text>
+        <Text style={styles.content}>Login to get started</Text>
       </View>
 
       <View style={styles.form}>
-        <TextInput
-          label="Name"
-          mode="outlined"
-          placeholder="Enter Name"
-          style={styles.textInput}
-        />
         <TextInput
           label="Email"
           mode="outlined"
@@ -45,42 +50,31 @@ const SignUpScreen = () => {
           style={styles.textInput}
           right={<TextInput.Icon icon="eye" />}
         />
-        <View style={styles.checkboxContainer}>
-          <Checkbox.Item
-            status="checked"
-            color={theme.palette.primary.main}
-            mode="android"
-          />
-          <Text style={styles.checkboxText}>
-            By signing up, you agree to the{' '}
-            <Pressable>
-              <Text style={{ color: theme.palette.primary.main }}>
-                Terms of Service and Privacy Policy
-              </Text>
-            </Pressable>
-          </Text>
-        </View>
+        <Pressable onPress={handleForgetPassword}>
+            <Text style={styles.forgetPassword}> Forget Password?</Text>
+        </Pressable>
       </View>
 
       <View style={styles.buttonContainer}>
         <Button
           mode="contained"
-          textColor={theme.palette.registration.textColorLogin}
+          textColor={theme.palette.login.textColorLogin}
           style={styles.buttonLogin}
-          onPress={() => {navigation.navigate('LoginScreen')}}
         >
           Login
         </Button>
         <Button
           mode="contained"
-          textColor={theme.palette.registration.textColorRegistration}
+          textColor={theme.palette.login.textColorRegistration}
           style={styles.buttonRegistration}
           onPress={() => {
-            navigation.navigate('OTPVerification');
+            navigation.navigate('SignUpScreen');
           }}
         >
           Register
         </Button>
+
+        <ChangePasswordModal visible={showModal} onClose={closeModal} />
       </View>
     </ScrollView>
   );
@@ -97,7 +91,8 @@ const styles = StyleSheet.create({
   },
   header: {
     alignItems: 'center',
-    marginBottom: height * 0.04,
+    marginBottom: height * 0.02,
+    marginTop: height * 0.08
   },
   image: {
     width: width,
@@ -122,6 +117,7 @@ const styles = StyleSheet.create({
     marginBottom: height * 0.02,
     flexDirection: 'column',
     justifyContent: 'center',
+    marginTop: height * 0.06
   },
   textInput: {
     marginBottom: height * 0.02,
@@ -131,34 +127,33 @@ const styles = StyleSheet.create({
     //borderWidth: 2,
     //borderColor: theme.palette.registration.borderColor,
   },
-  checkboxContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: height * 0.02,
-    marginLeft: width * -0.064,
-  },
-  checkboxText: {
-    fontSize: height * 0.025,
-  },
+ forgetPassword: {
+    fontSize: width * 0.04,
+    color: theme.palette.login.forgetPasswordTextColor,
+    fontStyle: 'italic',
+    fontWeight: 'bold'
+ },
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: width * 0.8,
+    marginTop: height * 0.04,
   },
   buttonRegistration: {
     width: width * 0.35,
     height: height * 0.07,
     justifyContent: 'center',
     borderRadius: width * 0.05,
-    backgroundColor: theme.palette.registration.backgroundColorRegistration,
+    marginLeft: width* 0.08,
+    backgroundColor: theme.palette.login.backgroundColorRegistration,
   },
   buttonLogin: {
     width: width * 0.35,
     height: height * 0.07,
     justifyContent: 'center',
     borderRadius: width * 0.05,
-    backgroundColor: theme.palette.registration.backgroundColorLogin,
+    backgroundColor: theme.palette.login.backgroundColorLogin,
   },
 });
 
-export default SignUpScreen;
+export default LoginScreen;
