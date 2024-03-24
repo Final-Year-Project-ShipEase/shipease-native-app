@@ -78,7 +78,7 @@ const theme = createTheme({
       buttonColor: '#ffffff',
       buttonBackgroundColor: '#00668c',
     },
-    settings:{
+    settings: {
       backgroundColor: '#00668c',
       titleColor: '#ffffff',
       contentContainerColor: '#ffffff',
@@ -90,8 +90,7 @@ const theme = createTheme({
       searchIconColor: '#00668c',
       notificationIconColor: '#00668c',
       settingIconColor: '#00668c',
-
-    }
+    },
   },
 });
 responsiveFontSizes(theme);

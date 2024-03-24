@@ -8,27 +8,63 @@ import {
   Pressable,
   Dimensions,
 } from 'react-native';
-import { TextInput, Button } from 'react-native-paper';
+import { TextInput, Button, Snackbar } from 'react-native-paper';
 import theme from '../../../theme';
 import ScreenOne from '../../../assets/ScreenOne.png';
 import { useNavigation } from '@react-navigation/native';
 import ChangePasswordModal from '../modal/changePasswordModal';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { useUserService } from '../../services/userServices';
 
 const LoginScreen = () => {
   const navigation = useNavigation();
   const [showModal, setShowModal] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false); 
+  const [loginError, setLoginError] = useState('');
+  const [snackBarVisible, setSnackBarVisible] = useState(false);
+
+  const { getAllUsers } = useUserService();
 
   const handleForgetPassword = () => {
-    setShowModal(true);
+    //setShowModal(true);
+    navigation.navigate("ForgetPassword");
   };
 
   const closeModal = () => {
     setShowModal(false);
     navigation.navigate('LoginScreen');
   };
+
+  const handleLoginSuccess = () => {
+    setSnackBarVisible(true);
+    setTimeout(() => {
+      setSnackBarVisible(false);
+      navigation.navigate('Settings'); 
+    }, 3000); 
+  };
+
+ const handleLogin = async (values) => {
+    try {
+      const users = await getAllUsers();
+      console.log(users);
+      const user = users.find(
+        (user) => user.email === values.email && user.password === values.password
+      );
+
+      if (user) {
+        // Successful login
+        handleLoginSuccess();
+        console.log('User logged in:', user);
+      } else {
+        setLoginError('Invalid email or password');
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      setLoginError('Invalid email or password');
+    }
+  };
+
 
   const validationSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email').required('Email is required'),
@@ -48,7 +84,8 @@ const LoginScreen = () => {
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting }) => {
           // Handle form submission here
-          console.log(values);
+          //console.log(values);
+          handleLogin(values);
           setSubmitting(false);
         }}
       >
@@ -93,6 +130,7 @@ const LoginScreen = () => {
         <Pressable onPress={handleForgetPassword}>
           <Text style={styles.forgetPassword}> Forget Password?</Text>
         </Pressable>
+        {loginError !== '' && <Text style={styles.errorText}>{loginError}</Text>}
 
 
         <View style={styles.buttonContainer}>
@@ -115,11 +153,25 @@ const LoginScreen = () => {
             Register
           </Button>
 
-          <ChangePasswordModal visible={showModal} onClose={closeModal} />
+
         </View>
       </View>
 )}
 </Formik>
+<ChangePasswordModal visible={showModal} onClose={closeModal} />
+<Snackbar
+        visible={snackBarVisible}
+        onDismiss={() => setSnackBarVisible(false)}
+        action={{
+          label: 'Close',
+          onPress: () => {
+            setSnackBarVisible(false);
+          },
+        }}
+      >
+        Login successful!
+      </Snackbar>
+
     </ScrollView>
   );
 };
