@@ -68,8 +68,30 @@ const theme = createTheme({
       textColor: '#ffffff',
       buttonBackgroundColor: '#ffffff',
       buttonTextColor: '#2d2d2d',
-      iconColor: '#ffffff'
+      iconColor: '#ffffff',
     },
+    editProfile: {
+      labelColor: '#00668c',
+      inputColor: '#00668c',
+      outlineColor: 'transparent',
+      textColor: '#00668c',
+      buttonColor: '#ffffff',
+      buttonBackgroundColor: '#00668c',
+    },
+    settings:{
+      backgroundColor: '#00668c',
+      titleColor: '#ffffff',
+      contentContainerColor: '#ffffff',
+      switchColor: '#00668c',
+    },
+
+    homePage: {
+      emailBackgroundColor: '#00668c',
+      searchIconColor: '#00668c',
+      notificationIconColor: '#00668c',
+      settingIconColor: '#00668c',
+
+    }
   },
 });
 responsiveFontSizes(theme);

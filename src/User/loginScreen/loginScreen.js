@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -13,10 +13,13 @@ import theme from '../../../theme';
 import ScreenOne from '../../../assets/ScreenOne.png';
 import { useNavigation } from '@react-navigation/native';
 import ChangePasswordModal from '../modal/changePasswordModal';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
 
 const LoginScreen = () => {
   const navigation = useNavigation();
   const [showModal, setShowModal] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false); 
 
   const handleForgetPassword = () => {
     setShowModal(true);
@@ -27,6 +30,11 @@ const LoginScreen = () => {
     navigation.navigate('LoginScreen');
   };
 
+  const validationSchema = Yup.object().shape({
+    email: Yup.string().email('Invalid email').required('Email is required'),
+    password: Yup.string().required('Password is required').min(8),
+  });
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}>
@@ -35,47 +43,83 @@ const LoginScreen = () => {
         <Text style={styles.content}>Login to get started</Text>
       </View>
 
+      <Formik
+        initialValues={{ email: '', password: '' }}
+        validationSchema={validationSchema}
+        onSubmit={(values, { setSubmitting }) => {
+          // Handle form submission here
+          console.log(values);
+          setSubmitting(false);
+        }}
+      >
+        {(formikProps) => (
       <View style={styles.form}>
         <TextInput
           label="Email"
           mode="outlined"
           placeholder="Enter Email"
           style={styles.textInput}
+          onChangeText={formikProps.handleChange('email')}
+              onBlur={formikProps.handleBlur('email')}
+              value={formikProps.values.email}
+              error={formikProps.touched.email && formikProps.errors.email}
+
         />
+        {formikProps.touched.email && formikProps.errors.email && (
+              <Text style={styles.errorText}>{formikProps.errors.email}</Text>
+            )}
+
         <TextInput
           label="Password"
           mode="outlined"
-          secureTextEntry
+          secureTextEntry={!passwordVisible}
           placeholder="Enter Password"
           style={styles.textInput}
-          right={<TextInput.Icon icon="eye" />}
+          right={
+                <TextInput.Icon
+                  icon={passwordVisible ? 'eye-off' : 'eye'}
+                  onPress={() => setPasswordVisible(!passwordVisible)} // Toggle password visibility
+                />
+              }
+
+          onChangeText={formikProps.handleChange('password')}
+              onBlur={formikProps.handleBlur('password')}
+              value={formikProps.values.password}
+              error={formikProps.touched.password && formikProps.errors.password}
         />
+        {formikProps.touched.password && formikProps.errors.password && (
+              <Text style={styles.errorText}>{formikProps.errors.password}</Text>
+            )}
         <Pressable onPress={handleForgetPassword}>
-            <Text style={styles.forgetPassword}> Forget Password?</Text>
+          <Text style={styles.forgetPassword}> Forget Password?</Text>
         </Pressable>
-      </View>
 
-      <View style={styles.buttonContainer}>
-        <Button
-          mode="contained"
-          textColor={theme.palette.login.textColorLogin}
-          style={styles.buttonLogin}
-        >
-          Login
-        </Button>
-        <Button
-          mode="contained"
-          textColor={theme.palette.login.textColorRegistration}
-          style={styles.buttonRegistration}
-          onPress={() => {
-            navigation.navigate('SignUpScreen');
-          }}
-        >
-          Register
-        </Button>
 
-        <ChangePasswordModal visible={showModal} onClose={closeModal} />
+        <View style={styles.buttonContainer}>
+          <Button
+            mode="contained"
+            textColor={theme.palette.login.textColorLogin}
+            style={styles.buttonLogin}
+            onPress={formikProps.handleSubmit}
+          >
+            Login
+          </Button>
+          <Button
+            mode="contained"
+            textColor={theme.palette.login.textColorRegistration}
+            style={styles.buttonRegistration}
+            onPress={() => {
+              navigation.navigate('SignUpScreen');
+            }}
+          >
+            Register
+          </Button>
+
+          <ChangePasswordModal visible={showModal} onClose={closeModal} />
+        </View>
       </View>
+)}
+</Formik>
     </ScrollView>
   );
 };
@@ -92,7 +136,7 @@ const styles = StyleSheet.create({
   header: {
     alignItems: 'center',
     marginBottom: height * 0.02,
-    marginTop: height * 0.08
+    marginTop: height * 0.08,
   },
   image: {
     width: width,
@@ -117,22 +161,18 @@ const styles = StyleSheet.create({
     marginBottom: height * 0.02,
     flexDirection: 'column',
     justifyContent: 'center',
-    marginTop: height * 0.06
+    marginTop: height * 0.02,
   },
   textInput: {
     marginBottom: height * 0.02,
     backgroundColor: 'transparent',
-    //circular border
-    //borderRadius: width * 0.06,
-    //borderWidth: 2,
-    //borderColor: theme.palette.registration.borderColor,
   },
- forgetPassword: {
+  forgetPassword: {
     fontSize: width * 0.04,
     color: theme.palette.login.forgetPasswordTextColor,
     fontStyle: 'italic',
-    fontWeight: 'bold'
- },
+    fontWeight: 'bold',
+  },
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -144,7 +184,7 @@ const styles = StyleSheet.create({
     height: height * 0.07,
     justifyContent: 'center',
     borderRadius: width * 0.05,
-    marginLeft: width* 0.08,
+    marginLeft: width * 0.08,
     backgroundColor: theme.palette.login.backgroundColorRegistration,
   },
   buttonLogin: {
@@ -153,6 +193,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: width * 0.05,
     backgroundColor: theme.palette.login.backgroundColorLogin,
+  },
+  errorText: {
+    color: 'red',
+    marginBottom: height * 0.02,
   },
 });
 

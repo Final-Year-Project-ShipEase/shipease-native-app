@@ -33,19 +33,45 @@ const ChangePasswordModal = ({ visible, onClose }) => {
               </View>
             </View>
             <Text style={styles.modalTitleText}>Create Password</Text>
-           
-           <View style={styles.form}>
-            <TextInput label='Password'   mode= 'flat'  secureTextEntry selectionColor={theme.palette.changePasswordModal.inputColor} 
-            right={<TextInput.Icon  iconColor={theme.palette.changePasswordModal.iconColor} icon="eye" />}
-            textColor={theme.palette.changePasswordModal.textColor}
-               underlineColor={theme.palette.changePasswordModal.inputColor} activeUnderlineColor={theme.palette.changePasswordModal.inputColor} style={styles.passwordInput}
-               />
-              <TextInput label='Confirm Password'   mode= 'flat'  secureTextEntry selectionColor={theme.palette.changePasswordModal.inputColor} 
-            right={<TextInput.Icon  iconColor={theme.palette.changePasswordModal.iconColor} icon="eye" />}
-            textColor={theme.palette.changePasswordModal.textColor}
-               underlineColor={theme.palette.changePasswordModal.inputColor} activeUnderlineColor={theme.palette.changePasswordModal.inputColor} style={styles.passwordInput}
-               />
-             </View>
+
+            <View style={styles.form}>
+              <TextInput
+                label="Password"
+                mode="flat"
+                secureTextEntry
+                selectionColor={theme.palette.changePasswordModal.inputColor}
+                right={
+                  <TextInput.Icon
+                    iconColor={theme.palette.changePasswordModal.iconColor}
+                    icon="eye"
+                  />
+                }
+                textColor={theme.palette.changePasswordModal.textColor}
+                underlineColor={theme.palette.changePasswordModal.inputColor}
+                activeUnderlineColor={
+                  theme.palette.changePasswordModal.inputColor
+                }
+                style={styles.passwordInput}
+              />
+              <TextInput
+                label="Confirm Password"
+                mode="flat"
+                secureTextEntry
+                selectionColor={theme.palette.changePasswordModal.inputColor}
+                right={
+                  <TextInput.Icon
+                    iconColor={theme.palette.changePasswordModal.iconColor}
+                    icon="eye"
+                  />
+                }
+                textColor={theme.palette.changePasswordModal.textColor}
+                underlineColor={theme.palette.changePasswordModal.inputColor}
+                activeUnderlineColor={
+                  theme.palette.changePasswordModal.inputColor
+                }
+                style={styles.passwordInput}
+              />
+            </View>
             <Pressable
               style={styles.button}
               onPress={() => {
@@ -98,7 +124,7 @@ const styles = StyleSheet.create({
     width: width * 0.5,
     height: height * 0.07,
     borderRadius: width * 0.08,
-    marginBottom: height * 0.01
+    marginBottom: height * 0.01,
   },
   textStyle: {
     color: theme.palette.changePasswordModal.buttonTextColor,
@@ -120,7 +146,7 @@ const styles = StyleSheet.create({
     marginBottom: height * 0.02,
     flexDirection: 'column',
     justifyContent: 'center',
-    marginTop: height * 0.05
+    marginTop: height * 0.05,
   },
   passwordInput: {
     marginTop: height * 0.02,
