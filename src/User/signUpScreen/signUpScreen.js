@@ -67,7 +67,9 @@ const SignUpScreen = () => {
           mode="contained"
           textColor={theme.palette.registration.textColorLogin}
           style={styles.buttonLogin}
-          onPress={() => {navigation.navigate('LoginScreen')}}
+          onPress={() => {
+            navigation.navigate('LoginScreen');
+          }}
         >
           Login
         </Button>

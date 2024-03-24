@@ -41,10 +41,7 @@ const VerificationSuccessfulModal = ({ visible, onClose }) => {
             <Text style={styles.modalBodyText}>
               Please Login to get an amazing experience.
             </Text>
-            <Pressable
-              style={styles.button}
-              onPress={handleLoginSubmit}
-            >
+            <Pressable style={styles.button} onPress={handleLoginSubmit}>
               <Text style={styles.textStyle}>Login</Text>
             </Pressable>
           </View>
