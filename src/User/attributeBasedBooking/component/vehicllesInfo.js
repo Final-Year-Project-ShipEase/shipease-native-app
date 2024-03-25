@@ -89,10 +89,9 @@ const styles = StyleSheet.create({
       },
 
       addNew4: {
-        fontSize: FontSize.regular_size,
+        fontSize: 14,
         textAlign: "left",
-        fontFamily: FontFamily.poppinsRegular,
-        color: Color.white01,
+        color: theme.palette.alreadyAccount.textColor,
       },
       buttons4: {
         width: "30.73%",
@@ -101,12 +100,12 @@ const styles = StyleSheet.create({
       },
 
       buttonsPosition: {
-        backgroundColor: Color.colorSkyblue,
-        borderRadius: Border.br_8xs,
+        backgroundColor:theme.palette.dashboard.mainblue,
+        borderRadius: 14,
         bottom: "60%",
         top: "8%",
         height: "32%",
-        padding: Padding.p_3xs,
+        padding: 10,
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "row",
@@ -127,9 +126,8 @@ const styles = StyleSheet.create({
       },
 
       boxTruckTypo: {
-        color: Color.colorBlack,
-        fontFamily: FontFamily.poppinsBold,
-        fontSize: FontSize.size_xs,
+        color: theme.palette.dashboard.mainblue,
+        fontSize: 14,
         textAlign: "left",
         top: "0%",
         height: "100%",
@@ -159,9 +157,8 @@ const styles = StyleSheet.create({
       },
 
       faisalabadTypo: {
-        color: Color.colorDimgray_100,
-        fontFamily: FontFamily.poppinsLight,
-        fontSize: FontSize.regular_size,
+        color: theme.palette.dashboard.mainblue,
+        fontSize: 14,
         textAlign: "left",
         top: "0%",
         height: "100%",
@@ -185,9 +182,8 @@ const styles = StyleSheet.create({
 
       r521Typo: {
         width: "26.97%",
-        color: Color.colorDimgray_100,
-        fontFamily: FontFamily.poppinsLight,
-        fontSize: FontSize.regular_size,
+        color: theme.palette.dashboard.mainblue,
+        fontSize: 14,
         textAlign: "left",
         top: "0%",
         height: "100%",
@@ -240,7 +236,7 @@ const styles = StyleSheet.create({
       stockPhotoEindhovenTheNethIcon1: {
         right: "70.25%",
         width: "29.75%",
-        borderRadius: Border.br_mini,
+        borderRadius: 14,
         maxHeight: "100%",
         maxWidth: "100%",
         left: "0%",
@@ -252,7 +248,7 @@ const styles = StyleSheet.create({
       },
 
       iconLayout: {
-        borderRadius: Border.br_mini,
+        borderRadius: 14,
         position: "absolute",
       },
 
