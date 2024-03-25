@@ -20,7 +20,7 @@ import ChangePassword from './src/User/homePage/changePassword';
 import Settings from './src/User/homePage/settings';
 import BottomNavigationBar from './src/User/component/bottomNavigation/bottomNavigation';
 import PickUpConfirmation from './src/User/confirmation/pickUp';
-import attributeBasedBooking from './src/User/attributeBasedBooking/attributeBasedBooking'
+import BasedOnVehiclesSelection from './src/User/BasedOnVehiclesSelection/basedOnVehiclesSelection'
 
 const Stack = createNativeStackNavigator();
 
@@ -90,7 +90,7 @@ export default function App() {
           </Stack.Group>
           */}
           <Stack.Group screenOptions={{ headerShown: true }}>
-            <Stack.Screen name="AttributeBasedBooking" component={attributeBasedBooking} />
+            <Stack.Screen name="BasedOnVehiclesSelection" component={BasedOnVehiclesSelection} />
             </Stack.Group>
 
           {/*  <Stack.Screen options={{headerShown:false}} name="BottomNavigationBar" component={BottomNavigationBar} /> */}
