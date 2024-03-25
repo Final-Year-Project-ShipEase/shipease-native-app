@@ -18,6 +18,7 @@ import EditProfile from './src/User/homePage/editProfile';
 import ChangePassword from './src/User/homePage/changePassword';
 import  Settings  from './src/User/homePage/settings';
 import BottomNavigationBar from './src/User/component/bottomNavigation/bottomNavigation';
+import Dashboard from './src/User/dashboard/dashboard';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,7 +27,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <NavigationContainer>
         <Stack.Navigator>
-           <Stack.Group screenOptions={{ headerShown: false }}>
+         {/*  <Stack.Group screenOptions={{ headerShown: false }}>
             <Stack.Screen name="SplashScreen" component={SplashScreen} />
             <Stack.Screen
               name="OnBoardingScreenOne"
@@ -67,6 +68,12 @@ export default function App() {
               component={EditProfile}
             ></Stack.Screen>
       </Stack.Group>   */}
+
+      <Stack.Group screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="Dashboard" component={Dashboard} />
+
+            </Stack.Group>
+
 
 {/*  <Stack.Screen options={{headerShown:false}} name="BottomNavigationBar" component={BottomNavigationBar} /> */}
         </Stack.Navigator>
