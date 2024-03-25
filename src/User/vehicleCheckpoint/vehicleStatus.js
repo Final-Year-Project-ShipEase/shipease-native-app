@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Dimensions, Text, Pressable } from 'react-native';
 import MapView, { PROVIDER_GOOGLE, Marker, Polyline, Callout } from 'react-native-maps';
 import Geocoder from 'react-native-geocoding';
-import CheckPointModal from './modal/checkPointModal';
+import CheckPointDetailModal from './modal/checkPointDetailModal';
 
 // Initialize the geocoding library with your API key (get it from Google Cloud Console)
 Geocoder.init("AIzaSyCtLC0ys4qxjeOMIS_0O-gRZqHhhXq-C7o");
-
 const VehicleStatus = () => {
 
     const faisalabadCoords = { latitude: 31.4504, longitude: 73.1350 }; // Coordinates for Faisalabad
@@ -86,7 +85,7 @@ const VehicleStatus = () => {
                 </View>
             )}
             
-            <CheckPointModal></CheckPointModal>
+           <CheckPointDetailModal></CheckPointDetailModal> 
         </View>
     );
 };

@@ -5,7 +5,13 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import checkPointTruck from '../../../../assets/checkPointTruck.png';
 
 const CheckPointModal = () => {
+    const [visible, setVisible] = useState(true);
+
+    const handleModal = () => {
+        setVisible(!visible);
+    };
     return(
+        
         <View style = {styles.centeredView } >
             <View style={styles.modalView}>
                 <View style={styles.outerRoundView}>
@@ -16,7 +22,7 @@ const CheckPointModal = () => {
                 <Text style={styles.modalTitleText}>Vehicle CheckPoint</Text>
                 <Text style={styles.modalcontentText}>Click below to watch vehicle checkpoints</Text>
 
-                <Pressable >
+                <Pressable onPress={handleModal}>
                     <View style={styles.checkPointInfo}>
                     <Image source={checkPointTruck} style={styles.icon} />
                     <View style={styles.shippingId}>
