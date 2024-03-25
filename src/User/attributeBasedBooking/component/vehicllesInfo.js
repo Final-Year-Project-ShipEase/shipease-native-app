@@ -33,7 +33,7 @@ return (
               />
               <Text style={[styles.tbf7393, styles.r521Typo]}>TBF7393</Text>
               <Image
-                style={[styles.groupItem, styles.groupPositAion]}
+                style={[styles.groupItem, styles.groupPosition]}
                 contentFit="cover"
                 source={require("./dot.png")}
               />
@@ -59,6 +59,224 @@ const styles = StyleSheet.create({
         color: theme.palette.alreadyAccount.textColor,
     },
 
+    truckComponent: {
+        top: 201,
+        height: 87,
+        left: 29,
+        width: 316,
+      },
+
+      truckLayout1: {
+        width: 316,
+        height: 87,
+        position: "absolute",
+      },
+
+      textArea: {
+        width: "64.87%",
+        left: "35.13%",
+        right: "0%",
+        bottom: "13.22%",
+        top: "14.94%",
+        height: "71.84%",
+        position: "absolute",
+      },
+
+      textPosition: {
+        bottom: "13.22%",
+        top: "14.94%",
+        height: "71.84%",
+      },
+
+      addNew4: {
+        fontSize: FontSize.regular_size,
+        textAlign: "left",
+        fontFamily: FontFamily.poppinsRegular,
+        color: Color.white01,
+      },
+      buttons4: {
+        width: "30.73%",
+        right: "69.27%",
+        left: "0%",
+      },
+
+      buttonsPosition: {
+        backgroundColor: Color.colorSkyblue,
+        borderRadius: Border.br_8xs,
+        bottom: "60%",
+        top: "8%",
+        height: "32%",
+        padding: Padding.p_3xs,
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "row",
+        position: "absolute",
+      },
+
+      parentPosition: {
+        top: "44.8%",
+        height: "55.2%",
+        bottom: "0%",
+      },
+
+      jumboTrailerParent: {
+        width: "92.15%",
+        right: "7.85%",
+        left: "0%",
+        position: "absolute",
+      },
+
+      boxTruckTypo: {
+        color: Color.colorBlack,
+        fontFamily: FontFamily.poppinsBold,
+        fontSize: FontSize.size_xs,
+        textAlign: "left",
+        top: "0%",
+        height: "100%",
+        fontWeight: "700",
+      },
+
+      jumboTrailer: {
+        left: "0%",
+        position: "absolute",
+        width: "100%",
+      },
+
+      faisalabadParent: {
+        width: "80.47%",
+        right: "19.53%",
+        bottom: "7.25%",
+        top: "49.28%",
+        height: "43.48%",
+        left: "0%",
+        position: "absolute",
+      },
+
+      faisalabad: {
+        width: "43.42%",
+        left: "0%",
+        position: "absolute",
+      },
+
+      faisalabadTypo: {
+        color: Color.colorDimgray_100,
+        fontFamily: FontFamily.poppinsLight,
+        fontSize: FontSize.regular_size,
+        textAlign: "left",
+        top: "0%",
+        height: "100%",
+        fontWeight: "300",
+      },
+
+      groupChild: {
+        right: "29.61%",
+        left: "69.08%",
+        width: "1.32%",
+        height: "13.33%",
+        maxHeight: "100%",
+        maxWidth: "100%",
+        position: "absolute",
+        overflow: "hidden",
+      },
+
+      tbf7393: {
+        left: "41.45%",
+      },
+
+      r521Typo: {
+        width: "26.97%",
+        color: Color.colorDimgray_100,
+        fontFamily: FontFamily.poppinsLight,
+        fontSize: FontSize.regular_size,
+        textAlign: "left",
+        top: "0%",
+        height: "100%",
+        fontWeight: "300",
+        position: "absolute",
+      },
+
+      r521: {
+        left: "73.03%",
+      },
+
+      groupItem: {
+        right: "59.87%",
+        left: "38.82%",
+        width: "1.32%",
+        height: "13.33%",
+        maxHeight: "100%",
+        maxWidth: "100%",
+        position: "absolute",
+        overflow: "hidden",
+      },
+
+      groupPosition: {
+        bottom: "40%",
+        top: "46.67%",
+      },
+
+      groupChildPosition1: {
+        bottom: "46.67%",
+        top: "40%",
+      },
+
+      islamabadParentPosition: {
+        width: 152,
+        bottom: "7.25%",
+        left: 0,
+        position: "absolute",
+      },
+      islamabadLayout: {
+        width: 66,
+        left: 0,
+      },
+      groupChildLayout: {
+        width: 2,
+        height: "13.33%",
+        maxHeight: "100%",
+        position: "absolute",
+      },
+
+      stockPhotoEindhovenTheNethIcon1: {
+        right: "70.25%",
+        width: "29.75%",
+        borderRadius: Border.br_mini,
+        maxHeight: "100%",
+        maxWidth: "100%",
+        left: "0%",
+        bottom: "0%",
+        top: "0%",
+        height: "100%",
+        overflow: "hidden",
+        display: "none",
+      },
+
+      iconLayout: {
+        borderRadius: Border.br_mini,
+        position: "absolute",
+      },
+
+      truckComponent51: {
+        height: 87,
+        top: 0,
+        left: 0,
+      },
+      image11Icon: {
+        width: 94,
+        height: 87,
+        top: 0,
+        left: 0,
+      },
+      truckComponent5: {
+        top: 492,
+        height: 87,
+        left: 29,
+        width: 316,
+      },
+      buttons6: {
+        width: 63,
+        left: 0,
+      },
 
 });
 
