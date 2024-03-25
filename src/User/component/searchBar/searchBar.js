@@ -2,13 +2,11 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import {
     StyleSheet,
-    Image,
     Dimensions,
   } from 'react-native';
   import theme from '../../../../theme';
   import Icon from 'react-native-vector-icons/FontAwesome';
   import MenuIcon from 'react-native-vector-icons/Feather';
-import { HelpOutline } from '@mui/icons-material';
 
   const SearchBar = () => {
     return (

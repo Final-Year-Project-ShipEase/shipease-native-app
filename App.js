@@ -1,23 +1,8 @@
 import React from 'react';
-import SplashScreen from './src/User/splashScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ThemeProvider } from '@mui/material';
 import theme from './theme';
-import OnBoardingScreenOne from './src/User/onBoardingScreen/onBoardingScreenOne';
-import OnBoardingScreenTwo from './src/User/onBoardingScreen/onBoardingScreenTwo';
-import OnBoardingScreenThree from './src/User/onBoardingScreen/onBoardingScreenThree';
-import LoginScreen from './src/User/loginScreen/loginScreen';
-import SignUpScreen from './src/User/signUpScreen/signUpScreen';
-import OPTVerification from './src/User/component/OtpScreen/otpVerification';
-import VerificationSuccessfulModal from './src/User/modal/verificationSuccessfulModal';
-import ChangePasswordModal from './src/User/modal/changePasswordModal';
-import PrivaryAndPolicy from './src/User/homePage/privacyAndPolicy';
-import TermsAndConditions from './src/User/homePage/termsAndConditions'; 
-import EditProfile from './src/User/homePage/editProfile';
-import ChangePassword from './src/User/homePage/changePassword';
-import  Settings  from './src/User/homePage/settings';
-import BottomNavigationBar from './src/User/component/bottomNavigation/bottomNavigation';
 import Dashboard from './src/User/dashboard/dashboard';
 
 const Stack = createNativeStackNavigator();

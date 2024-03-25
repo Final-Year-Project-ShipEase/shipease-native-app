@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import UserInfocomponent from '../dashboard/components/userInfo';
 import theme from '../../../theme';
 import SearchBar from '../component/searchBar/searchBar';
+import BestVehicles from '../dashboard/components/bestVehicles';''
 
 const Dashboard = () => {
 
@@ -15,6 +16,7 @@ const Dashboard = () => {
         Effortless Delivery With Our Logistics Solution
       </Text>
         <SearchBar />
+        <BestVehicles/>
     </View>
   );
 };
