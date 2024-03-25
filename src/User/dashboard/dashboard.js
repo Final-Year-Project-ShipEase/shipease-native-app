@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, ScrollView } from 'react-native';
 import UserInfocomponent from '../dashboard/components/userInfo';
 import theme from '../../../theme';
 import SearchBar from '../component/searchBar/searchBar';
@@ -8,6 +8,7 @@ import BestVehicles from '../dashboard/components/bestVehicles';''
 const Dashboard = () => {
 
   return (
+    <ScrollView style={[styles.pagecolor]}>
     <View style={styles.container}>
       <View style={styles.userInfo}>
         <UserInfocomponent />
@@ -15,15 +16,23 @@ const Dashboard = () => {
       <Text style={styles.punchline} numberOfLines={2}>
         Effortless Delivery With Our Logistics Solution
       </Text>
+      <View>
         <SearchBar />
+      </View>
+      <View style={[styles.bestVehicles]}>
         <BestVehicles/>
+      </View>
     </View>
+    </ScrollView>
   );
 };
 
 const { width, height } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
+  pagecolor:{
+    color: theme.palette.alreadyAccount.textColor,
+  },
   container: {
     flex: 1,
     backgroundColor: theme.palette.primary.mainwhite,
@@ -44,9 +53,8 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     color: theme.palette.dashboard.black,
   },
-  searchBarContainer: {
-    marginTop: height * 0.05,
-    paddingHorizontal: width * 0.05,
+  bestVehicles:{
+    top:height * 0.2,
   },
 });
 
