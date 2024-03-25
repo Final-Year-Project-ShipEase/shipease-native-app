@@ -19,6 +19,7 @@ import EditProfile from './src/User/homePage/editProfile';
 import ChangePassword from './src/User/homePage/changePassword';
 import Settings from './src/User/homePage/settings';
 import BottomNavigationBar from './src/User/component/bottomNavigation/bottomNavigation';
+import PickUpConfirmation from './src/User/confirmation/pickUp';
 
 const Stack = createNativeStackNavigator();
 

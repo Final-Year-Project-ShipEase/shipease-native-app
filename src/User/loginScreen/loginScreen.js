@@ -20,15 +20,15 @@ import { useUserService } from '../../services/userServices';
 const LoginScreen = () => {
   const navigation = useNavigation();
   const [showModal, setShowModal] = useState(false);
-  const [passwordVisible, setPasswordVisible] = useState(false); 
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const [loginError, setLoginError] = useState('');
   const [snackBarVisible, setSnackBarVisible] = useState(false);
 
-  const { getAllUsers } = useUserService();
+  const { login } = useUserService();
 
   const handleForgetPassword = () => {
     //setShowModal(true);
-    navigation.navigate("ForgetPassword");
+    navigation.navigate('ForgetPassword');
   };
 
   const closeModal = () => {
@@ -40,16 +40,17 @@ const LoginScreen = () => {
     setSnackBarVisible(true);
     setTimeout(() => {
       setSnackBarVisible(false);
-      navigation.navigate('Settings'); 
-    }, 3000); 
+      navigation.navigate('Settings');
+    }, 3000);
   };
 
- const handleLogin = async (values) => {
+  const handleLogin = async (values) => {
     try {
-      const users = await getAllUsers();
+      const users = await login(values);
       console.log(users);
       const user = users.find(
-        (user) => user.email === values.email && user.password === values.password
+        (user) =>
+          user.email === values.email && user.password === values.password
       );
 
       if (user) {
@@ -64,7 +65,6 @@ const LoginScreen = () => {
       setLoginError('Invalid email or password');
     }
   };
-
 
   const validationSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email').required('Email is required'),
@@ -90,76 +90,77 @@ const LoginScreen = () => {
         }}
       >
         {(formikProps) => (
-      <View style={styles.form}>
-        <TextInput
-          label="Email"
-          mode="outlined"
-          placeholder="Enter Email"
-          style={styles.textInput}
-          onChangeText={formikProps.handleChange('email')}
+          <View style={styles.form}>
+            <TextInput
+              label="Email"
+              mode="outlined"
+              placeholder="Enter Email"
+              style={styles.textInput}
+              onChangeText={formikProps.handleChange('email')}
               onBlur={formikProps.handleBlur('email')}
               value={formikProps.values.email}
               error={formikProps.touched.email && formikProps.errors.email}
-
-        />
-        {formikProps.touched.email && formikProps.errors.email && (
+            />
+            {formikProps.touched.email && formikProps.errors.email && (
               <Text style={styles.errorText}>{formikProps.errors.email}</Text>
             )}
 
-        <TextInput
-          label="Password"
-          mode="outlined"
-          secureTextEntry={!passwordVisible}
-          placeholder="Enter Password"
-          style={styles.textInput}
-          right={
+            <TextInput
+              label="Password"
+              mode="outlined"
+              secureTextEntry={!passwordVisible}
+              placeholder="Enter Password"
+              style={styles.textInput}
+              right={
                 <TextInput.Icon
                   icon={passwordVisible ? 'eye-off' : 'eye'}
                   onPress={() => setPasswordVisible(!passwordVisible)} // Toggle password visibility
                 />
               }
-
-          onChangeText={formikProps.handleChange('password')}
+              onChangeText={formikProps.handleChange('password')}
               onBlur={formikProps.handleBlur('password')}
               value={formikProps.values.password}
-              error={formikProps.touched.password && formikProps.errors.password}
-        />
-        {formikProps.touched.password && formikProps.errors.password && (
-              <Text style={styles.errorText}>{formikProps.errors.password}</Text>
+              error={
+                formikProps.touched.password && formikProps.errors.password
+              }
+            />
+            {formikProps.touched.password && formikProps.errors.password && (
+              <Text style={styles.errorText}>
+                {formikProps.errors.password}
+              </Text>
             )}
-        <Pressable onPress={handleForgetPassword}>
-          <Text style={styles.forgetPassword}> Forget Password?</Text>
-        </Pressable>
-        {loginError !== '' && <Text style={styles.errorText}>{loginError}</Text>}
+            <Pressable onPress={handleForgetPassword}>
+              <Text style={styles.forgetPassword}> Forget Password?</Text>
+            </Pressable>
+            {loginError !== '' && (
+              <Text style={styles.errorText}>{loginError}</Text>
+            )}
 
-
-        <View style={styles.buttonContainer}>
-          <Button
-            mode="contained"
-            textColor={theme.palette.login.textColorLogin}
-            style={styles.buttonLogin}
-            onPress={formikProps.handleSubmit}
-          >
-            Login
-          </Button>
-          <Button
-            mode="contained"
-            textColor={theme.palette.login.textColorRegistration}
-            style={styles.buttonRegistration}
-            onPress={() => {
-              navigation.navigate('SignUpScreen');
-            }}
-          >
-            Register
-          </Button>
-
-
-        </View>
-      </View>
-)}
-</Formik>
-<ChangePasswordModal visible={showModal} onClose={closeModal} />
-<Snackbar
+            <View style={styles.buttonContainer}>
+              <Button
+                mode="contained"
+                textColor={theme.palette.login.textColorLogin}
+                style={styles.buttonLogin}
+                onPress={formikProps.handleSubmit}
+              >
+                Login
+              </Button>
+              <Button
+                mode="contained"
+                textColor={theme.palette.login.textColorRegistration}
+                style={styles.buttonRegistration}
+                onPress={() => {
+                  navigation.navigate('SignUpScreen');
+                }}
+              >
+                Register
+              </Button>
+            </View>
+          </View>
+        )}
+      </Formik>
+      <ChangePasswordModal visible={showModal} onClose={closeModal} />
+      <Snackbar
         visible={snackBarVisible}
         onDismiss={() => setSnackBarVisible(false)}
         action={{
@@ -171,7 +172,6 @@ const LoginScreen = () => {
       >
         Login successful!
       </Snackbar>
-
     </ScrollView>
   );
 };

@@ -91,6 +91,12 @@ const theme = createTheme({
       notificationIconColor: '#00668c',
       settingIconColor: '#00668c',
     },
+    confirmation: {
+      titleColor: '#00668c',
+      informationBackgroundColor: '#cccbcb',
+      buttonColor: '#cee0e7',
+      buttonBackgroundColor: '#00668c'
+    },
   },
 });
 responsiveFontSizes(theme);

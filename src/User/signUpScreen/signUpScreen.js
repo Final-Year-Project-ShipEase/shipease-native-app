@@ -31,10 +31,15 @@ const SignUpScreen = () => {
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().required('Name is required'),
+    username: Yup.string().required('User Name is required'),
     email: Yup.string().email('Invalid email').required('Email is required'),
     password: Yup.string()
-      .min(6, 'Password must be at least 6 characters')
+      .min(8, 'Password must be at least 8 characters')
       .required('Password is required'),
+      phoneNumber: Yup.string()
+      .matches(/^[0-9]+$/, 'Phone number must contain only integers')
+      .required('Phone number is required'),
+    city: Yup.string().required('City is required'),
     agreeTerms: Yup.boolean().oneOf([true]),
   });
 
@@ -47,7 +52,15 @@ const SignUpScreen = () => {
       </View>
 
       <Formik
-        initialValues={{ name: '', email: '', password: '', agreeTerms: false }}
+        initialValues={{
+          name: '',
+          username: '',
+          email: '',
+          password: '',
+          phoneNumber: '',
+          city: '',
+          agreeTerms: false,
+        }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting }) => {
           // Handle form submission logic here
@@ -65,6 +78,19 @@ const SignUpScreen = () => {
         }) => (
           <View>
             <View style={styles.form}>
+              <TextInput
+                label="User Name"
+                mode="outlined"
+                placeholder="Enter User Name"
+                style={styles.textInput}
+                onChangeText={handleChange('username')}
+                onBlur={handleBlur('username')}
+                value={values.username}
+              />
+              <Text style={styles.error}>
+                {touched.username && errors.username}
+              </Text>
+
               <TextInput
                 label="Name"
                 mode="outlined"
@@ -106,6 +132,30 @@ const SignUpScreen = () => {
               <Text style={styles.error}>
                 {touched.password && errors.password}
               </Text>
+
+              <TextInput
+                label="Phone Number"
+                mode="outlined"
+                placeholder="Enter Phone Number"
+                style={styles.textInput}
+                onChangeText={handleChange('phoneNumber')}
+                onBlur={handleBlur('phoneNumber')}
+                value={values.phoneNumber}
+              />
+              <Text style={styles.error}>
+                {touched.phoneNumber && errors.phoneNumber}
+              </Text>
+
+              <TextInput
+                label="City"
+                mode="outlined"
+                placeholder="Enter City"
+                style={styles.textInput}
+                onChangeText={handleChange('city')}
+                onBlur={handleBlur('city')}
+                value={values.city}
+              />
+              <Text style={styles.error}>{touched.city && errors.city}</Text>
 
               <View style={styles.checkboxContainer}>
                 <Checkbox.Item
