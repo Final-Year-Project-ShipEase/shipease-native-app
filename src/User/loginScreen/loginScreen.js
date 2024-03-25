@@ -8,26 +8,62 @@ import {
   Pressable,
   Dimensions,
 } from 'react-native';
-import { TextInput, Button } from 'react-native-paper';
+import { TextInput, Button, Snackbar } from 'react-native-paper';
 import theme from '../../../theme';
 import ScreenOne from '../../../assets/ScreenOne.png';
 import { useNavigation } from '@react-navigation/native';
 import ChangePasswordModal from '../modal/changePasswordModal';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { useUserService } from '../../services/userServices';
 
 const LoginScreen = () => {
   const navigation = useNavigation();
   const [showModal, setShowModal] = useState(false);
-  const [passwordVisible, setPasswordVisible] = useState(false); 
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [loginError, setLoginError] = useState('');
+  const [snackBarVisible, setSnackBarVisible] = useState(false);
+
+  const { login } = useUserService();
 
   const handleForgetPassword = () => {
-    setShowModal(true);
+    //setShowModal(true);
+    navigation.navigate('ForgetPassword');
   };
 
   const closeModal = () => {
     setShowModal(false);
     navigation.navigate('LoginScreen');
+  };
+
+  const handleLoginSuccess = () => {
+    setSnackBarVisible(true);
+    setTimeout(() => {
+      setSnackBarVisible(false);
+      navigation.navigate('Settings');
+    }, 3000);
+  };
+
+  const handleLogin = async (values) => {
+    try {
+      const users = await login(values);
+      console.log(users);
+      const user = users.find(
+        (user) =>
+          user.email === values.email && user.password === values.password
+      );
+
+      if (user) {
+        // Successful login
+        handleLoginSuccess();
+        console.log('User logged in:', user);
+      } else {
+        setLoginError('Invalid email or password');
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      setLoginError('Invalid email or password');
+    }
   };
 
   const validationSchema = Yup.object().shape({
@@ -48,78 +84,94 @@ const LoginScreen = () => {
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting }) => {
           // Handle form submission here
-          console.log(values);
+          //console.log(values);
+          handleLogin(values);
           setSubmitting(false);
         }}
       >
         {(formikProps) => (
-      <View style={styles.form}>
-        <TextInput
-          label="Email"
-          mode="outlined"
-          placeholder="Enter Email"
-          style={styles.textInput}
-          onChangeText={formikProps.handleChange('email')}
+          <View style={styles.form}>
+            <TextInput
+              label="Email"
+              mode="outlined"
+              placeholder="Enter Email"
+              style={styles.textInput}
+              onChangeText={formikProps.handleChange('email')}
               onBlur={formikProps.handleBlur('email')}
               value={formikProps.values.email}
               error={formikProps.touched.email && formikProps.errors.email}
-
-        />
-        {formikProps.touched.email && formikProps.errors.email && (
+            />
+            {formikProps.touched.email && formikProps.errors.email && (
               <Text style={styles.errorText}>{formikProps.errors.email}</Text>
             )}
 
-        <TextInput
-          label="Password"
-          mode="outlined"
-          secureTextEntry={!passwordVisible}
-          placeholder="Enter Password"
-          style={styles.textInput}
-          right={
+            <TextInput
+              label="Password"
+              mode="outlined"
+              secureTextEntry={!passwordVisible}
+              placeholder="Enter Password"
+              style={styles.textInput}
+              right={
                 <TextInput.Icon
                   icon={passwordVisible ? 'eye-off' : 'eye'}
                   onPress={() => setPasswordVisible(!passwordVisible)} // Toggle password visibility
                 />
               }
-
-          onChangeText={formikProps.handleChange('password')}
+              onChangeText={formikProps.handleChange('password')}
               onBlur={formikProps.handleBlur('password')}
               value={formikProps.values.password}
-              error={formikProps.touched.password && formikProps.errors.password}
-        />
-        {formikProps.touched.password && formikProps.errors.password && (
-              <Text style={styles.errorText}>{formikProps.errors.password}</Text>
+              error={
+                formikProps.touched.password && formikProps.errors.password
+              }
+            />
+            {formikProps.touched.password && formikProps.errors.password && (
+              <Text style={styles.errorText}>
+                {formikProps.errors.password}
+              </Text>
             )}
-        <Pressable onPress={handleForgetPassword}>
-          <Text style={styles.forgetPassword}> Forget Password?</Text>
-        </Pressable>
+            <Pressable onPress={handleForgetPassword}>
+              <Text style={styles.forgetPassword}> Forget Password?</Text>
+            </Pressable>
+            {loginError !== '' && (
+              <Text style={styles.errorText}>{loginError}</Text>
+            )}
 
-
-        <View style={styles.buttonContainer}>
-          <Button
-            mode="contained"
-            textColor={theme.palette.login.textColorLogin}
-            style={styles.buttonLogin}
-            onPress={formikProps.handleSubmit}
-          >
-            Login
-          </Button>
-          <Button
-            mode="contained"
-            textColor={theme.palette.login.textColorRegistration}
-            style={styles.buttonRegistration}
-            onPress={() => {
-              navigation.navigate('SignUpScreen');
-            }}
-          >
-            Register
-          </Button>
-
-          <ChangePasswordModal visible={showModal} onClose={closeModal} />
-        </View>
-      </View>
-)}
-</Formik>
+            <View style={styles.buttonContainer}>
+              <Button
+                mode="contained"
+                textColor={theme.palette.login.textColorLogin}
+                style={styles.buttonLogin}
+                onPress={formikProps.handleSubmit}
+              >
+                Login
+              </Button>
+              <Button
+                mode="contained"
+                textColor={theme.palette.login.textColorRegistration}
+                style={styles.buttonRegistration}
+                onPress={() => {
+                  navigation.navigate('SignUpScreen');
+                }}
+              >
+                Register
+              </Button>
+            </View>
+          </View>
+        )}
+      </Formik>
+      <ChangePasswordModal visible={showModal} onClose={closeModal} />
+      <Snackbar
+        visible={snackBarVisible}
+        onDismiss={() => setSnackBarVisible(false)}
+        action={{
+          label: 'Close',
+          onPress: () => {
+            setSnackBarVisible(false);
+          },
+        }}
+      >
+        Login successful!
+      </Snackbar>
     </ScrollView>
   );
 };
