@@ -32,7 +32,7 @@ const { width, height } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   searchBar: {
-    top: height * 0.103,
+    top: height * 0.02,
     left: width * 0.07,
     opacity: 0.6,
     shadowOpacity: 1,

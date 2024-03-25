@@ -19,6 +19,7 @@ const theme = createTheme({
       shadowColor1: "rgba(0, 0, 0, 0.25)",
       searchbarcolor: "#cacaca",
       searchbartextcolor: "#686565",
+      darkgray: "#AEAEAE"
     },
 
 

@@ -89,7 +89,7 @@ export default function App() {
             ></Stack.Screen>
           </Stack.Group>
           */}
-          <Stack.Group screenOptions={{ headerShown: false }}>
+          <Stack.Group screenOptions={{ headerShown: true }}>
             <Stack.Screen name="AttributeBasedBooking" component={attributeBasedBooking} />
             </Stack.Group>
 
