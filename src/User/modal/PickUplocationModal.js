@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Modal,
   StyleSheet,
@@ -6,7 +6,6 @@ import {
   Pressable,
   View,
   Dimensions,
-  Image,
   ImageBackground,
 } from 'react-native';
 import { TextInput } from 'react-native-paper';
@@ -15,7 +14,10 @@ import { useNavigation } from '@react-navigation/native';
 import theme from '../../../theme';
 
 const PickUpLocationModal = ({ visible, onClose }) => {
+
   const navigation = useNavigation();
+
+
 
   return (
     <View style={styles.centeredView}>
@@ -26,10 +28,10 @@ const PickUpLocationModal = ({ visible, onClose }) => {
         onRequestClose={onClose}
       >
         <View style={styles.centeredView}>
-        <ImageBackground
-        style={[styles.modalView, styles.ImageBackground]}
-        source={require("../assests/rectangle1.png")}
-      >
+          <ImageBackground
+            style={[styles.modalView, styles.ImageBackground]}
+            source={require("../assests/rectangle1.png")}
+          >
             <View style={styles.outerRoundView}>
               <View style={styles.innerRoundView}>
                 <Icon name="edit" size={width * 0.1} style={styles.icon}>
@@ -65,15 +67,10 @@ const PickUpLocationModal = ({ visible, onClose }) => {
                 style={styles.passwordInput}
               />
             </View>
-            <Pressable
-              style={styles.button}
-              onPress={() => {
-                navigation.navigate('OTPVerification');
-              }}
-            >
+            <Pressable style={styles.button} onPress={onClose} accessible={true} accessibilityLabel="Booking">
               <Text style={styles.textStyle}>Started</Text>
             </Pressable>
-        </ImageBackground>
+          </ImageBackground>
         </View>
       </Modal>
     </View>
