@@ -7,30 +7,13 @@ import {
   View,
   Dimensions,
   ImageBackground,
+  Image,
 } from 'react-native';
 import { TextInput } from 'react-native-paper';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useNavigation } from '@react-navigation/native';
 import theme from '../../../theme';
-import BookingModal from '../modal/bookingModal'
 
 const PickUpLocationModal = ({ visible, onClose }) => {
-    
-    const [showModal, setShowModal] = useState(false);
-
-    const handleOpenModal = () => {
-      setShowModal(true);
-    };
-  
-    const handleCloseModal = () => {
-      setShowModal(false);
-    };
-  
-    const handleBookingPress = () => {
-        console.log("modal open");
-        handleOpenModal();
-      };
-      
 
   const navigation = useNavigation();
 
@@ -50,43 +33,23 @@ const PickUpLocationModal = ({ visible, onClose }) => {
             source={require("../assests/rectangle1.png")}
           >
             <View style={styles.outerRoundView}>
-              <View style={styles.innerRoundView}>
-                <Icon name="edit" size={width * 0.1} style={styles.icon}>
-                  {' '}
-                </Icon>
-              </View>
+                <View style={styles.innerRoundView}>
+                <Image
+                    source={require('../assests/truck1.png')}
+                    style={{ width: width * 0.1, height: width * 0.1 }}
+                />
+                </View>
             </View>
-            <Text style={styles.modalTitleText}>Select Location</Text>
+            <Text style={styles.modalTitleText}>Search Booking</Text>
 
-            <View style={styles.form}>
-              <TextInput
-                label="Pick-Up Location"
-                mode="flat"
-                secureTextEntry
-                selectionColor={theme.palette.changePasswordModal.inputColor}
-                textColor={theme.palette.changePasswordModal.textColor}
-                underlineColor={theme.palette.changePasswordModal.inputColor}
-                activeUnderlineColor={
-                  theme.palette.changePasswordModal.inputColor
-                }
-                style={styles.passwordInput}
-              />
-              <TextInput
-                label="Drop-Off Location"
-                mode="flat"
-                secureTextEntry
-                selectionColor={theme.palette.dashboard.tenantlightgray}
-                textColor={theme.palette.changePasswordModal.textColor}
-                underlineColor={theme.palette.changePasswordModal.inputColor}
-                activeUnderlineColor={
-                  theme.palette.changePasswordModal.inputColor
-                }
-                style={styles.passwordInput}
-              />
-            </View>
-            <Pressable style={styles.button} onPress={ handleBookingPress} accessible={true} accessibilityLabel="Booking">
-              <Text style={styles.textStyle}>Started</Text>
-              <BookingModal visible={showModal} onClose={handleCloseModal} />
+            <Pressable style={styles.button} onPress={''} accessible={true} accessibilityLabel="Booking">
+              <Text style={styles.textStyle}>Search By Attribute</Text>
+            </Pressable>
+            <Pressable style={styles.button} onPress={''} accessible={true} accessibilityLabel="Booking">
+              <Text style={styles.textStyle}>Search By Vehicle</Text>
+            </Pressable>
+            <Pressable style={styles.button} onPress={''} accessible={true} accessibilityLabel="Booking">
+              <Text style={styles.textStyle}>Search By Tenant</Text>
             </Pressable>
           </ImageBackground>
         </View>
@@ -120,7 +83,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
     width: width *1.1,
-    height: height * 0.73,
+    height: height * 0.8,
     backgroundColor: 'transparent',
   },
   button: {
@@ -130,13 +93,14 @@ const styles = StyleSheet.create({
     marginTop: width * 0.15,
     alignItems: 'center',
     justifyContent: 'center',
-    width: width * 0.5,
+    width: width * 0.7,
     height: height * 0.07,
     borderRadius: width * 0.08,
     marginBottom: height * 0.01,
-    top: height * -0.12,
+    top: height * -0.2,
   },
   textStyle: {
+    fontSize:height * 0.028,
     color: theme.palette.changePasswordModal.buttonTextColor,
     backgroundColor: theme.palette.changePasswordModal.buttonBackgroundColor,
     textAlign: 'center',
@@ -149,7 +113,7 @@ const styles = StyleSheet.create({
     height: height * 0.06,
     marginLeft: width * 0.5,
     marginTop: height * 0.02,
-    top:height * -0.08,
+    top:height * -0.13,
   },
   form: {
     width: width * 0.8,
@@ -177,7 +141,7 @@ const styles = StyleSheet.create({
     width: width * 0.25,
     aspectRatio: 1,
     borderRadius: width * 0.5,
-    top: height * -0.08,
+    top: height * -0.12,
   },
   innerRoundView: {
     backgroundColor: theme.palette.changePasswordModal.innerViewColor,
