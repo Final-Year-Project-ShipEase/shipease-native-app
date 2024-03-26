@@ -3,13 +3,14 @@ import { View, Text, StyleSheet, Dimensions, ScrollView } from 'react-native';
 import UserInfocomponent from '../dashboard/components/userInfo';
 import theme from '../../../theme';
 import SearchBar from '../component/searchBar/searchBar';
-import BestVehicles from '../dashboard/components/bestVehicles';''
+import BestVehicles from '../dashboard/components/bestVehicles';
+import TopTenant from '../dashboard/components/topTenants';
+import VehicleCheckpoint from '../dashboard/components/VehiclesCheckpoint'
 
 const Dashboard = () => {
 
   return (
-    <ScrollView style={[styles.pagecolor]}>
-    <View style={styles.container}>
+    <ScrollView style={[styles.pagecolor, styles.container]}>
       <View style={styles.userInfo}>
         <UserInfocomponent />
       </View>
@@ -22,7 +23,12 @@ const Dashboard = () => {
       <View style={[styles.bestVehicles]}>
         <BestVehicles/>
       </View>
-    </View>
+      <View style={[styles.topTenants]}>
+        <TopTenant/>
+      </View>
+      <View style={[styles.vehicleCheckpoint]}>
+        <VehicleCheckpoint/>
+      </View>
     </ScrollView>
   );
 };
@@ -55,6 +61,12 @@ const styles = StyleSheet.create({
   },
   bestVehicles:{
     top:height * 0.2,
+  },
+  topTenants:{
+    top:height * 0.094,
+  },
+  vehicleCheckpoint: {
+    top: height * 0.18
   },
 });
 
