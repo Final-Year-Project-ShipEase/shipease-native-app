@@ -5,13 +5,14 @@ import {
     Image, 
     StyleSheet,
     Dimensions,
+    ScrollView,
   } from 'react-native';
   import theme from '../../../../theme';
   import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const userInfo = () => {
   return (
-    <View>
+    <ScrollView horizontal style={{height:height * 0.407}}>
       <View style={styles.bestVehicle}>
       <View style={styles.moveChild} />
       <View style={styles.moveChild1} />
@@ -55,7 +56,7 @@ const userInfo = () => {
           </Text>
         </View>
       </View>
-    </View>
+    </ScrollView>
     );
 };
 
