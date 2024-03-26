@@ -5,8 +5,9 @@ import theme from '../../../theme';
 import SearchBar from '../component/searchBar/searchBar';
 import BestVehicles from '../dashboard/components/bestVehicles';
 import TopTenant from '../dashboard/components/topTenants';
-import VehicleCheckpoint from '../dashboard/components/VehiclesCheckpoint'
-import Services from '../dashboard/components/services'
+import VehicleCheckpoint from '../dashboard/components/VehiclesCheckpoint';
+import Services from '../dashboard/components/services';
+import Navbar from '../dashboard/components/navbar';
 
 const Dashboard = () => {
 
@@ -32,6 +33,9 @@ const Dashboard = () => {
       </View>
       <View style={[styles.services]}>
         <Services/>
+      </View>
+      <View>
+        <Navbar/>
       </View>
     </ScrollView>
   );
@@ -61,16 +65,16 @@ const styles = StyleSheet.create({
     color: theme.palette.dashboard.black,
   },
   bestVehicles:{
-    top:height * 0.2,
+    top:Dimensions.get('window').height * 0.2,
   },
   topTenants:{
-    top:height * 0.094,
+    top:Dimensions.get('window').height * 0.094,
   },
   vehicleCheckpoint: {
-    top: height * 0.18
+    top: Dimensions.get('window').height * 0.18
   },
   services:{
-    top:height * 0.34,
+    top:Dimensions.get('window').height * 0.34,
   }
 });
 
