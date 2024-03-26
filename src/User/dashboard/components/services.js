@@ -204,7 +204,7 @@ const styles = StyleSheet.create({
       },
       component1: {
         flex: 1,
-        height: 812,
+        height: height * 0.6,
         overflow: "hidden",
         width: "100%",
         backgroundColor: theme.palette.alreadyAccount.textColor,
