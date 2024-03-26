@@ -90,7 +90,7 @@ export default function App() {
 </Stack.Group> */ }
 
           <Stack.Group>
-            <Stack.Screen options={{ headerShown: false }} name="QRCodeScanner" component={QRCodeScanner} />
+            <Stack.Screen options={{ headerShown: false }} name="LoginScreen" component={LoginScreen} />
           </Stack.Group>
         </Stack.Navigator>
       </NavigationContainer>
