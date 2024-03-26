@@ -1,19 +1,39 @@
-import * as React from "react";
-import { StyleSheet, Text, View, Image, Dimensions} from "react-native";
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, Image, Dimensions, Pressable} from "react-native";
 import theme from "../../../../theme";
+import PickUpLocationModal from '../../modal/PickUplocationModal';
 
 const Component = () => {
+
+  const [showModal, setShowModal] = useState(false);
+
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const handleBookingPress = () => {
+    console.log("modal open");
+    handleOpenModal();
+  };
+
   return (
     <View style={styles.component1}>
       <View style={styles.vectorParent}>
         <View style={styles.bookingParent}>
           <View style={styles.booking}>
+          <Pressable onPress={handleBookingPress} accessible={true} accessibilityLabel="Booking">
             <Text style={[styles.booking1, styles.booking1Typo]}>Booking</Text>
             <Image
               style={[styles.completedIcon, styles.vectorIconLayout]}
               contentFit="cover"
               source={require("../components/completed.png")}
             />
+                <PickUpLocationModal visible={showModal} onClose={handleCloseModal} />
+          </Pressable>
           </View>
           <View style={styles.home}>
             <Text style={styles.home1}>Home</Text>
