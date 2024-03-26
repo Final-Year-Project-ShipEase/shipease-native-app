@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, Dimensions, Image, ScrollView} from 'react-native';
 import theme from '../../../../theme';
-import { HiveRounded, WidthWide } from '@mui/icons-material';
 
 const VehicleCheckpoint = () => {
   return (

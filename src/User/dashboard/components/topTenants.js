@@ -43,15 +43,15 @@ const TopTenant = () => {
             <View style={[styles.groupParent, styles.groupLayout]}>
               <View style={[styles.groupWrapper, styles.groupLayout]}>
                 <View style={[styles.groupWrapper, styles.groupLayout]}>
-                  <Text style={[styles.davidWill, styles.davidWillTypo]}>
+                  <Text style={[styles.Name, styles.NameTypo]}>
                     David Will
                   </Text>
-                  <Text style={[styles.david12, styles.davidFlexBox]}>
+                  <Text style={[styles.username, styles.davidFlexBox]}>
                     @david12
                   </Text>
                 </View>
               </View>
-              <Text style={[styles.david12gmailcom, styles.davidFlexBox]}>
+              <Text style={[styles.email, styles.davidFlexBox]}>
                 david12@gmail.com
               </Text>
             </View>
@@ -93,15 +93,15 @@ const TopTenant = () => {
               <View style={[styles.groupParent, styles.groupLayout]}>
                 <View style={[styles.groupWrapper, styles.groupLayout]}>
                   <View style={[styles.groupWrapper, styles.groupLayout]}>
-                    <Text style={[styles.davidWill, styles.davidWillTypo]}>
+                    <Text style={[styles.Name, styles.NameTypo]}>
                       David Will
                     </Text>
-                    <Text style={[styles.david12, styles.davidFlexBox]}>
+                    <Text style={[styles.username, styles.davidFlexBox]}>
                       @david12
                     </Text>
                   </View>
                 </View>
-                <Text style={[styles.david12gmailcom, styles.davidFlexBox]}>
+                <Text style={[styles.email, styles.davidFlexBox]}>
                   david12@gmail.com
                 </Text>
               </View>
@@ -215,15 +215,13 @@ const styles = StyleSheet.create({
       freepikTruckInject5Icon: {
         height: height * 0.05,
         width: width * 0.13,
-        top: "40.26%",
-        right: "25.33%",
-        bottom: "40.5%",
-        left: "58.89%",
+        top: height * 0.08,
+        left: width * 0.394,
       },
 
       vectorIconLayout: {
-        maxHeight: "100%",
-        maxWidth: "100%",
+        maxHeight: height,
+        maxWidth: width,
         position: "absolute",
         overflow: "hidden",
       },
@@ -233,10 +231,10 @@ const styles = StyleSheet.create({
       },
 
       iconLayout: {
-        height: 87,
-        width: 68,
-        left: 7,
-        borderRadius: 13,
+        height: height * 0.109,
+        width: width * 0.18,
+        left: height * 0.01,
+        borderRadius: height * 0.003,
         position: "absolute",
       },
 
@@ -254,68 +252,66 @@ const styles = StyleSheet.create({
         overflow: "hidden",
       },
 
-      davidWill: {
-        fontSize: 13,
-        width: 82,
-        height: 14,
+      Name: {
+        fontSize: height * 0.016,
+        width: width * 0.3,
+        height: height * 0.4,
         letterSpacing: 1,
         textAlign: "left",
-        left: 0,
         color: theme.palette.alreadyAccount.textColor,
-        top: 0,
       },
-      david12: {
-        color: theme.palette.dashboard.ratingdarkgray,
-        height: 13,
-        width: 113,
+      username: {
+        color: theme.palette.dashboard.tenantlightgray,
+        height: height* 0.3,
+        width: width * 0.3,
         position: "absolute",
-        fontSize: 14,
-        top: 14,
+        fontSize: height * 0.015,
+        top: height * 0.02,
       },
       groupWrapper: {
-        height: 26,
-        top: 0,
-        left: 0,
+        height: height * 0.3,
+        top: height * 0,
+        left: width * 0,
       },
-      david12gmailcom: {
-        top: 26,
-        width: 97,
-        height: 14,
+      email: {
+        top: height * 0.042,
+        width: width * 0.4,
+        height: height *0.3,
         color: theme.palette.alreadyAccount.textColor,
-        fontSize: 14,
+        fontSize: height * 0.012,
         position: "absolute",
       },
 
       groupParent: {
-        top: 100,
-        height: 40,
-        left: 83,
+        top: height * 0.13,
+        height: height * 0.1,
+        left: width * 0.23,
       },
 
       addNew: {
-        fontSize: 14,
-        color: theme.palette.dashboard.ratingdarkgray,
+        fontSize: height * 0.012,
+        color: theme.palette.alreadyAccount.textColor,
         textAlign: "left",
-        top: 1,
+        top: height * 0.004,
       },
 
       addNewPosition: {
-        left: 5,
+        left: height * 0.01,
         position: "absolute",
       },
 
       button: {
-        top: 90,
-        left: 83,
+        top: height * 0.106,
+        left: width * 0.22,
         position: "absolute",
       },
 
 
       groupLayout: {
-        width: 113,
+        width: width * 0.4,
         position: "absolute",
       },
-      davidWillTypo: {
+      NameTypo: {
         fontWeight: "600",
         position: "absolute",
       },
@@ -325,8 +321,8 @@ const styles = StyleSheet.create({
         left: 0,
       },
       buttonLayout: {
-        width: 25,
-        height: 10,
+        width: width * 1,
+        height: height * 1,
       },
       buttonsPosition: {
         borderStyle: "solid",
@@ -335,31 +331,31 @@ const styles = StyleSheet.create({
         position: "absolute",
       },
       codePosition: {
-        height: "100%",
-        left: "0%",
-        top: "0%",
+        height: height,
+        left: width * 0,
+        top: height * 0,
       },
 
       buttons: {
-        backgroundColor: theme.palette.dashboard.ratingdarkgray,
+        backgroundColor: theme.palette.dashboard.transparent,
         borderColor: theme.palette.dashboard.mainblue,
         borderWidth: 1,
-        width: 25,
-        height: 10,
-        borderRadius: 13,
+        width: width * 0.12,
+        height: height * 0.022,
+        borderRadius: width * 0.03,
         borderStyle: "solid",
         justifyContent: "center",
         alignItems: "center",
       },
 
         instanceParent: {
-            top: 30,
-            left: 209,
+          top: height * 0.038,
+            left: width * 0.58,
         },
 
         groupContainer: {
-            borderRadius: 13,
-            width: 200,
+            borderRadius: width * 0.03,
+            width: width * 1,
             left: 0,
             top: 0,
             overflow: "hidden",
@@ -367,7 +363,7 @@ const styles = StyleSheet.create({
           },
 
           image14Icon: {
-            top: 7,
+            top: height * 0.009,
           },
 });
 

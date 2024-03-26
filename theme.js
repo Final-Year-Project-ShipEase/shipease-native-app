@@ -23,7 +23,8 @@ const theme = createTheme({
       mediumgray: "#BBBBBB",
       bestVehicleColor: "rgba(54, 52, 52, 0.75)",
       bestVehicleShadowColor: "rgba(0, 0, 0, 0.15)",
-      ratingdarkgray: "#363434"
+      ratingdarkgray: "#363434",
+      tenantlightgray: "#A5A5A5",
     },
 
     secondary: {
