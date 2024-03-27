@@ -118,7 +118,7 @@ const theme = createTheme({
       informationBackgroundColor: '#cccbcb',
       buttonColor: '#cee0e7',
       buttonBackgroundColor: '#00668c'
-    },,
+    },
 
   },
 });

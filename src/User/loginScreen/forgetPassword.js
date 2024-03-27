@@ -38,8 +38,8 @@ const ForgetPassword = () => {
         onSubmit={(values, { setSubmitting }) => {
           // Handle form submission here
           console.log(values);
-          setSubmitting(false);
           handleOpenModal();
+          setSubmitting(false);
         }}
       >
         {(formikProps) => (
