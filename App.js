@@ -6,6 +6,8 @@ import { ThemeProvider } from '@mui/material';
 import theme from './theme';
 import AttributebasedBooking from './src/User/searchByAttribute/attributeBasedBooking1';
 import AttributebasedBooking2 from './src/User/searchByAttribute/attributeBasedBooking2';
+import AttributebasedBooking3 from './src/User/searchByAttribute/attributeBasedBooking3';
+import favourite from './src/User/FavouriteDriver&Tenant/favourite';
 
 const Stack = createNativeStackNavigator();
 
@@ -82,8 +84,8 @@ export default function App() {
             </Stack.Group>
                         */}
 
-            <Stack.Group screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="AttributebasedBooking" component={AttributebasedBooking2} />
+            <Stack.Group screenOptions={{ headerShown: true }}>
+            <Stack.Screen name="favourite" component={favourite} />
             </Stack.Group>
 
           {/*  <Stack.Screen options={{headerShown:false}} name="BottomNavigationBar" component={BottomNavigationBar} /> */}
