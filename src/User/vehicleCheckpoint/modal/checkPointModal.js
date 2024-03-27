@@ -10,7 +10,7 @@ const CheckPointModal = () => {
 
     const handleModal = () => {
         setVisible(!visible);
-
+        <CheckPointDetailModal />
     };
     return(
         

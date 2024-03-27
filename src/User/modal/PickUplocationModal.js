@@ -24,6 +24,7 @@ const PickUpLocationModal = ({ visible, onClose }) => {
     };
   
     const handleCloseModal = () => {
+      onClose();
       setShowModal(false);
     };
   
