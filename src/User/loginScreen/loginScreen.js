@@ -12,7 +12,6 @@ import { TextInput, Button, Snackbar } from 'react-native-paper';
 import theme from '../../../theme';
 import ScreenOne from '../../../assets/ScreenOne.png';
 import { useNavigation } from '@react-navigation/native';
-import ChangePasswordModal from '../modal/changePasswordModal';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useUserService } from '../../services/userServices';
@@ -150,7 +149,6 @@ const LoginScreen = () => {
           </View>
         )}
       </Formik>
-      <ChangePasswordModal visible={showModal} onClose={closeModal} />
       <Snackbar
         visible={snackBarVisible}
         onDismiss={() => setSnackBarVisible(false)}

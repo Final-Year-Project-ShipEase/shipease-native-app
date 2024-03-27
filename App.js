@@ -8,6 +8,7 @@ import AttributebasedBooking from './src/User/searchByAttribute/attributeBasedBo
 import BasedOnVehiclesSelection from './src/User/BasedOnVehiclesSelection/basedOnVehiclesSelection'
 
 import VehicleStatus from './src/User/vehicleCheckpoint/vehicleStatus';
+import QRCodeScanner from './src/qrCodeScanner';
 
 const Stack = createNativeStackNavigator();
 
@@ -51,7 +52,7 @@ export default function App() {
               </Stack.Screen>
   </Stack.Group>
 
-      {/*    <Stack.Group
+          <Stack.Group
             screenOptions={{ headerShown: false, headerTitleAlign: 'center' }}
           >
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
@@ -76,19 +77,11 @@ export default function App() {
               name="PrivacyAndPolicy"
               component={PrivacyAndPolicy}
             ></Stack.Screen>
-          </Stack.Group>
-          */}
-          <Stack.Group screenOptions={{ headerShown: true }}>
-            <Stack.Screen name="BasedOnVehiclesSelection" component={BasedOnVehiclesSelection} />
-            </Stack.Group>
-    
-            <Stack.Group screenOptions={{ headerShown: true }}>
-            <Stack.Screen name="AttributebasedBooking" component={AttributebasedBooking} />
-  </Stack.Group> 
+</Stack.Group> */ }
 
-<Stack.Group>
-           <Stack.Screen options={{headerShown:false}} name="VehicleStatus" component={VehicleStatus} />
-           </Stack.Group>
+          <Stack.Group>
+            <Stack.Screen options={{ headerShown: false }} name="LoginScreen" component={LoginScreen} />
+          </Stack.Group>
         </Stack.Navigator>
       </NavigationContainer>
     </ThemeProvider>
