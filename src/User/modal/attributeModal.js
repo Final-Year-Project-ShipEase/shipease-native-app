@@ -29,9 +29,12 @@ const attributeModal = ({ visible, onClose }) => {
         console.log("modal open");
         handleOpenModal();
       };
-      
 
-  const navigation = useNavigation();
+      const navigation = useNavigation();
+
+      const handleButtonPress = () => {
+        navigation.navigate('attributeBasedBooking1');
+      };
 
 
 
@@ -98,7 +101,7 @@ const attributeModal = ({ visible, onClose }) => {
                 style={styles.passwordInput}
               />
             </View>
-            <Pressable style={styles.button} onPress={''} accessible={true} accessibilityLabel="Booking">
+            <Pressable style={styles.button} onPress={handleButtonPress} accessible={true} accessibilityLabel="Booking">
               <Text style={styles.textStyle}>Book</Text>
             </Pressable>
           </ImageBackground>

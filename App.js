@@ -4,8 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ThemeProvider } from '@mui/material';
 import theme from './theme';
-import BasedOnVehiclesSelection from './src/User/BasedOnVehiclesSelection/basedOnVehiclesSelection'
-import SearchByAttribute from './src/User//searchByAttribute/searchAttribute'
+import AttributebasedBooking from './src/User/searchByAttribute/attributeBasedBooking1';
 
 const Stack = createNativeStackNavigator();
 
@@ -79,7 +78,7 @@ export default function App() {
             </Stack.Group>
             */}
             <Stack.Group screenOptions={{ headerShown: true }}>
-            <Stack.Screen name="SearchByAttribute" component={SearchByAttribute} />
+            <Stack.Screen name="AttributebasedBooking" component={AttributebasedBooking} />
             </Stack.Group>
 
           {/*  <Stack.Screen options={{headerShown:false}} name="BottomNavigationBar" component={BottomNavigationBar} /> */}
