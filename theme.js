@@ -4,6 +4,7 @@ const theme = createTheme({
   palette: {
     primary: {
       main: '#01668c',
+      mainwhite: '#FFFFFF',
     },
 
     FontFamily: {
@@ -118,6 +119,7 @@ const theme = createTheme({
       buttonColor: '#cee0e7',
       buttonBackgroundColor: '#00668c'
     },
+
   },
 });
 responsiveFontSizes(theme);

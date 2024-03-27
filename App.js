@@ -1,5 +1,4 @@
 import React from 'react';
-import SplashScreen from './src/User/splashScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ThemeProvider } from '@mui/material';
@@ -7,6 +6,7 @@ import theme from './theme';
 import AttributebasedBooking from './src/User/searchByAttribute/attributeBasedBooking1';
 import BasedOnVehiclesSelection from './src/User/BasedOnVehiclesSelection/basedOnVehiclesSelection'
 
+import Dashboard from './src/User/dashboard/dashboard';
 
 const Stack = createNativeStackNavigator();
 
@@ -85,7 +85,10 @@ export default function App() {
             <Stack.Screen name="AttributebasedBooking" component={AttributebasedBooking} />
             </Stack.Group>
 
-          {/*  <Stack.Screen options={{headerShown:false}} name="BottomNavigationBar" component={BottomNavigationBar} /> */}
+      <Stack.Group screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="Dashboard" component={Dashboard} />
+            </Stack.Group>
+{/*  <Stack.Screen options={{headerShown:false}} name="BottomNavigationBar" component={BottomNavigationBar} /> */}
         </Stack.Navigator>
       </NavigationContainer>
     </ThemeProvider>
