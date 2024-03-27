@@ -40,34 +40,24 @@ const LoginScreen = () => {
     setSnackBarVisible(true);
     setTimeout(() => {
       setSnackBarVisible(false);
-      navigation.navigate('Settings');
-    }, 3000);
+      navigation.navigate('OPTVerification');
+    }, 1000);
   };
 
   const handleLogin = async (values) => {
-    try {
-      const users = await login(values);
-      console.log(users);
-      const user = users.find(
-        (user) =>
-          user.email === values.email && user.password === values.password
-      );
-
-      if (user) {
-        // Successful login
-        handleLoginSuccess();
-        console.log('User logged in:', user);
-      } else {
-        setLoginError('Invalid email or password');
-      }
-    } catch (error) {
-      console.error('Login error:', error);
-      setLoginError('Invalid email or password');
-    }
+    await login(values)
+      .then((response) => {
+        if (response.status === 200) {
+          handleLoginSuccess();
+        }
+      })
+      .catch((error) => {
+        setLoginError('Invalid username or password');
+      });
   };
 
   const validationSchema = Yup.object().shape({
-    email: Yup.string().email('Invalid email').required('Email is required'),
+    username: Yup.string().required('Username is required'),
     password: Yup.string().required('Password is required').min(8),
   });
 
@@ -80,7 +70,7 @@ const LoginScreen = () => {
       </View>
 
       <Formik
-        initialValues={{ email: '', password: '' }}
+        initialValues={{ username: '', password: '' }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting }) => {
           // Handle form submission here
@@ -92,17 +82,17 @@ const LoginScreen = () => {
         {(formikProps) => (
           <View style={styles.form}>
             <TextInput
-              label="Email"
+              label="Username"
               mode="outlined"
-              placeholder="Enter Email"
+              placeholder="Enter Username"
               style={styles.textInput}
-              onChangeText={formikProps.handleChange('email')}
-              onBlur={formikProps.handleBlur('email')}
-              value={formikProps.values.email}
-              error={formikProps.touched.email && formikProps.errors.email}
+              onChangeText={formikProps.handleChange('username')}
+              onBlur={formikProps.handleBlur('username')}
+              value={formikProps.values.username}
+              error={formikProps.touched.username && formikProps.errors.username}
             />
-            {formikProps.touched.email && formikProps.errors.email && (
-              <Text style={styles.errorText}>{formikProps.errors.email}</Text>
+            {formikProps.touched.username && formikProps.errors.eusernamemail && (
+              <Text style={styles.errorText}>{formikProps.errors.username}</Text>
             )}
 
             <TextInput
@@ -132,10 +122,11 @@ const LoginScreen = () => {
             <Pressable onPress={handleForgetPassword}>
               <Text style={styles.forgetPassword}> Forget Password?</Text>
             </Pressable>
-            {loginError !== '' && (
-              <Text style={styles.errorText}>{loginError}</Text>
-            )}
 
+            {loginError !== '' && (
+              <Text style={styles.error}>{loginError}</Text>
+            )}
+          
             <View style={styles.buttonContainer}>
               <Button
                 mode="contained"
@@ -249,6 +240,11 @@ const styles = StyleSheet.create({
   errorText: {
     color: 'red',
     marginBottom: height * 0.02,
+  },
+  error: {
+    color: 'red',
+    marginTop: height * 0.02,
+    textAlign: 'center',
   },
 });
 

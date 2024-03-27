@@ -68,7 +68,9 @@ export default function App() {
           >
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
             <Stack.Screen name="ForgetPassword" component={ForgetPassword} />
-            <Stack.Screen name="OTPVerification" component={OPTVerification} />
+
+            <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
+            <Stack.Screen name="OPTVerification" component={OPTVerification} />
           </Stack.Group>
 
           <Stack.Group screenOptions={{ headerShown: false }}>
