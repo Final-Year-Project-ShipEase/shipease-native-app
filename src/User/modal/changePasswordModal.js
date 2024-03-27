@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Modal,
   StyleSheet,
@@ -11,79 +11,148 @@ import { TextInput } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useNavigation } from '@react-navigation/native';
 import theme from '../../../theme';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
 
 const ChangePasswordModal = ({ visible, onClose }) => {
   const navigation = useNavigation();
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const validationSchema = Yup.object().shape({
+    password: Yup.string().required('Password is required').min(8),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref('password'), null], 'Passwords must match')
+      .required('Confirm Password is required'),
+  });
+
+  const handlePassword = async (values) => {
+    if (values.password === values.confirmPassword) {
+      console.log('Password Matched');
+      navigation.navigate('OTPVerification');
+      onClose();
+    }
+  };
 
   return (
-    <View style={styles.centeredView}>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={visible}
-        onRequestClose={onClose}
-      >
+    <Formik
+      initialValues={{ password: '', confirmPassword: '' }}
+      validationSchema={validationSchema}
+      onSubmit={(values, { setSubmitting }) => {
+        // Handle form submission here
+        console.log(values);
+        setSubmitting(false);
+        handlePassword(values);
+      }}
+    >
+      {(formikProps) => (
         <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <View style={styles.outerRoundView}>
-              <View style={styles.innerRoundView}>
-                <Icon name="edit" size={width * 0.1} style={styles.icon}>
-                  {' '}
-                </Icon>
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={visible}
+            onRequestClose={onClose}
+          >
+            <View style={styles.centeredView}>
+              <View style={styles.modalView}>
+                <View style={styles.outerRoundView}>
+                  <View style={styles.innerRoundView}>
+                    <Icon name="edit" size={width * 0.1} style={styles.icon}>
+                      {' '}
+                    </Icon>
+                  </View>
+                </View>
+                <Text style={styles.modalTitleText}>Create New Password</Text>
+
+                <View style={styles.form}>
+                  <TextInput
+                    label="Password"
+                    mode="flat"
+                    secureTextEntry={!showPassword}
+                    selectionColor={
+                      theme.palette.changePasswordModal.inputColor
+                    }
+                    right={
+                      <TextInput.Icon
+                        iconColor={theme.palette.changePasswordModal.iconColor}
+                        icon={showPassword ? 'eye-off' : 'eye'}
+                        onPress={() => setShowPassword(!showPassword)}
+                      />
+                    }
+                    textColor={theme.palette.changePasswordModal.textColor}
+                    underlineColor={
+                      theme.palette.changePasswordModal.inputColor
+                    }
+                    activeUnderlineColor={
+                      theme.palette.changePasswordModal.inputColor
+                    }
+                    style={styles.passwordInput}
+                    onChangeText={formikProps.handleChange('password')}
+                    onBlur={formikProps.handleBlur('password')}
+                    value={formikProps.values.password}
+                    error={
+                      formikProps.touched.password &&
+                      formikProps.errors.password
+                    }
+                  />
+                  {formikProps.touched.password &&
+                    formikProps.errors.password && (
+                      <Text style={styles.errorText}>
+                        {formikProps.errors.password}
+                      </Text>
+                    )}
+
+                  <TextInput
+                    label="Confirm Password"
+                    mode="flat"
+                    secureTextEntry={!showConfirmPassword}
+                    selectionColor={
+                      theme.palette.changePasswordModal.inputColor
+                    }
+                    right={
+                      <TextInput.Icon
+                        iconColor={theme.palette.changePasswordModal.iconColor}
+                        icon={showConfirmPassword ? 'eye-off' : 'eye'}
+                        onPress={() =>
+                          setShowConfirmPassword(!showConfirmPassword)
+                        }
+                      />
+                    }
+                    textColor={theme.palette.changePasswordModal.textColor}
+                    underlineColor={
+                      theme.palette.changePasswordModal.inputColor
+                    }
+                    activeUnderlineColor={
+                      theme.palette.changePasswordModal.inputColor
+                    }
+                    style={styles.passwordInput}
+                    onChangeText={formikProps.handleChange('confirmPassword')}
+                    onBlur={formikProps.handleBlur('confirmPassword')}
+                    value={formikProps.values.confirmPassword}
+                    error={
+                      formikProps.touched.confirmPassword &&
+                      formikProps.errors.confirmPassword
+                    }
+                  />
+                  {formikProps.touched.confirmPassword &&
+                    formikProps.errors.confirmPassword && (
+                      <Text style={styles.errorText}>
+                        {formikProps.errors.confirmPassword}
+                      </Text>
+                    )}
+                </View>
+                <Pressable
+                  style={styles.button}
+                  onPress={formikProps.handleSubmit}
+                >
+                  <Text style={styles.textStyle}>Change Password</Text>
+                </Pressable>
               </View>
             </View>
-            <Text style={styles.modalTitleText}>Create Password</Text>
-
-            <View style={styles.form}>
-              <TextInput
-                label="Password"
-                mode="flat"
-                secureTextEntry
-                selectionColor={theme.palette.changePasswordModal.inputColor}
-                right={
-                  <TextInput.Icon
-                    iconColor={theme.palette.changePasswordModal.iconColor}
-                    icon="eye"
-                  />
-                }
-                textColor={theme.palette.changePasswordModal.textColor}
-                underlineColor={theme.palette.changePasswordModal.inputColor}
-                activeUnderlineColor={
-                  theme.palette.changePasswordModal.inputColor
-                }
-                style={styles.passwordInput}
-              />
-              <TextInput
-                label="Confirm Password"
-                mode="flat"
-                secureTextEntry
-                selectionColor={theme.palette.changePasswordModal.inputColor}
-                right={
-                  <TextInput.Icon
-                    iconColor={theme.palette.changePasswordModal.iconColor}
-                    icon="eye"
-                  />
-                }
-                textColor={theme.palette.changePasswordModal.textColor}
-                underlineColor={theme.palette.changePasswordModal.inputColor}
-                activeUnderlineColor={
-                  theme.palette.changePasswordModal.inputColor
-                }
-                style={styles.passwordInput}
-              />
-            </View>
-            <Pressable
-              style={styles.button}
-              onPress={() => {
-                navigation.navigate('OTPVerification');
-              }}
-            >
-              <Text style={styles.textStyle}>Change Password</Text>
-            </Pressable>
-          </View>
+          </Modal>
         </View>
-      </Modal>
-    </View>
+      )}
+    </Formik>
   );
 };
 
@@ -137,7 +206,7 @@ const styles = StyleSheet.create({
     width: width * 0.9,
     alignItems: 'center',
     height: height * 0.06,
-    marginLeft: width * 0.3,
+    marginLeft: width * 0.2,
     marginTop: height * 0.02,
   },
   form: {
@@ -180,6 +249,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: height * 0.01,
     marginLeft: width * 0.02,
+  },
+  errorText: {
+    color: 'red',
+    marginBottom: height * 0.02,
   },
 });
 
