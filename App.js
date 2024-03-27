@@ -28,6 +28,9 @@ import VehiclesInfo from './src/User/BasedOnVehiclesSelection/component/vehiclle
 import SearchBar from './src/User/BasedOnVehiclesSelection/component/searchBar';
 
 import AttributebasedBooking1 from './src/User/searchByAttribute/attributeBasedBooking1';
+import AttributebasedBooking2 from './src/User/searchByAttribute/attributeBasedBooking2';
+import AttributebasedBooking3 from './src/User/searchByAttribute/attributeBasedBooking3';
+import favourite from './src/User/FavouriteDriver&Tenant/favourite';
 import SearchByAttribute from './src/User/searchByAttribute/searchAttribute';
 import VehiclesInfoForAttribute from './src/User/searchByAttribute/component/vehicllesInfo';
 import VehicleComponent from './src/User/searchByAttribute/component/vehiclesComponent';
