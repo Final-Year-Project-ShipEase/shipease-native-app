@@ -33,6 +33,7 @@ import VehiclesInfoForAttribute from './src/User/searchByAttribute/component/veh
 import VehicleComponent from './src/User/searchByAttribute/component/vehiclesComponent';
 import TopTenant from './src/User/searchByAttribute/component/topTenants';
 import SearchBarForAttribute from './src/User/searchByAttribute/component/searchBar';
+import Dashboard from './src/User/dashboard/dashboard';
 
 const Stack = createNativeStackNavigator();
 
@@ -73,9 +74,8 @@ export default function App() {
             <Stack.Screen name="ChangePasswordModal" component={ChangePasswordModal}/>
           </Stack.Group>
 
-
         <Stack.Group screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="HomePage" component={HomePage} />
+        <Stack.Screen name="Dashboard" component={Dashboard} />
           <Stack.Screen name="Settings" component={Settings} />
           <Stack.Screen
             name="EditProfile"
@@ -92,7 +92,6 @@ export default function App() {
             component={PrivacyAndPolicy}
           />
         </Stack.Group>
-
         <Stack.Group>
           <Stack.Screen name="VehicleStatus" component={VehicleStatus} />
           <Stack.Screen name="CheckPointModal" component={CheckPointModal} />
@@ -114,8 +113,10 @@ export default function App() {
           <Stack.Screen name="TopTenant" component={TopTenant} />
           <Stack.Screen name="SearchBarForAttribute" component={SearchBarForAttribute} />
         </Stack.Group>
+
       </Stack.Navigator>
     </NavigationContainer>
     </ThemeProvider >
+
   );
 }

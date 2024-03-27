@@ -4,6 +4,7 @@ const theme = createTheme({
   palette: {
     primary: {
       main: '#01668c',
+      mainwhite: '#FFFFFF',
     },
 
     FontFamily: {
