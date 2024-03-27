@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ThemeProvider } from '@mui/material';
 import theme from './theme';
+<<<<<<< HEAD
 import OnBoardingScreenOne from './src/User/onBoardingScreen/onBoardingScreenOne';
 import OnBoardingScreenTwo from './src/User/onBoardingScreen/onBoardingScreenTwo';
 import OnBoardingScreenThree from './src/User/onBoardingScreen/onBoardingScreenThree';
@@ -21,6 +22,9 @@ import Settings from './src/User/homePage/settings';
 import BottomNavigationBar from './src/User/component/bottomNavigation/bottomNavigation';
 import PickUpConfirmation from './src/User/confirmation/pickUp';
 import BasedOnVehiclesSelection from './src/User/BasedOnVehiclesSelection/basedOnVehiclesSelection'
+=======
+import AttributebasedBooking from './src/User/searchByAttribute/attributeBasedBooking1';
+>>>>>>> f7442b5ff7ac56efe215a132fe9fb76affa6e269
 
 const Stack = createNativeStackNavigator();
 
@@ -90,10 +94,21 @@ export default function App() {
               component={PrivacyAndPolicy}
             ></Stack.Screen>
           </Stack.Group>
+<<<<<<< HEAD
           */}
           <Stack.Group screenOptions={{ headerShown: true }}>
             <Stack.Screen name="BasedOnVehiclesSelection" component={BasedOnVehiclesSelection} />
             </Stack.Group>
+=======
+          
+          <Stack.Group screenOptions={{ headerShown: true }}>
+            <Stack.Screen name="BasedOnVehiclesSelection" component={BasedOnVehiclesSelection} />
+            </Stack.Group>
+            */}
+            <Stack.Group screenOptions={{ headerShown: true }}>
+            <Stack.Screen name="AttributebasedBooking" component={AttributebasedBooking} />
+            </Stack.Group>
+>>>>>>> f7442b5ff7ac56efe215a132fe9fb76affa6e269
 
           {/*  <Stack.Screen options={{headerShown:false}} name="BottomNavigationBar" component={BottomNavigationBar} /> */}
         </Stack.Navigator>
