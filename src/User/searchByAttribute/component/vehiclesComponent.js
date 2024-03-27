@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Dimensions, Image, ScrollView} from 'react-native';
 import theme from '../../../../theme';
 
-const Component = () => {
+const VehicleComponent = () => {
   return (
     <View>
     <View style={styles.component1}>
@@ -250,4 +250,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default Component;
+export default VehicleComponent;
