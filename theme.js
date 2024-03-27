@@ -5,6 +5,26 @@ const theme = createTheme({
     primary: {
       main: '#01668c',
     },
+
+    FontFamily: {
+      regular: 'Arial',
+      outfit: 'outfit'
+    },
+
+    dashboard: {
+      transparent: 'rgba(0, 0, 0, 0.5)',
+      black: '#000000',
+      mainblue: '#00668C',
+      imagecolor: '#94BFCF',
+      shadowColor1: "rgba(0, 0, 0, 0.25)",
+      searchbarcolor: "#cacaca",
+      searchbartextcolor: "#686565",
+      darkgray: "#AEAEAE",
+      lightblue: "#43A5CA",
+      lightgray: "#656565",
+    },
+
+
     secondary: {
       main: '#71C4EF',
       hover: '#629DBC',
