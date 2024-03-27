@@ -1,12 +1,6 @@
 import React, { useState } from 'react';
-import {
-  View,
-  StyleSheet,
-  Image,
-  Text,
-  Pressable,
-  Dimensions,
-} from 'react-native';
+import { View, StyleSheet, Image, Text, Pressable, Dimensions } from 'react-native';
+import { Snackbar } from 'react-native-paper';
 import { Button } from 'react-native-paper';
 import { OtpInput } from 'react-native-otp-entry';
 import theme from '../../../../theme';
@@ -14,18 +8,31 @@ import truck from '../../../../assets/truck.png';
 import { useNavigation } from '@react-navigation/native';
 import VerificationSuccessfulModal from '../../modal/verificationSuccessfulModal';
 
-const OTPVerification = () => {
+const OPTVerification = () => {
   const navigation = useNavigation();
   const [showModal, setShowModal] = useState(false);
+  const [showSnackbar, setShowSnackbar] = useState(false);
+  const [enteredOTP, setEnteredOTP] = useState('');
+  const otpNumber = [1234, 1598, 6547, 2549];
 
   const handleOtpSubmit = () => {
-    setShowModal(true);
+    if (otpNumber.includes(Number(enteredOTP))) {
+      setShowSnackbar(true);
+    } else {
+      setShowModal(true);
+    }
+  };
+
+  const handleCloseSnackbar = () => {
+    setShowSnackbar(false);
   };
 
   const closeModal = () => {
     setShowModal(false);
     navigation.navigate('LoginScreen');
   };
+
+
   return (
     <View style={styles.container}>
       <View style={styles.outerRoundView}>
@@ -44,6 +51,7 @@ const OTPVerification = () => {
           numberOfDigits={4}
           focusColor={theme.palette.otpVerification.otpCode}
           theme={{ containerStyle: styles.otpContainer }}
+          onChange={(otp) => setEnteredOTP(otp)}
         />
       </View>
 
@@ -70,6 +78,14 @@ const OTPVerification = () => {
         </Pressable>
       </View>
       <VerificationSuccessfulModal visible={showModal} onClose={closeModal} />
+
+      <Snackbar
+        visible={showSnackbar}
+        onDismiss={handleCloseSnackbar}
+        duration={2000} // Adjust duration as needed
+      >
+        Incorrect OTP entered. Please try again.
+      </Snackbar>
     </View>
   );
 };
@@ -142,4 +158,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default OTPVerification;
+export default OPTVerification;

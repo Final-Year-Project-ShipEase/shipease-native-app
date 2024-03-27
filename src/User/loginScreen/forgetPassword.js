@@ -38,7 +38,7 @@ const ForgetPassword = () => {
         onSubmit={(values, { setSubmitting }) => {
           // Handle form submission here
           console.log(values);
-          handleOpenModal();
+          handleOpenModal(values);
           setSubmitting(false);
         }}
       >
