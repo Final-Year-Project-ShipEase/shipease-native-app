@@ -7,6 +7,7 @@ import theme from './theme';
 import AttributebasedBooking from './src/User/searchByAttribute/attributeBasedBooking1';
 import BasedOnVehiclesSelection from './src/User/BasedOnVehiclesSelection/basedOnVehiclesSelection'
 
+import VehicleStatus from './src/User/vehicleCheckpoint/vehicleStatus';
 
 const Stack = createNativeStackNavigator();
 
@@ -50,7 +51,7 @@ export default function App() {
               </Stack.Screen>
   </Stack.Group>
 
-          <Stack.Group
+      {/*    <Stack.Group
             screenOptions={{ headerShown: false, headerTitleAlign: 'center' }}
           >
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
@@ -83,9 +84,11 @@ export default function App() {
     
             <Stack.Group screenOptions={{ headerShown: true }}>
             <Stack.Screen name="AttributebasedBooking" component={AttributebasedBooking} />
-            </Stack.Group>
+  </Stack.Group> 
 
-          {/*  <Stack.Screen options={{headerShown:false}} name="BottomNavigationBar" component={BottomNavigationBar} /> */}
+<Stack.Group>
+           <Stack.Screen options={{headerShown:false}} name="VehicleStatus" component={VehicleStatus} />
+           </Stack.Group>
         </Stack.Navigator>
       </NavigationContainer>
     </ThemeProvider>

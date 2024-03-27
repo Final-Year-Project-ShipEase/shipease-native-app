@@ -118,6 +118,11 @@ const theme = createTheme({
       buttonColor: '#cee0e7',
       buttonBackgroundColor: '#00668c'
     },
+    checkPointModal:{
+      backgroundColor: '#ffffff',
+      color: '#2b809f',
+      borderColor: '#2b809f',
+    },
   },
 });
 responsiveFontSizes(theme);
