@@ -29,9 +29,14 @@ const ChangePasswordModal = ({ visible, onClose }) => {
   const handlePassword = async (values) => {
     if (values.password === values.confirmPassword) {
       console.log('Password Matched');
-      navigation.navigate('OTPVerification');
       onClose();
+      navigation.navigate('OPTVerification');
+      
     }
+  };
+
+  const handleChangePasswordModal = () => {
+    onClose();
   };
 
   return (

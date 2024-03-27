@@ -17,7 +17,20 @@ const PickUpLocationModal = ({ visible, onClose }) => {
 
   const navigation = useNavigation();
 
+  const handleSearchByAttribute = () => {
+    onClose();
+    navigation.navigate('SearchByAttribute');
+  };
 
+  const handleSearchByVehicle = () => {
+    onClose();
+    navigation.navigate('AttributeBasedBooking');
+  };
+
+  const handleSearchByTenant = () => {
+    onClose();
+    navigation.navigate('SearchByAttribute');
+  };
 
   return (
     <View style={styles.centeredView}>
@@ -42,13 +55,13 @@ const PickUpLocationModal = ({ visible, onClose }) => {
             </View>
             <Text style={styles.modalTitleText}>Search Booking</Text>
 
-            <Pressable style={styles.button} onPress={''} accessible={true} accessibilityLabel="Booking">
+            <Pressable style={styles.button} onPress={handleSearchByAttribute} accessible={true} accessibilityLabel="Booking">
               <Text style={styles.textStyle}>Search By Attribute</Text>
             </Pressable>
-            <Pressable style={styles.button} onPress={''} accessible={true} accessibilityLabel="Booking">
+            <Pressable style={styles.button} onPress={handleSearchByVehicle} accessible={true} accessibilityLabel="Booking">
               <Text style={styles.textStyle}>Search By Vehicle</Text>
             </Pressable>
-            <Pressable style={styles.button} onPress={''} accessible={true} accessibilityLabel="Booking">
+            <Pressable style={styles.button} onPress={handleSearchByTenant} accessible={true} accessibilityLabel="Booking">
               <Text style={styles.textStyle}>Search By Tenant</Text>
             </Pressable>
           </ImageBackground>

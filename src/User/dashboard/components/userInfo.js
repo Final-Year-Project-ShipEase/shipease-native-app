@@ -3,12 +3,17 @@ import { View, Text } from 'react-native';
 import {
     StyleSheet,
     Image,
+    Pressable,
     Dimensions,
   } from 'react-native';
   import theme from '../../../../theme';
   import Icon from 'react-native-vector-icons/FontAwesome';
+  import { useNavigation } from '@react-navigation/native';
+
 
 const userInfo = () => {
+
+  const navigation = useNavigation();
   return (
     <View style={[styles.userInfo, styles.userInfoBg]}>
         <View style={[styles.userInfo, styles.userInfoPosition]}>
@@ -34,10 +39,12 @@ const userInfo = () => {
             name="bell"
             size={22}
             />
+
             <Icon
             style= {[styles.iconButton3, styles.iconLayout1]}
             name="cog"
             size={22}
+            onPress={() => {navigation.navigate("Settings")}}
             />
         </View>
     </View>

@@ -3,12 +3,14 @@ import { StyleSheet, View, Text, Dimensions, Pressable , Image} from 'react-nati
 import theme from '../../../../theme';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import checkPointTruck from '../../../../assets/checkPointTruck.png';
+import CheckPointDetailModal from './checkPointDetailModal';
 
 const CheckPointModal = () => {
     const [visible, setVisible] = useState(true);
 
     const handleModal = () => {
         setVisible(!visible);
+
     };
     return(
         

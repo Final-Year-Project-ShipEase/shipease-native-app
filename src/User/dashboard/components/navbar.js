@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, Dimensions, Pressable} from "react-native";
 import theme from "../../../../theme";
 import PickUpLocationModal from '../../modal/PickUplocationModal';
+import { useNavigation } from '@react-navigation/native';
 
 const Component = () => {
+
+  const navigation = useNavigation();
 
   const [showModal, setShowModal] = useState(false);
 
@@ -20,6 +23,9 @@ const Component = () => {
     handleOpenModal();
   };
 
+  const handleProfilePress = () => {
+    navigation.navigate('EditProfile')
+  };
   return (
     <View style={styles.component1}>
       <View style={styles.vectorParent}>
@@ -55,6 +61,8 @@ const Component = () => {
               source={require("../components/Vector2.png")}
             />
           </View>
+
+          <Pressable onPress={handleProfilePress} accessible={true} accessibilityLabel="Profile">
           <View style={[styles.profile, styles.home2Layout]}>
             <View style={[styles.home2, styles.home2Layout]}>
               <Text style={[styles.favourite1, styles.booking1Typo]}>
@@ -70,6 +78,7 @@ const Component = () => {
               source={require("../components/Vector1.png")}
             />
           </View>
+          </Pressable>
         </View>
         <View style={[styles.groupItem, styles.groupItemPosition]} />
       </View>

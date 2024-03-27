@@ -12,6 +12,7 @@ import {
 import { TextInput } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import theme from '../../../theme';
+import PickUpLocationModal from './bookingModal';
 
 const attributeModal = ({ visible, onClose }) => {
     

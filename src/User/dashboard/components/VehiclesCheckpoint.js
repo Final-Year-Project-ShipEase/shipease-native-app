@@ -1,9 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions, Image, ScrollView} from 'react-native';
+import { View, Text, StyleSheet, Dimensions, Image, Pressable} from 'react-native';
 import theme from '../../../../theme';
+import { useNavigation } from '@react-navigation/native';
 
 const VehicleCheckpoint = () => {
+  const navigation = useNavigation();
+
   return (
+    <Pressable onPress={() => {navigation.navigate('VehicleStatus')}}> 
     <View style={styles.vehicleCheckpoint}>
       <View style={[styles.rectangle, styles.groupPosition]} >
       <Image
@@ -40,6 +44,7 @@ const VehicleCheckpoint = () => {
         source={require("../components/truckicon.png")}
       />
     </View>
+    </Pressable>
   );
 };
 

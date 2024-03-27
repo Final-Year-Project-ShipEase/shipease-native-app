@@ -23,7 +23,7 @@ import VehicleStatus from './src/User/vehicleCheckpoint/vehicleStatus';
 import CheckPointModal from './src/User/vehicleCheckpoint/modal/checkPointModal';
 import CheckPointDetailModal from './src/User/vehicleCheckpoint/modal/checkPointDetailModal';
 
-import AttributeBasedBooking from './src/User/BasedOnVehiclesSelection/AttributeBasedBooking';
+import AttributeBasedBooking from './src/User/BasedOnVehiclesSelection//basedOnVehiclesSelection';
 import VehiclesInfo from './src/User/BasedOnVehiclesSelection/component/vehicllesInfo';
 import SearchBar from './src/User/BasedOnVehiclesSelection/component/searchBar';
 

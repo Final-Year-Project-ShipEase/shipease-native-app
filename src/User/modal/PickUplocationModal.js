@@ -12,11 +12,12 @@ import { TextInput } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useNavigation } from '@react-navigation/native';
 import theme from '../../../theme';
-import BookingModal from '../modal/bookingModal'
+import BookingModal from '../modal/bookingModal';
 
 const PickUpLocationModal = ({ visible, onClose }) => {
     
     const [showModal, setShowModal] = useState(false);
+    const [closeModal, setCloseShowModal] = useState(false);
 
     const handleOpenModal = () => {
       setShowModal(true);

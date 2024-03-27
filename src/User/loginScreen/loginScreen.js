@@ -39,7 +39,7 @@ const LoginScreen = () => {
     setSnackBarVisible(true);
     setTimeout(() => {
       setSnackBarVisible(false);
-      navigation.navigate('OPTVerification');
+      navigation.navigate('Dashboard');
     }, 1000);
   };
 
