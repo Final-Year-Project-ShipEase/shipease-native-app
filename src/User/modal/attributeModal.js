@@ -12,7 +12,6 @@ import {
 import { TextInput } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import theme from '../../../theme';
-import PickUpLocationModal from './bookingModal';
 
 const attributeModal = ({ visible, onClose }) => {
     
@@ -34,7 +33,7 @@ const attributeModal = ({ visible, onClose }) => {
       const navigation = useNavigation();
 
       const handleButtonPress = () => {
-        navigation.navigate('attributeBasedBooking1');
+        navigation.navigate('AttributebasedBooking1');
       };
 
 

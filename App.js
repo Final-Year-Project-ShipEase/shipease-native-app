@@ -37,7 +37,8 @@ import VehicleComponent from './src/User/searchByAttribute/component/vehiclesCom
 import TopTenant from './src/User/searchByAttribute/component/topTenants';
 import SearchBarForAttribute from './src/User/searchByAttribute/component/searchBar';
 import Dashboard from './src/User/dashboard/dashboard';
-
+import AttributeModal from './src/User/modal/attributeModal';
+import Favourite from './src/User/FavouriteDriver&Tenant/favourite';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -115,6 +116,9 @@ export default function App() {
           <Stack.Screen name="VehicleComponent" component={VehicleComponent} />
           <Stack.Screen name="TopTenant" component={TopTenant} />
           <Stack.Screen name="SearchBarForAttribute" component={SearchBarForAttribute} />
+
+          <Stack.Screen name="AttributeModal" component={AttributeModal} />
+          <Stack.Screen name="Favourite" component={Favourite } />
         </Stack.Group>
 
       </Stack.Navigator>

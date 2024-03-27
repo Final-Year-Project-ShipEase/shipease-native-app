@@ -12,7 +12,7 @@ import TopTenant from '../searchByAttribute/component/topTenants';
 import VehiclesComponent from '../searchByAttribute/component/vehiclesComponent';
 
 
-const favourite = () => {
+const Favourite = () => {
 
 return (
     <View style={[styles.pages]}>
@@ -175,4 +175,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default favourite;
+export default Favourite;

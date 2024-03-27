@@ -26,6 +26,10 @@ const Component = () => {
   const handleProfilePress = () => {
     navigation.navigate('EditProfile')
   };
+
+  const handleFavorite = () => {
+    navigation.navigate('Favourite');
+  };
   return (
     <View style={styles.component1}>
       <View style={styles.vectorParent}>
@@ -49,6 +53,7 @@ const Component = () => {
               source={require("../components/Vector.png")}
             />
           </View>
+          <Pressable onPress={handleFavorite}>
           <View style={[styles.favourite, styles.favLayout]}>
             <View style={[styles.fav, styles.favPosition]}>
               <Text style={[styles.favourite1, styles.booking1Typo]}>
@@ -61,6 +66,7 @@ const Component = () => {
               source={require("../components/Vector2.png")}
             />
           </View>
+          </Pressable>
 
           <Pressable onPress={handleProfilePress} accessible={true} accessibilityLabel="Profile">
           <View style={[styles.profile, styles.home2Layout]}>

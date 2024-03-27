@@ -22,7 +22,7 @@ return (
       </View>
       <Pressable onPress={''}>
       <View style={styles.buttons}>
-        <Text style={[styles.addNew, styles.addTypo]}>All</Text>
+           <Text style={[styles.addNew, styles.addTypo]}>All</Text>
       </View>
       </Pressable>
       <Pressable onPress={''}>
