@@ -18,7 +18,7 @@ export function useUserService() {
     return response.data;
   };
 
-  const deleteUser = async (id) => {
+  const deleteUserById = async (id) => {
     const response = await axiosInstance.delete(`/user/${id}`);
     return response.data;
   };
@@ -28,12 +28,18 @@ export function useUserService() {
     return response.data;
   };
 
+  const login = async (data) => {
+    const response = await axiosInstance.post('/user/login', data);
+    return response.data;
+  };
+
   return {
     getAllUsers,
     getUserById,
     updateUser,
     updateUser,
-    deleteUser,
+    deleteUserById,
     createUser,
+    login,
   };
 }
