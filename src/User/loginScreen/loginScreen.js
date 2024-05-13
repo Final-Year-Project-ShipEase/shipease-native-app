@@ -85,8 +85,9 @@ const LoginScreen = () => {
         onSubmit={(values, { setSubmitting }) => {
           // Handle form submission here
           //console.log(values);
-          handleLogin(values);
           setSubmitting(false);
+          handleLogin(values);
+         
         }}
       >
         {(formikProps) => (
