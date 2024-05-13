@@ -137,7 +137,7 @@ const Settings = () => {
                 </View>
 
                 <View>
-                  <Pressable style={styles.changePassword} onPress={() => {navigation.navigate("LoginScreen")}}>
+                  <Pressable style={styles.changePassword}>
                     <Text
                       style={{
                         fontSize: width * 0.05,
