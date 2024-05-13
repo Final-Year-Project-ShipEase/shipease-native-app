@@ -16,11 +16,11 @@ import VerificationSuccessfulModal from '../../modal/verificationSuccessfulModal
 
 const OTPVerification = () => {
   const navigation = useNavigation();
-  //const route = useRoute();
+  const route = useRoute();
   const [showModal, setShowModal] = useState(false);
   const [showSnackbar, setShowSnackbar] = useState(false);
   const [enteredOTP, setEnteredOTP] = useState('');
-  //const otpCode = route.params?.otpCode; // Retrieve OTP code from route params
+  const otpCode = route.params?.otpCode; // Retrieve OTP code from route params
 
   const handleOtpSubmit = () => {
     if (enteredOTP === otpCode) { // Compare entered OTP with received OTP code

@@ -19,6 +19,7 @@ import Settings from './src/User/homePage/settings';
 import ChangePassword from './src/User/homePage/changePassword';
 import TermsAndConditions from './src/User/homePage/termsAndConditions';
 import PrivacyAndPolicy from './src/User/homePage/privacyAndPolicy';
+{/*
 import VehicleStatus from './src/User/vehicleCheckpoint/vehicleStatus';
 import CheckPointModal from './src/User/vehicleCheckpoint/modal/checkPointModal';
 import CheckPointDetailModal from './src/User/vehicleCheckpoint/modal/checkPointDetailModal';
@@ -38,7 +39,7 @@ import TopTenant from './src/User/searchByAttribute/component/topTenants';
 import SearchBarForAttribute from './src/User/searchByAttribute/component/searchBar';
 import Dashboard from './src/User/dashboard/dashboard';
 import AttributeModal from './src/User/modal/attributeModal';
-import Favourite from './src/User/FavouriteDriver&Tenant/favourite';
+import Favourite from './src/User/FavouriteDriver&Tenant/favourite'; */}
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -79,7 +80,7 @@ export default function App() {
           </Stack.Group>
 
         <Stack.Group screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Dashboard" component={Dashboard} />
+       {/* <Stack.Screen name="Dashboard" component={Dashboard} /> */}
           <Stack.Screen name="Settings" component={Settings} />
           <Stack.Screen
             name="EditProfile"
@@ -96,7 +97,7 @@ export default function App() {
             component={PrivacyAndPolicy}
           />
         </Stack.Group>
-        <Stack.Group>
+      {/*  <Stack.Group>
           <Stack.Screen name="VehicleStatus" component={VehicleStatus} />
           <Stack.Screen name="CheckPointModal" component={CheckPointModal} />
           <Stack.Screen name="CheckPointDetailModal" component={CheckPointDetailModal} />
@@ -119,7 +120,7 @@ export default function App() {
 
           <Stack.Screen name="AttributeModal" component={AttributeModal} />
           <Stack.Screen name="Favourite" component={Favourite } />
-        </Stack.Group>
+  </Stack.Group> */}
 
       </Stack.Navigator>
     </NavigationContainer>
