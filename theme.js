@@ -4,29 +4,7 @@ const theme = createTheme({
   palette: {
     primary: {
       main: '#01668c',
-      mainwhite: '#FFFFFF',
     },
-
-    FontFamily: {
-      regular: 'Arial',
-      outfit: 'outfit'
-    },
-
-    dashboard: {
-      transparent: 'rgba(0, 0, 0, 0.5)',
-      black: '#000000',
-      mainblue: '#00668C',
-      imagecolor: '#94BFCF',
-      shadowColor1: "rgba(0, 0, 0, 0.25)",
-      searchbarcolor: "#cacaca",
-      searchbartextcolor: "#686565",
-      darkgray: "#AEAEAE",
-      lightblue: "#43A5CA",
-      lightgray: "#656565",
-      vehiclesshadowColor: "#A68C50",
-    },
-
-
     secondary: {
       main: '#71C4EF',
       hover: '#629DBC',
@@ -112,17 +90,6 @@ const theme = createTheme({
       searchIconColor: '#00668c',
       notificationIconColor: '#00668c',
       settingIconColor: '#00668c',
-    },
-    confirmation: {
-      titleColor: '#00668c',
-      informationBackgroundColor: '#cccbcb',
-      buttonColor: '#cee0e7',
-      buttonBackgroundColor: '#00668c'
-    },
-    checkPointModal:{
-      backgroundColor: '#ffffff',
-      color: '#2b809f',
-      borderColor: '#2b809f',
     },
   },
 });
