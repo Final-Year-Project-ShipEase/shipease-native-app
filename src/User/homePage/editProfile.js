@@ -1,10 +1,28 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, View, Text, Dimensions, ScrollView } from 'react-native';
-import { TextInput, Avatar, Button } from 'react-native-paper';
+import { TextInput, Avatar, Button, Snackbar } from 'react-native-paper';
 import truck from '../../../assets/truck.png';
-import theme from '../../../theme';
+import theme from '../../../theme'; 
+import { useUserService } from '../../services/userServices';
 
 const EditProfile = () => {
+  const { updateUser } = useUserService();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [city, setCity] = useState('');
+  const [snackBarVisible, setSnackBarVisible] = useState(false);
+
+  const handleSaveChanges = async () => {
+    try {
+      // Call updateUser function with the updated user data
+      await updateUser({ name, email, phoneNumber, city });
+      setSnackBarVisible(true);
+    } catch (error) {
+      console.error('Error updating user profile:', error);
+    }
+  };
+
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -24,6 +42,8 @@ const EditProfile = () => {
               outlineColor={theme.palette.editProfile.outlineColor}
               activeOutlineColor={theme.palette.editProfile.outlineColor}
               left={<TextInput.Icon icon="account" />}
+              value={name}
+              onChangeText={setName}
             />
           </View>
 
@@ -38,6 +58,8 @@ const EditProfile = () => {
               outlineColor={theme.palette.editProfile.outlineColor}
               activeOutlineColor={theme.palette.editProfile.outlineColor}
               left={<TextInput.Icon icon="email" />}
+              value={email}
+              onChangeText={setEmail}
             />
           </View>
 
@@ -52,6 +74,8 @@ const EditProfile = () => {
               outlineColor={theme.palette.editProfile.outlineColor}
               activeOutlineColor={theme.palette.editProfile.outlineColor}
               left={<TextInput.Icon icon="phone" />}
+              value={phoneNumber}
+              onChangeText={setPhoneNumber}
             />
           </View>
 
@@ -66,6 +90,8 @@ const EditProfile = () => {
               outlineColor={theme.palette.editProfile.outlineColor}
               activeOutlineColor={theme.palette.editProfile.outlineColor}
               left={<TextInput.Icon icon="city" />}
+              value={city}
+              onChangeText={setCity}
             />
           </View>
         </View>
@@ -75,11 +101,18 @@ const EditProfile = () => {
             textColor={theme.palette.editProfile.buttonColor}
             buttonColor={theme.palette.editProfile.buttonBackgroundColor}
             style={styles.button}
+            onPress={handleSaveChanges}
           >
             Save Changes
           </Button>
         </View>
       </View>
+      <Snackbar
+        visible={snackBarVisible}
+        onDismiss={() => setSnackBarVisible(false)}
+      >
+        Profile updated successfully!
+      </Snackbar> 
     </ScrollView>
   );
 };

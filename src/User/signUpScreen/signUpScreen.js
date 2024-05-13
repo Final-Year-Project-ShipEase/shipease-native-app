@@ -29,6 +29,31 @@ const SignUpScreen = () => {
     setTermsChecked(!termsChecked);
   };
 
+  const handleSignUpSuccess = () => {
+    setSnackBarVisible(true);
+    setTimeout(() => {
+      setSnackBarVisible(false);
+      navigation.navigate('OTPVerification', { otpCode: otp }); // Navigate to OTPVerification and pass OTP code
+    }, 1000);
+  };
+
+  const handleSignUp = async (values) => {
+    const otp = generateOTP(); // Generate OTP
+    console.log(otp);
+    console.log(values.email);
+    await createUser({ ...values, otp }) // Pass OTP to createUser function
+      .then((response) => {
+        handleSignUpSuccess();
+      })
+      .catch((error) => {
+        setSignUpError('Invalid username or password');
+      });
+  };
+
+  const generateOTP = () => {
+    return Math.floor(1000 + Math.random() * 9000); // Generate 4-digit OTP
+  };
+
   const validationSchema = Yup.object().shape({
     name: Yup.string().required('Name is required'),
     email: Yup.string().email('Invalid email').required('Email is required'),
