@@ -9,21 +9,17 @@ import {
   Dimensions,
 } from 'react-native';
 import { TextInput, Checkbox, Button } from 'react-native-paper';
-import { Snackbar } from 'react-native-paper';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import theme from '../../../theme';
 import ScreenOne from '../../../assets/ScreenOne.png';
 import { useNavigation } from '@react-navigation/native';
-import { useUserService } from '../../services/userServices';
 
 const SignUpScreen = () => {
   const navigation = useNavigation();
+
   const [showPassword, setShowPassword] = useState(false);
   const [termsChecked, setTermsChecked] = useState(false);
-  const [snackBarVisible, setSnackBarVisible] = useState(false);
-  const [signUpError, setSignUpError] = useState('');
-  const { createUser } = useUserService();
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -33,37 +29,13 @@ const SignUpScreen = () => {
     setTermsChecked(!termsChecked);
   };
 
-  const handleSignUpSuccess = () => {
-    setSnackBarVisible(true);
-    setTimeout(() => {
-      setSnackBarVisible(false);
-      navigation.navigate('OPTVerification');
-    }, 1000);
-  };
-
-  const handleSignUp = async (values) => {
-    console.log(values.email);
-    await createUser(values)
-      .then((response) => {
-        handleSignUpSuccess();
-      })
-      .catch((error) => {
-        setSignUpError('Invalid username or password');
-      });
-  };
-
-
   const validationSchema = Yup.object().shape({
     name: Yup.string().required('Name is required'),
-    username: Yup.string().required('User Name is required'),
     email: Yup.string().email('Invalid email').required('Email is required'),
     password: Yup.string()
-      .min(8, 'Password must be at least 8 characters')
+      .min(6, 'Password must be at least 6 characters')
       .required('Password is required'),
-    phoneNumber: Yup.string()
-      .matches(/^[0-9]+$/, 'Phone number must contain only integers')
-      .required('Phone number is required'),
-    city: Yup.string().required('City is required'),
+    agreeTerms: Yup.boolean().oneOf([true]),
   });
 
   return (
@@ -75,19 +47,12 @@ const SignUpScreen = () => {
       </View>
 
       <Formik
-        initialValues={{
-          name: '',
-          username: '',
-          email: '',
-          password: '',
-          phoneNumber: '',
-          city: '',
-        }}
+        initialValues={{ name: '', email: '', password: '', agreeTerms: false }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting }) => {
           // Handle form submission logic here
-          handleSignUp(values);
           setSubmitting(false);
+          navigation.navigate('OTPVerification', { email: values.email });
         }}
       >
         {({
@@ -100,19 +65,6 @@ const SignUpScreen = () => {
         }) => (
           <View>
             <View style={styles.form}>
-              <TextInput
-                label="User Name"
-                mode="outlined"
-                placeholder="Enter User Name"
-                style={styles.textInput}
-                onChangeText={handleChange('username')}
-                onBlur={handleBlur('username')}
-                value={values.username}
-              />
-              <Text style={styles.error}>
-                {touched.username && errors.username}
-              </Text>
-
               <TextInput
                 label="Name"
                 mode="outlined"
@@ -155,30 +107,6 @@ const SignUpScreen = () => {
                 {touched.password && errors.password}
               </Text>
 
-              <TextInput
-                label="Phone Number"
-                mode="outlined"
-                placeholder="Enter Phone Number"
-                style={styles.textInput}
-                onChangeText={handleChange('phoneNumber')}
-                onBlur={handleBlur('phoneNumber')}
-                value={values.phoneNumber}
-              />
-              <Text style={styles.error}>
-                {touched.phoneNumber && errors.phoneNumber}
-              </Text>
-
-              <TextInput
-                label="City"
-                mode="outlined"
-                placeholder="Enter City"
-                style={styles.textInput}
-                onChangeText={handleChange('city')}
-                onBlur={handleBlur('city')}
-                value={values.city}
-              />
-              <Text style={styles.error}>{touched.city && errors.city}</Text>
-
               <View style={styles.checkboxContainer}>
                 <Checkbox.Item
                   status={termsChecked ? 'checked' : 'unchecked'}
@@ -203,9 +131,7 @@ const SignUpScreen = () => {
                 {touched.agreeTerms && errors.agreeTerms}
               </Text>
             </View>
-            {signUpError !== '' && (
-              <Text style={styles.errorText}>{signUpError}</Text>
-            )}
+
             <View style={styles.buttonContainer}>
               <Button
                 mode="contained"
@@ -230,19 +156,6 @@ const SignUpScreen = () => {
           </View>
         )}
       </Formik>
-
-      <Snackbar
-        visible={snackBarVisible}
-        onDismiss={() => setSnackBarVisible(false)}
-        action={{
-          label: 'Close',
-          onPress: () => {
-            setSnackBarVisible(false);
-          },
-        }}
-      >
-        Login successful!
-      </Snackbar>
     </ScrollView>
   );
 };
@@ -320,11 +233,6 @@ const styles = StyleSheet.create({
     color: 'red',
     marginBottom: height * 0.02,
   },
-  errorText: {
-    color: 'red',
-    marginTop: height * 0.02,
-    textAlign: 'center',
-  }
 });
 
 export default SignUpScreen;
