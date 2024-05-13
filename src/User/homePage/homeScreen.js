@@ -44,6 +44,11 @@ const HomeScreen = () => {
             <Text style={styles.vehicleName}>Vehicle 1</Text>
             <Text style={styles.vehicleId}>ID: 12345</Text>
           </View>
+
+          <View style={styles.vehicleCard}>
+            <Text style={styles.vehicleName}>Vehicle 1</Text>
+            <Text style={styles.vehicleId}>ID: 12345</Text>
+          </View>
         </ScrollView>
         <ScrollView style={styles.tenantContainer} horizontal>
           {/* Tenant Cards */}

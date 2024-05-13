@@ -32,7 +32,7 @@ const EditProfile = () => {
 
         <View style={styles.form}>
           <View style={styles.username}>
-            <Text style={styles.label}>User Name</Text>
+            <Text style={styles.label}>Name</Text>
             <TextInput
               mode="outlined"
               placeholder="Hamza Idrees"
