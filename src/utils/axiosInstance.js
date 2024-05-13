@@ -2,10 +2,10 @@ import axios from 'axios';
 
 const CreateAxiosInstance = () => {
   const instance = axios.create({
-    baseURL: process.env.REACT_APP_BACKEND_URL,
+    baseURL: 'http://10.54.7.246:12345',
   });
 
-  return instance;
+  return instance;  
 };
 
 export default CreateAxiosInstance;

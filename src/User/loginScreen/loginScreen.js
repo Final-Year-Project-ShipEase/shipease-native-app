@@ -12,7 +12,6 @@ import { TextInput, Button, Snackbar } from 'react-native-paper';
 import theme from '../../../theme';
 import ScreenOne from '../../../assets/ScreenOne.png';
 import { useNavigation } from '@react-navigation/native';
-import ChangePasswordModal from '../modal/changePasswordModal';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useUserService } from '../../services/userServices';
@@ -20,15 +19,15 @@ import { useUserService } from '../../services/userServices';
 const LoginScreen = () => {
   const navigation = useNavigation();
   const [showModal, setShowModal] = useState(false);
-  const [passwordVisible, setPasswordVisible] = useState(false); 
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const [loginError, setLoginError] = useState('');
   const [snackBarVisible, setSnackBarVisible] = useState(false);
 
-  const { getAllUsers } = useUserService();
+  const { login } = useUserService();
 
   const handleForgetPassword = () => {
     //setShowModal(true);
-    navigation.navigate("ForgetPassword");
+    navigation.navigate('ForgetPassword');
   };
 
   const closeModal = () => {
@@ -40,34 +39,24 @@ const LoginScreen = () => {
     setSnackBarVisible(true);
     setTimeout(() => {
       setSnackBarVisible(false);
-      navigation.navigate('Settings'); 
-    }, 3000); 
+      navigation.navigate('Dashboard');
+    }, 1000);
   };
 
- const handleLogin = async (values) => {
-    try {
-      const users = await getAllUsers();
-      console.log(users);
-      const user = users.find(
-        (user) => user.email === values.email && user.password === values.password
-      );
-
-      if (user) {
-        // Successful login
-        handleLoginSuccess();
-        console.log('User logged in:', user);
-      } else {
-        setLoginError('Invalid email or password');
-      }
-    } catch (error) {
-      console.error('Login error:', error);
-      setLoginError('Invalid email or password');
-    }
+  const handleLogin = async (values) => {
+    await login(values)
+      .then((response) => {
+        if (response.status === 200) {
+          handleLoginSuccess();
+        }
+      })
+      .catch((error) => {
+        setLoginError('Invalid username or password');
+      });
   };
-
 
   const validationSchema = Yup.object().shape({
-    email: Yup.string().email('Invalid email').required('Email is required'),
+    username: Yup.string().required('Username is required'),
     password: Yup.string().required('Password is required').min(8),
   });
 
@@ -80,7 +69,7 @@ const LoginScreen = () => {
       </View>
 
       <Formik
-        initialValues={{ email: '', password: '' }}
+        initialValues={{ username: '', password: '' }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting }) => {
           // Handle form submission here
@@ -90,76 +79,77 @@ const LoginScreen = () => {
         }}
       >
         {(formikProps) => (
-      <View style={styles.form}>
-        <TextInput
-          label="Email"
-          mode="outlined"
-          placeholder="Enter Email"
-          style={styles.textInput}
-          onChangeText={formikProps.handleChange('email')}
-              onBlur={formikProps.handleBlur('email')}
-              value={formikProps.values.email}
-              error={formikProps.touched.email && formikProps.errors.email}
-
-        />
-        {formikProps.touched.email && formikProps.errors.email && (
-              <Text style={styles.errorText}>{formikProps.errors.email}</Text>
+          <View style={styles.form}>
+            <TextInput
+              label="Username"
+              mode="outlined"
+              placeholder="Enter Username"
+              style={styles.textInput}
+              onChangeText={formikProps.handleChange('username')}
+              onBlur={formikProps.handleBlur('username')}
+              value={formikProps.values.username}
+              error={formikProps.touched.username && formikProps.errors.username}
+            />
+            {formikProps.touched.username && formikProps.errors.eusernamemail && (
+              <Text style={styles.errorText}>{formikProps.errors.username}</Text>
             )}
 
-        <TextInput
-          label="Password"
-          mode="outlined"
-          secureTextEntry={!passwordVisible}
-          placeholder="Enter Password"
-          style={styles.textInput}
-          right={
+            <TextInput
+              label="Password"
+              mode="outlined"
+              secureTextEntry={!passwordVisible}
+              placeholder="Enter Password"
+              style={styles.textInput}
+              right={
                 <TextInput.Icon
                   icon={passwordVisible ? 'eye-off' : 'eye'}
                   onPress={() => setPasswordVisible(!passwordVisible)} // Toggle password visibility
                 />
               }
-
-          onChangeText={formikProps.handleChange('password')}
+              onChangeText={formikProps.handleChange('password')}
               onBlur={formikProps.handleBlur('password')}
               value={formikProps.values.password}
-              error={formikProps.touched.password && formikProps.errors.password}
-        />
-        {formikProps.touched.password && formikProps.errors.password && (
-              <Text style={styles.errorText}>{formikProps.errors.password}</Text>
+              error={
+                formikProps.touched.password && formikProps.errors.password
+              }
+            />
+            {formikProps.touched.password && formikProps.errors.password && (
+              <Text style={styles.errorText}>
+                {formikProps.errors.password}
+              </Text>
             )}
-        <Pressable onPress={handleForgetPassword}>
-          <Text style={styles.forgetPassword}> Forget Password?</Text>
-        </Pressable>
-        {loginError !== '' && <Text style={styles.errorText}>{loginError}</Text>}
+            <Pressable onPress={handleForgetPassword}>
+              <Text style={styles.forgetPassword}> Forget Password?</Text>
+            </Pressable>
 
-
-        <View style={styles.buttonContainer}>
-          <Button
-            mode="contained"
-            textColor={theme.palette.login.textColorLogin}
-            style={styles.buttonLogin}
-            onPress={formikProps.handleSubmit}
-          >
-            Login
-          </Button>
-          <Button
-            mode="contained"
-            textColor={theme.palette.login.textColorRegistration}
-            style={styles.buttonRegistration}
-            onPress={() => {
-              navigation.navigate('SignUpScreen');
-            }}
-          >
-            Register
-          </Button>
-
-
-        </View>
-      </View>
-)}
-</Formik>
-<ChangePasswordModal visible={showModal} onClose={closeModal} />
-<Snackbar
+            {loginError !== '' && (
+              <Text style={styles.error}>{loginError}</Text>
+            )}
+          
+            <View style={styles.buttonContainer}>
+              <Button
+                mode="contained"
+                textColor={theme.palette.login.textColorLogin}
+                style={styles.buttonLogin}
+                onPress={formikProps.handleSubmit}
+              >
+                Login
+              </Button>
+              <Button
+                mode="contained"
+                textColor={theme.palette.login.textColorRegistration}
+                style={styles.buttonRegistration}
+                onPress={() => {
+                  navigation.navigate('SignUpScreen');
+                }}
+              >
+                Register
+              </Button>
+            </View>
+          </View>
+        )}
+      </Formik>
+      <Snackbar
         visible={snackBarVisible}
         onDismiss={() => setSnackBarVisible(false)}
         action={{
@@ -171,7 +161,6 @@ const LoginScreen = () => {
       >
         Login successful!
       </Snackbar>
-
     </ScrollView>
   );
 };
@@ -249,6 +238,11 @@ const styles = StyleSheet.create({
   errorText: {
     color: 'red',
     marginBottom: height * 0.02,
+  },
+  error: {
+    color: 'red',
+    marginTop: height * 0.02,
+    textAlign: 'center',
   },
 });
 
