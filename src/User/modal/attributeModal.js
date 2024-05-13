@@ -13,7 +13,7 @@ import { TextInput } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import theme from '../../../theme';
 
-const attributeModal = ({ visible, onClose }) => {
+const AttributeModal = ({ visible, onClose }) => {
     
     const [showModal, setShowModal] = useState(false);
 
@@ -239,4 +239,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default attributeModal;
+export default AttributeModal;
