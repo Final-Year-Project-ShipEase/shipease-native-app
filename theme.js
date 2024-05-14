@@ -20,6 +20,7 @@ const theme = createTheme({
       lightblue: "#43A5CA",
       lightgray: "#656565",
       vehiclesshadowColor: "#A68C50",
+      darkestgray: "#363434",
     },
 
 

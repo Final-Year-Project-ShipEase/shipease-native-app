@@ -9,7 +9,6 @@ import {
   ImageBackground,
   Image,
 } from 'react-native';
-import { TextInput } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import theme from '../../../theme';
 

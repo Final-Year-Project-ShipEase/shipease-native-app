@@ -1,10 +1,26 @@
-import React from 'react';
-import { View, Text, StyleSheet, Dimensions, Image, ScrollView} from 'react-native';
+import React, { useState } from 'react';
+import {
+  StyleSheet,
+  Text,
+  Pressable,
+  View,
+  Dimensions,
+  Image,
+} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import theme from '../../../../theme';
 
 const VehicleComponent = () => {
+
+  const navigation = useNavigation();
+  
+
+  const handleSearchByVehicle = () => {
+    navigation.navigate('AttributebasedBooking2');
+  };
   return (
     <View>
+    <Pressable style={styles.button} onPress={handleSearchByVehicle}>
     <View style={styles.component1}>
       <View style={styles.bestVehicle}>
         <View style={styles.bestVehicleChild} />
@@ -40,6 +56,8 @@ const VehicleComponent = () => {
         </View>
       </View>
     </View>
+    </Pressable>
+    <Pressable style={styles.button} onPress={handleSearchByVehicle}>
     <View style={styles.component2}>
       <View style={styles.bestVehicle}>
         <View style={styles.bestVehicleChild} />
@@ -75,6 +93,7 @@ const VehicleComponent = () => {
         </View>
       </View>
     </View>
+    </Pressable>
     </View>
   );
 };

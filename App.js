@@ -78,7 +78,6 @@ export default function App() {
 
             <Stack.Screen name="ChangePasswordModal" component={ChangePasswordModal}/>
           </Stack.Group>
-          */}
         <Stack.Group screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Dashboard" component={Dashboard} />
           <Stack.Screen name="Settings" component={Settings} />
@@ -110,8 +109,12 @@ export default function App() {
           <Stack.Screen name="SearchBar" component={SearchBar} />
         </Stack.Group>
 
+                  */}
+
         <Stack.Group>
           <Stack.Screen name="AttributebasedBooking1" component={AttributebasedBooking1} />
+          <Stack.Screen name="AttributebasedBooking2" component={AttributebasedBooking2} />
+          <Stack.Screen name="AttributebasedBooking3" component={AttributebasedBooking3} />
           <Stack.Screen name="SearchByAttribute" component={SearchByAttribute} />
           <Stack.Screen name="VehiclesInfoForAttribute" component={VehiclesInfoForAttribute} />
           <Stack.Screen name="VehicleComponent" component={VehicleComponent} />
