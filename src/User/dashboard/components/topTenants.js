@@ -1,26 +1,8 @@
-import React,{useState, useEffect} from 'react';
+import React from 'react';
 import { View, Text, StyleSheet, Dimensions, Image, ScrollView} from 'react-native';
 import theme from '../../../../theme';
-import { useTenantService } from '../../../services/tenantServices';
 
 const TopTenant = () => {
-  const {getAllTenants} = useTenantService();
-  const [tenants, setTenants] = useState([]);
-
-  useEffect(() => {
-    // Fetch tenant data upon component mount
-    const fetchTenants = async () => {
-      try {
-        const dataTenant = await getAllTenants(); // Function to fetch tenant data
-        setTenants(dataTenant);
-        console.log(tenants);
-      } catch (error) {
-        console.error('Error fetching tenant data:', error);
-      }
-    };
-
-    fetchTenants();
-  });
 
   return (
         <View style={[styles.topTenant, styles.topTenantPosition]}>
@@ -32,55 +14,111 @@ const TopTenant = () => {
             <Text style={[styles.seeAll, styles.seeAllTypo]}>See All</Text>
           </View>
         </View>
-        <ScrollView horizontal style={{ height: height * 0.407, width: width * 3}}>
-          {tenants.map((tenant,index) => (
-             <View key={index} style={[styles.Inner1, styles.backgroundImage]}>
-             <View style={[styles.bgParent, styles.bgParentLayout]}>
-               <Image
-                 style={[styles.bgIcon, styles.backgroundImage]}
-                 contentFit="cover"
-                 source={require("../components/ToptenantBg.png")}
-               />
-               <Image
-                 style={[
-                   styles.illustrationIcon,
-                   styles.bgParentLayout,
-                 ]}
-                 contentFit="cover"
-                 source={require("../components/assest1.png")}
-               />
-               <Image
-                 style={[styles.freepikTruckInject5Icon, styles.vectorIconLayout]}
-                 contentFit="cover"
-                 source={require("../components/illustration1.png")}
-               />
-               <Image
-                 style={[styles.bgIcon1, styles.iconLayout]}
-                 contentFit="cover"
-                 source={require("../components/driverImage.png")}
-               />
-               <View style={[styles.groupParent, styles.groupLayout]}>
-                 <View style={[styles.groupWrapper, styles.groupLayout]}>
-                   <View style={[styles.groupWrapper, styles.groupLayout]}>
-                     <Text style={[styles.Name, styles.NameTypo]}>
-                       {tenant.name}
-                     </Text>
-                     <Text style={[styles.username, styles.davidFlexBox]}>
-                       {tenant.username}
-                     </Text>
-                   </View>
-                 </View>
-                 <Text style={[styles.email, styles.davidFlexBox]}>
-                   {tenant.email}
-                 </Text>
-               </View>
-               <View style={[styles.button, styles.buttonLayout]}>
-                 <Text style={[styles.addNew, styles.addNewPosition]}>{tenant.status}</Text>
-                 <View style={[styles.buttons, styles.buttonsPosition]} />
-               </View>
-             </View>
-           </View>
-          ))}
+        <ScrollView horizontal style={{ height: height * 0.407, width: width * 3 }}>
+        <View style={[styles.Inner1, styles.backgroundImage]}>
+          <View style={[styles.bgParent, styles.bgParentLayout]}>
+            <Image
+              style={[styles.bgIcon, styles.backgroundImage]}
+              contentFit="cover"
+              source={require("../components/ToptenantBg.png")}
+            />
+            <Image
+              style={[
+                styles.illustrationIcon,
+                styles.bgParentLayout,
+              ]}
+              contentFit="cover"
+              source={require("../components/assest1.png")}
+            />
+            <Image
+              style={[styles.freepikTruckInject5Icon, styles.vectorIconLayout]}
+              contentFit="cover"
+              source={require("../components/illustration1.png")}
+            />
+            <Image
+              style={[styles.bgIcon1, styles.iconLayout]}
+              contentFit="cover"
+              source={require("../components/driverImage.png")}
+            />
+            <View style={[styles.groupParent, styles.groupLayout]}>
+              <View style={[styles.groupWrapper, styles.groupLayout]}>
+                <View style={[styles.groupWrapper, styles.groupLayout]}>
+                  <Text style={[styles.Name, styles.NameTypo]}>
+                    David Will
+                  </Text>
+                  <Text style={[styles.username, styles.davidFlexBox]}>
+                    @david12
+                  </Text>
+                </View>
+              </View>
+              <Text style={[styles.email, styles.davidFlexBox]}>
+                david12@gmail.com
+              </Text>
+            </View>
+            <View style={[styles.button, styles.buttonLayout]}>
+              <Text style={[styles.addNew, styles.addNewPosition]}>Active</Text>
+              <View style={[styles.buttons, styles.buttonsPosition]} />
+            </View>
+          </View>
+        </View>
+        <View style={[styles.instanceParent, styles.backgroundImage]}>
+          <View style={[styles.groupContainer, styles.backgroundImage]}>
+            <View style={[styles.bgParent, styles.bgParentLayout]}>
+              <Image
+                style={[styles.bgIcon, styles.backgroundImage]}
+                contentFit="cover"
+                source={require("../components/ToptenantBg.png")}
+              />
+              <Image
+                style={[
+                  styles.illustrationIcon,
+                  styles.bgParentLayout,
+                ]}
+                contentFit="cover"
+                source={require("../components/assest1.png")}
+              />
+              <Image
+                style={[
+                  styles.freepikTruckInject5Icon,
+                  styles.vectorIconLayout,
+                ]}
+                contentFit="cover"
+                source={require("../components/illustration1.png")}
+              />
+              {/*<Image
+                style={[styles.bgIcon1, styles.iconLayout]}
+                contentFit="cover"
+                source={require("../assets/image-131.png")}
+              />*/}
+              <View style={[styles.groupParent, styles.groupLayout]}>
+                <View style={[styles.groupWrapper, styles.groupLayout]}>
+                  <View style={[styles.groupWrapper, styles.groupLayout]}>
+                    <Text style={[styles.Name, styles.NameTypo]}>
+                      David Will
+                    </Text>
+                    <Text style={[styles.username, styles.davidFlexBox]}>
+                      @david12
+                    </Text>
+                  </View>
+                </View>
+                <Text style={[styles.email, styles.davidFlexBox]}>
+                  david12@gmail.com
+                </Text>
+              </View>
+              <View style={[styles.button, styles.buttonLayout]}>
+                <Text style={[styles.addNew, styles.addNewPosition]}>
+                  Active
+                </Text>
+                <View style={[styles.buttons, styles.buttonsPosition]} />
+              </View>
+            </View>
+          </View>
+          <Image
+            style={[styles.image14Icon, styles.iconLayout]}
+            contentFit="cover"
+            source={require("../components/driverImage1.png")}
+          />
+        </View>
         </ScrollView>
       </View>
     );

@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react';
+import React from 'react';
 import {
     View, 
     Text, 
@@ -9,72 +9,53 @@ import {
   } from 'react-native';
   import theme from '../../../../theme';
   import Icon from 'react-native-vector-icons/MaterialIcons';
-  import { useVehicleService } from '../../../services/vehicleServices';
 
 const userInfo = () => {
-
-  const [vehicleData, setVehicleData] = useState([]);
-  const {getAllVehicles} = useVehicleService();
-
-  useEffect(() => {
-    // Fetch vehicle data upon component mount
-    const fetchVehicle = async () => {
-      try {
-        const data = await getAllVehicles(); // Function to fetch vehicle data
-        setVehicleData(data);
-      } catch (error) {
-        console.error('Error fetching vehicle data:', error);
-      }
-    };
-
-    fetchVehicle();
-  }, []);
-
   return (
     <ScrollView horizontal style={{height:height * 0.407}}>
-      {vehicleData.map((vehicle, index) => (
-        <View key={index} style={styles.bestVehicle}>
-          <View style={styles.moveChild} />
-          <View style={styles.moveChild1} />
-          <View style={styles.moveChild2} />
-          <Image
-            style={styles.bestVehicleimage}
-            contentFit="cover"
-            source={require("../components/vehicle1.png")}
-          />
-          <View style={[styles.bestVehicleText, styles.bestLayout]}>
-            <View style={[styles.bestVehicleTextChild, styles.bestLayout]} />
-            <View style={styles.cityparent}>
-              <Text style={[styles.city, styles.registrationTypo]}>{vehicle.location}</Text>
-              <Image
-                style={[styles.groupInner, styles.groupInnerLayout]}
-                contentFit="cover"
-                source={require("../components/dot.png")}
-              />
-              <Text style={[styles.TrackingNo, styles.registrationTypo]}>{vehicle.trackerNo}</Text>
-              <Image
-                style={[styles.ellipseIcon, styles.groupInnerLayout]}
-                contentFit="cover"
-                source={require("../components/dot.png")}
-              />
-              <Text style={[styles.registrationNo, styles.registrationTypo]}>{vehicle.regNo}</Text>
-            </View>
-            <Text style={[styles.TruckType, styles.AllTruckType]}>{vehicle.type}</Text>
+      <View style={styles.bestVehicle}>
+      <View style={styles.moveChild} />
+      <View style={styles.moveChild1} />
+      <View style={styles.moveChild2} />
+        <Image
+          style={styles.bestVehicleimage}
+          contentFit="cover"
+          source={require("../components/vehicle1.png")}
+        />
+        <View style={[styles.bestVehicleText, styles.bestLayout]}>
+          <View style={[styles.bestVehicleTextChild, styles.bestLayout]} />
+          <View style={styles.cityparent}>
+            <Text
+              style={[styles.city, styles.registrationTypo]}
+            >{`Fasisalabad  `}</Text>
+            <Image
+              style={[styles.groupInner, styles.groupInnerLayout]}
+              contentFit="cover"
+              source={require("../components/dot.png")}
+            />
+            <Text style={[styles.TrackingNo, styles.registrationTypo]}>SH13322</Text>
+            <Image
+              style={[styles.ellipseIcon, styles.groupInnerLayout]}
+              contentFit="cover"
+              source={require("../components/dot.png")}
+            />
+            <Text style={[styles.registrationNo, styles.registrationTypo]}>R-532</Text>
           </View>
-          <View style={[styles.icon1, styles.textLayout]}>
-            <Icon name="more-horiz" size={30} color="white" />
-          </View>
-          <View style={styles.RatingComponent}>
-            <View style={[styles.component2Child, styles.component2Position]} />
-            <View style={[styles.component2Item, styles.component2Position]} />
-            <Text style={[styles.rating, styles.text2Typo]}>Rating</Text>
-            <Text style={[styles.text1, styles.text1Typo]}>
-              <Text style={styles.text2Typo}>7.3</Text>
-              <Text style={styles.registrationTypo}>/10</Text>
-            </Text>
-          </View>
+          <Text style={[styles.TruckType, styles.AllTruckType]}>Box Truck</Text>
         </View>
-      ))}
+        <View style={[styles.icon1, styles.textLayout]}>
+      <Icon name="more-horiz" size={30} color="white" />
+    </View>
+        <View style={styles.RatingComponent}>
+          <View style={[styles.component2Child, styles.component2Position]} />
+          <View style={[styles.component2Item, styles.component2Position]} />
+          <Text style={[styles.rating, styles.text2Typo]}>Rating</Text>
+          <Text style={[styles.text1, styles.text1Typo]}>
+            <Text style={styles.text2Typo}>7.3</Text>
+            <Text style={styles.registrationTypo}>/10</Text>
+          </Text>
+        </View>
+      </View>
     </ScrollView>
     );
 };
