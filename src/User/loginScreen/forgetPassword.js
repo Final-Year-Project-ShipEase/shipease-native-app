@@ -18,6 +18,7 @@ const ForgetPassword = () => {
     setShowModal(false);
   };
 
+
   const validationSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email').required('Email is required'),
   });
@@ -38,8 +39,8 @@ const ForgetPassword = () => {
         onSubmit={(values, { setSubmitting }) => {
           // Handle form submission here
           console.log(values);
-          handleOpenModal(values);
           setSubmitting(false);
+          handleOpenModal(values);
         }}
       >
         {(formikProps) => (

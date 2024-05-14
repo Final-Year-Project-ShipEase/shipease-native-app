@@ -23,11 +23,14 @@ export function useUserService() {
     return response.data;
   };
 
-  const createUser = async (data) => {
+  const createUser = async (data) => { // Update createUser to accept otp parameter
     const response = await axiosInstance.post('/user', data);
+    console.log(response);
     return response.data;
   };
 
+
+  
   const login = async (data) => {
     const response = await axiosInstance.post('/user/login', data);
     return response.data;
@@ -36,7 +39,6 @@ export function useUserService() {
   return {
     getAllUsers,
     getUserById,
-    updateUser,
     updateUser,
     deleteUserById,
     createUser,

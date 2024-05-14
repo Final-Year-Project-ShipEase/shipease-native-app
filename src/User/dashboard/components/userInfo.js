@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState, useEffect} from 'react';
 import { View, Text } from 'react-native';
 import {
     StyleSheet,
@@ -9,19 +9,43 @@ import {
   import theme from '../../../../theme';
   import Icon from 'react-native-vector-icons/FontAwesome';
   import { useNavigation } from '@react-navigation/native';
-
+  import { useUserService } from '../../../services/userServices';
+  import { getUserId } from '../../../utils/asyncStorage';
 
 const userInfo = () => {
+  const [userId, setUserId] = useState(0);
+  const [userData, setUserData] = useState('');
+  const {getUserById} = useUserService();
+
+  useEffect(() => {
+    // Fetch user data upon component mount
+    const fetchData = async () => {
+      try {
+        const id = await getUserId();
+        console.log(id);
+        setUserId(id);
+        console.log(userId);
+        const userData = await getUserById(userId); // Function to fetch user data
+        setUserData(userData);
+        console.log(userData);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
+    fetchData();
+  });
+
 
   const navigation = useNavigation();
   return (
     <View style={[styles.userInfo, styles.userInfoBg]}>
         <View style={[styles.userInfo, styles.userInfoPosition]}>
           <View style={styles.user} >
-          <Text style={styles.name}>Ima David</Text>
+          <Text style={styles.name}>{userData.name}</Text>
           </View>
           <View style={styles.type}>
-            <Text style={styles.username}>@ImaDavid1</Text>
+            <Text style={styles.username}>{userData.username}</Text>
           </View>
           <View style={[styles.imageContainer, styles.outerBorder]}>
             <Image

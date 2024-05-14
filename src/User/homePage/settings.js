@@ -13,6 +13,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import ScreenOne from '../../../assets/ScreenOne.png';
 import theme from '../../../theme';
 import { useNavigation } from '@react-navigation/native';
+import { clearData } from '../../utils/asyncStorage';
 
 const Tab = createBottomTabNavigator();
 
@@ -21,6 +22,11 @@ const Settings = () => {
   const [showStatus, setShowStatus] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
 
+  const handleLogout = () => {
+    clearData();
+    console.log("User Data is cleared from Async Storage");
+    navigation.navigate('LoginScreen');
+  };
   return (
     <View style={styles.container}>
       <View style={styles.topContainer}>
@@ -137,7 +143,7 @@ const Settings = () => {
                 </View>
 
                 <View>
-                  <Pressable style={styles.changePassword} onPress={() => {navigation.navigate("LoginScreen")}}>
+                  <Pressable style={styles.changePassword} onPress={handleLogout}>
                     <Text
                       style={{
                         fontSize: width * 0.05,

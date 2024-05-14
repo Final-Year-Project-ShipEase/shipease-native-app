@@ -5,21 +5,22 @@ import { Button } from 'react-native-paper';
 import { OtpInput } from 'react-native-otp-entry';
 import theme from '../../../../theme';
 import truck from '../../../../assets/truck.png';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import VerificationSuccessfulModal from '../../modal/verificationSuccessfulModal';
 
 const OPTVerification = () => {
   const navigation = useNavigation();
+  const route = useRoute();
   const [showModal, setShowModal] = useState(false);
   const [showSnackbar, setShowSnackbar] = useState(false);
   const [enteredOTP, setEnteredOTP] = useState('');
-  const otpNumber = [1234, 1598, 6547, 2549];
+  const otpCode = route.params?.otpCode; // Retrieve OTP code from route params
 
   const handleOtpSubmit = () => {
-    if (otpNumber.includes(Number(enteredOTP))) {
-      setShowSnackbar(true);
-    } else {
+    if (enteredOTP === otpCode) { // Compare entered OTP with received OTP code
       setShowModal(true);
+    } else {
+      setShowSnackbar(true);
     }
   };
 

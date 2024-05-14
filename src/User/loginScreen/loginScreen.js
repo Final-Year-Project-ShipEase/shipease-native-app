@@ -15,6 +15,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useUserService } from '../../services/userServices';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginScreen = () => {
   const navigation = useNavigation();
@@ -44,16 +45,26 @@ const LoginScreen = () => {
   };
 
   const handleLogin = async (values) => {
-    await login(values)
-      .then((response) => {
-        if (response.status === 200) {
-          handleLoginSuccess();
-        }
-      })
-      .catch((error) => {
+    try {
+      const response = await login(values);
+  
+      console.log('Login Response:', response);
+  
+      if (response.status === 200 && response.user) {
+        await AsyncStorage.setItem('userId', response.user.id.toString());
+        await AsyncStorage.setItem('username', response.user.username);
+        await AsyncStorage.setItem('email', response.user.email);
+        handleLoginSuccess();
+      } else {
         setLoginError('Invalid username or password');
-      });
+      }
+    } catch (error) {
+      console.error('Login Error:', error);
+      setLoginError('An error occurred during login');
+    }
   };
+  
+  
 
   const validationSchema = Yup.object().shape({
     username: Yup.string().required('Username is required'),
