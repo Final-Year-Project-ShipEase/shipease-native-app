@@ -32,7 +32,7 @@ const TopTenant = () => {
             <Text style={[styles.seeAll, styles.seeAllTypo]}>See All</Text>
           </View>
         </View>
-        <ScrollView horizontal style={{ height: height * 0.407, width: width * 3 }}>
+        <ScrollView horizontal style={{ height: height * 0.407, width: width * 3}}>
           {tenants.map((tenant,index) => (
              <View key={index} style={[styles.Inner1, styles.backgroundImage]}>
              <View style={[styles.bgParent, styles.bgParentLayout]}>
