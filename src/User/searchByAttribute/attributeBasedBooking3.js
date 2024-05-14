@@ -9,8 +9,15 @@ import {
 import theme from '../../../theme';
 import VehiclesInfo from './component/vehicllesInfo';
 import BookingInfo from './component/BookingInfo';
+import { useNavigation } from '@react-navigation/native';
 
 const AttributeBasedBookingSearch3 = () => {
+  const navigation = useNavigation();
+  
+
+  const handleSearchByVehicle = () => {
+    navigation.navigate('AttributebasedBooking4');
+  };
   return (
     <View style={[styles.pages]}>
     <View style = {[styles.vehiclesinfo]}>
@@ -19,9 +26,9 @@ const AttributeBasedBookingSearch3 = () => {
     <View style = {[styles.bookinginfo]}>
     <BookingInfo />
     </View>
-    <Pressable onPress={''}>
+    <Pressable onPress={handleSearchByVehicle}>
         <View style={[styles.buttons, styles.buttonsFlexBox]}>
-          <Text style={[styles.login, styles.loginTypo]}>Go back</Text>
+          <Text style={[styles.login, styles.loginTypo]}>Confirm</Text>
         </View>
         </Pressable>
     </View>
