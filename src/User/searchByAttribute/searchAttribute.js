@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   View,
@@ -13,10 +13,26 @@ import AttributeModal from '../modal/attributeModal';
 
 
 const SearchByAttribute = () => {
-      
+
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    handleOpenModal();
+  }, []);
+
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
 
 return (
+  
     <View style={[styles.pages]}>
+      <AttributeModal visible={showModal} onClose={handleCloseModal}/>
       <View style={[styles.SearchBar]}>
       <SearchBar/>
       </View>
@@ -45,7 +61,6 @@ return (
       </View>
       <View style = {[styles.vehiclesinfo1]}>
       </View>
-      <AttributeModal />
     </View>
 );
 };
@@ -79,7 +94,6 @@ const styles = StyleSheet.create({
       addTypo: {
         fontSize: width * 0.034,
         textAlign: "left",
-        fontFamily: theme.palette.FontFamily.regular,
       },
 
       buttons1: {

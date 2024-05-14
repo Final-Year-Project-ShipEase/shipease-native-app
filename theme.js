@@ -7,10 +7,6 @@ const theme = createTheme({
       mainwhite: '#FFFFFF',
     },
 
-    FontFamily: {
-      regular: 'Arial',
-      outfit: 'outfit'
-    },
 
     dashboard: {
       transparent: 'rgba(0, 0, 0, 0.5)',

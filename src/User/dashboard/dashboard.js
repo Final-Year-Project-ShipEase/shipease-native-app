@@ -59,7 +59,6 @@ const styles = StyleSheet.create({
     left: Dimensions.get('window').width * 0.07,
     fontSize: width * 0.065,
     lineHeight: 35,
-    fontFamily: theme.palette.FontFamily.outfit,
     width:width * 0.9,
     fontWeight: '900',
     color: theme.palette.dashboard.black,

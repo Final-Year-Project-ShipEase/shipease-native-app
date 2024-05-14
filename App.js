@@ -46,6 +46,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <NavigationContainer>
         <Stack.Navigator>
+        {/*
           <Stack.Group screenOptions={{ headerShown: false }}>
             <Stack.Screen name="SplashScreen" component={SplashScreen} />
             <Stack.Screen
@@ -77,7 +78,7 @@ export default function App() {
 
             <Stack.Screen name="ChangePasswordModal" component={ChangePasswordModal}/>
           </Stack.Group>
-
+          */}
         <Stack.Group screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Dashboard" component={Dashboard} />
           <Stack.Screen name="Settings" component={Settings} />

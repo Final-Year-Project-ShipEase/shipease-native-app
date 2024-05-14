@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Modal,
   StyleSheet,
@@ -14,25 +14,12 @@ import { useNavigation } from '@react-navigation/native';
 import theme from '../../../theme';
 
 const AttributeModal = ({ visible, onClose }) => {
-    
-    const [showModal, setShowModal] = useState(false);
 
-    const handleOpenModal = () => {
-      setShowModal(true);
-    };
   
-    const handleCloseModal = () => {
-      setShowModal(false);
-    };
-  
-    const handleBookingPress = () => {
-        console.log("modal open");
-        handleOpenModal();
-      };
-
       const navigation = useNavigation();
 
       const handleButtonPress = () => {
+        onClose();
         navigation.navigate('AttributebasedBooking1');
       };
 
@@ -51,6 +38,7 @@ const AttributeModal = ({ visible, onClose }) => {
             style={[styles.modalView, styles.ImageBackground]}
             source={require("../../../assets/rectangle1.png")}
           >
+           <Pressable onPress={() => onClose()}>
             <View style={styles.outerRoundView}>
               <View style={styles.innerRoundView}>
               <Image
@@ -59,6 +47,7 @@ const AttributeModal = ({ visible, onClose }) => {
                 />
               </View>
             </View>
+            </Pressable>
             <Text style={styles.modalTitleText}>Search By Attribute</Text>
             <Text style={styles.modalTitleText1}>Please Enter Shipped Item &
               it’s dimension in length and width</Text>
@@ -103,6 +92,7 @@ const AttributeModal = ({ visible, onClose }) => {
             </View>
             <Pressable style={styles.button} onPress={handleButtonPress} accessible={true} accessibilityLabel="Booking">
               <Text style={styles.textStyle}>Book</Text>
+              <AttributeModal visible={false}/>
             </Pressable>
           </ImageBackground>
         </View>
@@ -156,6 +146,8 @@ const styles = StyleSheet.create({
     color: theme.palette.changePasswordModal.buttonTextColor,
     backgroundColor: theme.palette.changePasswordModal.buttonBackgroundColor,
     textAlign: 'center',
+    top: height * 0.02,
+    fontSize:22
   },
   modalTitleText: {
     color: theme.palette.verificationSuccessfulModal.modalTitleText,

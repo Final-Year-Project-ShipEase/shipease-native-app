@@ -45,6 +45,7 @@ const PickUpLocationModal = ({ visible, onClose }) => {
             style={[styles.modalView, styles.ImageBackground]}
             source={require("../assests/rectangle1.png")}
           >
+          <Pressable onPress={() => onClose()}>
             <View style={styles.outerRoundView}>
                 <View style={styles.innerRoundView}>
                 <Image
@@ -53,9 +54,16 @@ const PickUpLocationModal = ({ visible, onClose }) => {
                 />
                 </View>
             </View>
+          </Pressable>
             <Text style={styles.modalTitleText}>Search Booking</Text>
-
-            <Pressable style={styles.button} onPress={handleSearchByAttribute} accessible={true} accessibilityLabel="Booking">
+            <Pressable
+              style={styles.button}
+              onPress={() => {
+                handleSearchByAttribute();
+              }}
+              accessible={true}
+              accessibilityLabel="Booking"
+            >
               <Text style={styles.textStyle}>Search By Attribute</Text>
             </Pressable>
             <Pressable style={styles.button} onPress={handleSearchByVehicle} accessible={true} accessibilityLabel="Booking">

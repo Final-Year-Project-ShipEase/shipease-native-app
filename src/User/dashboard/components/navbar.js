@@ -42,7 +42,9 @@ const Component = () => {
               contentFit="cover"
               source={require("../components/completed.png")}
             />
-                <PickUpLocationModal visible={showModal} onClose={handleCloseModal} />
+                <PickUpLocationModal visible={showModal}
+                                     onClose={handleCloseModal}
+                />
           </Pressable>
           </View>
           <View style={styles.home}>
