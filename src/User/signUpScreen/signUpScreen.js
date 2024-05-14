@@ -37,7 +37,7 @@ const SignUpScreen = () => {
     setSnackBarVisible(true);
     setTimeout(() => {
       setSnackBarVisible(false);
-      navigation.navigate('OTPVerification'); // Navigate to OTPVerification and pass OTP code
+      navigation.navigate('OTPVerification', { otpCode: otp }); // Navigate to OTPVerification and pass OTP code
     }, 1000);
   };
 
