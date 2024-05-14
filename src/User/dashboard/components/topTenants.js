@@ -11,15 +11,16 @@ const TopTenant = () => {
     // Fetch tenant data upon component mount
     const fetchTenants = async () => {
       try {
-        const data = await getAllTenants(); // Function to fetch tenant data
-        setTenants(data);
+        const dataTenant = await getAllTenants(); // Function to fetch tenant data
+        setTenants(dataTenant);
+        console.log(tenants);
       } catch (error) {
         console.error('Error fetching tenant data:', error);
       }
     };
 
     fetchTenants();
-  }, []);
+  });
 
   return (
         <View style={[styles.topTenant, styles.topTenantPosition]}>

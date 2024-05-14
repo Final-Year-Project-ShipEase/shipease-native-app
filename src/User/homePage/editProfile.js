@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, View, Text, Dimensions, ScrollView } from 'react-native';
 import { TextInput, Avatar, Button, Snackbar } from 'react-native-paper';
 import truck from '../../../assets/truck.png';
@@ -16,9 +16,6 @@ const EditProfile = () => {
   const [userId, setUserId] = useState(null);
 
 
-  useEffect(() => {
-    fetchUserId();
-  }, []);
 
   const fetchUserId = async () => {
     const id = await getUserId();
@@ -29,6 +26,8 @@ const EditProfile = () => {
   const handleSaveChanges = async () => {
     try {
       // Call updateUser function with the updated user data
+      fetchUserId();
+      console.log(userId);
       await updateUser(userId, { name, email, phoneNumber, city });
       setSnackBarVisible(true);
     } catch (error) {

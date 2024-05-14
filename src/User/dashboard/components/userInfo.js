@@ -34,7 +34,7 @@ const userInfo = () => {
     };
 
     fetchData();
-  }, []);
+  });
 
 
   const navigation = useNavigation();

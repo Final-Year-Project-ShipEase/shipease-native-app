@@ -6,6 +6,7 @@ export function useTenantService() {
   const getAllTenants = async () => {
     try {
       const response = await axiosInstance.get('/tenants');
+      console.log(response);
       return response.data;
     } catch (error) {
       throw new Error('Error fetching tenants: ' + error.message);
