@@ -25,9 +25,12 @@ export function useUserService() {
 
   const createUser = async (data) => { // Update createUser to accept otp parameter
     const response = await axiosInstance.post('/user', data);
+    console.log(response);
     return response.data;
   };
 
+
+  
   const login = async (data) => {
     const response = await axiosInstance.post('/user/login', data);
     return response.data;

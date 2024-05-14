@@ -13,11 +13,26 @@ import { useNavigation } from '@react-navigation/native';
 import theme from '../../../theme';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { useUserService } from '../../services/userServices';
+import { getUserId } from '../../utils/asyncStorage';
 
 const ChangePasswordModal = ({ visible, onClose }) => {
   const navigation = useNavigation();
+  const {updateUser} = useUserService();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [userId, setUserId] = useState(null);
+
+
+  useEffect(() => {
+    fetchUserId();
+  }, []);
+
+  const fetchUserId = async () => {
+    const id = await getUserId();
+    setUserId(id);
+    // Fetch user data based on user ID...
+  };
 
   const validationSchema = Yup.object().shape({
     password: Yup.string().required('Password is required').min(8),
@@ -26,12 +41,20 @@ const ChangePasswordModal = ({ visible, onClose }) => {
       .required('Confirm Password is required'),
   });
 
+  const generateOTP = () => {
+    return Math.floor(1000 + Math.random() * 9000); // Generate 4-digit OTP
+  };
+
+
+  
+
   const handlePassword = async (values) => {
     if (values.password === values.confirmPassword) {
       console.log('Password Matched');
-      onClose();
-      navigation.navigate('OPTVerification');
-      
+      await updateUser(userId, {values});
+      const otp = generateOTP();
+      visible= false;
+      navigation.navigate('OPTVerification', {otp});
     }
   };
 

@@ -25,12 +25,12 @@ const Dashboard = () => {
       <View style={[styles.bestVehicles]}>
         <BestVehicles/>
       </View>
-      <View style={[styles.topTenants]}>
+       <View style={[styles.topTenants]}>
         <TopTenant/>
       </View>
       <View style={[styles.vehicleCheckpoint]}>
         <VehicleCheckpoint/>
-      </View>
+  </View>
       <View style={[styles.services]}>
         <Services/>
       </View>

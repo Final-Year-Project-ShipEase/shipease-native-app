@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { StyleSheet, View, Text, Dimensions, ScrollView } from 'react-native';
 import { TextInput, Avatar, Button, Snackbar } from 'react-native-paper';
 import truck from '../../../assets/truck.png';
 import theme from '../../../theme'; 
 import { useUserService } from '../../services/userServices';
+import { getUserId } from '../../utils/asyncStorage';
 
 const EditProfile = () => {
   const { updateUser } = useUserService();
@@ -12,11 +13,23 @@ const EditProfile = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [city, setCity] = useState('');
   const [snackBarVisible, setSnackBarVisible] = useState(false);
+  const [userId, setUserId] = useState(null);
+
+
+  useEffect(() => {
+    fetchUserId();
+  }, []);
+
+  const fetchUserId = async () => {
+    const id = await getUserId();
+    setUserId(id);
+    // Fetch user data based on user ID...
+  };
 
   const handleSaveChanges = async () => {
     try {
       // Call updateUser function with the updated user data
-      await updateUser({ name, email, phoneNumber, city });
+      await updateUser(userId, { name, email, phoneNumber, city });
       setSnackBarVisible(true);
     } catch (error) {
       console.error('Error updating user profile:', error);
