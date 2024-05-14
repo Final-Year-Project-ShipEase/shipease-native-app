@@ -31,6 +31,7 @@ import SearchBar from './src/User/BasedOnVehiclesSelection/component/searchBar';
 import AttributebasedBooking1 from './src/User/searchByAttribute/attributeBasedBooking1';
 import AttributebasedBooking2 from './src/User/searchByAttribute/attributeBasedBooking2';
 import AttributebasedBooking3 from './src/User/searchByAttribute/attributeBasedBooking3';
+import AttributebasedBooking4 from './src/User/searchByAttribute/attributeBasedBooking4';
 import favourite from './src/User/FavouriteDriver&Tenant/favourite';
 import SearchByAttribute from './src/User/searchByAttribute/searchAttribute';
 import VehiclesInfoForAttribute from './src/User/searchByAttribute/component/vehicllesInfo';
@@ -47,6 +48,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <NavigationContainer>
         <Stack.Navigator>
+        {/*
           <Stack.Group screenOptions={{ headerShown: false }}>
             <Stack.Screen name="SplashScreen" component={SplashScreen} />
             <Stack.Screen
@@ -78,7 +80,6 @@ export default function App() {
 
             <Stack.Screen name="ChangePasswordModal" component={ChangePasswordModal}/>
           </Stack.Group>
-
         <Stack.Group screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Dashboard" component={Dashboard} /> 
           <Stack.Screen name="Settings" component={Settings} />
@@ -110,8 +111,13 @@ export default function App() {
           <Stack.Screen name="SearchBar" component={SearchBar} />
         </Stack.Group>
 
+                  */}
+
         <Stack.Group>
           <Stack.Screen name="AttributebasedBooking1" component={AttributebasedBooking1} />
+          <Stack.Screen name="AttributebasedBooking2" component={AttributebasedBooking2} />
+          <Stack.Screen name="AttributebasedBooking3" component={AttributebasedBooking3} />
+          <Stack.Screen name="AttributebasedBooking4" component={AttributebasedBooking4} />
           <Stack.Screen name="SearchByAttribute" component={SearchByAttribute} />
           <Stack.Screen name="VehiclesInfoForAttribute" component={VehiclesInfoForAttribute} />
           <Stack.Screen name="VehicleComponent" component={VehicleComponent} />

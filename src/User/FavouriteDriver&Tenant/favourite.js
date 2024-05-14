@@ -90,7 +90,6 @@ const styles = StyleSheet.create({
       addTypo: {
         fontSize: width * 0.034,
         textAlign: "left",
-        fontFamily: theme.palette.FontFamily.regular,
       },
 
       buttons1: {

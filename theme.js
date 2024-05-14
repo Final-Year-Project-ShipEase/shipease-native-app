@@ -7,10 +7,6 @@ const theme = createTheme({
       mainwhite: '#FFFFFF',
     },
 
-    FontFamily: {
-      regular: 'Arial',
-      outfit: 'outfit'
-    },
 
     dashboard: {
       transparent: 'rgba(0, 0, 0, 0.5)',
@@ -24,6 +20,7 @@ const theme = createTheme({
       lightblue: "#43A5CA",
       lightgray: "#656565",
       vehiclesshadowColor: "#A68C50",
+      darkestgray: "#363434",
     },
 
 

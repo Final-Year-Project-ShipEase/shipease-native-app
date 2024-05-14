@@ -95,7 +95,6 @@ const styles = StyleSheet.create({
     color: theme.palette.dashboard.searchbartextcolor,
     width: width * 0.3,
     textAlign: "left",
-    fontFamily: theme.palette.FontFamily.regular,
     top: 0,
     left: 0,
     position: "absolute",

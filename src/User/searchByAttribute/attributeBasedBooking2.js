@@ -5,10 +5,18 @@ import {
   Text,
   Image,
   Pressable,
+  Dimensions,
 } from 'react-native';
 import theme from '../../../theme';
+import { useNavigation } from '@react-navigation/native';
 
 const AttributeBasedBookingSearch1 = () => {
+  const navigation = useNavigation();
+  
+
+  const handleSearchByVehicle = () => {
+    navigation.navigate('AttributebasedBooking3');
+  };
   return (
     <View style={styles.attributeBasedBookingSearch}>
       <View
@@ -18,56 +26,36 @@ const AttributeBasedBookingSearch1 = () => {
         ]}
       />
       <Image
-        style={styles.card7Icon}
+        style={styles.vehicleImage}
         contentFit="cover"
         source={require("../../../assets/card7.png")}
       />
-      <View style={[styles.navField, styles.basePosition]}>
-        <View style={[styles.base, styles.basePosition]} />
-        <View style={styles.logo}>
-          <Text style={[styles.key, styles.keyFlexBox]}>
-            <Text style={[styles.lou, styles.louTypo]}>Lou</Text>
-            <Text style={styles.bank}>Bank</Text>
-          </Text>
-        </View>
-        <Text style={[styles.title, styles.titleTypo]}>Booking</Text>
-        <View style={[styles.leftSideIcons, styles.basePosition]}>
-          <View style={[styles.iconAvatar, styles.iconPosition]} />
-          <View style={styles.iconPosition}>
-            <View style={styles.baseIcon} />
-            <Image
-              style={[styles.arrowsChevronLeft, styles.arrowsChevronLeftLayout]}
-              contentFit="cover"
-              source={require(".../../../assets/back.png")}
-            />
-          </View>
-        </View>
+
+      <View style={styles.Rectangle}>
+        <View style={styles.RectangleChild} />
       </View>
-      <View style={styles.bestVehicleText}>
-        <View style={styles.bestVehicleTextChild} />
-      </View>
-      <View style={styles.faisalabadParent}>
+      <View style={styles.cityParent}>
         <Text
-          style={[styles.faisalabad, styles.r532FlexBox]}
+          style={[styles.city, styles.rComponent]}
         >{`Faisalabad  `}</Text>
         <Image
           style={[styles.groupChild, styles.groupLayout]}
           contentFit="cover"
           source={require("./component/dot.png")}
         />
-        <Text style={[styles.sh13322, styles.r532FlexBox]}>SH13322</Text>
+        <Text style={[styles.vehicleNum, styles.rComponent]}>SH13322</Text>
         <Image
           style={[styles.groupItem, styles.groupLayout]}
           contentFit="cover"
           source={require("./component/dot.png")}
         />
-        <Text style={[styles.r532, styles.r532FlexBox]}>R-532</Text>
+        <Text style={[styles.Registration, styles.rComponent]}>R-532</Text>
       </View>
-      <Text style={[styles.boxTruck, styles.r532FlexBox]}>Box Truck</Text>
+      <Text style={[styles.truckType, styles.rComponent]}>Box Truck</Text>
       <Image
         style={[
-          styles.adminSidebarcollapsable51,
-          styles.arrowsChevronLeftLayout,
+          styles.heart,
+          styles.heartLayout,
         ]}
         contentFit="cover"
         source={require("../../../assets/Collapsable51.png")}
@@ -78,16 +66,15 @@ const AttributeBasedBookingSearch1 = () => {
         <Text style={[styles.rating, styles.text1Typo]}>Rating</Text>
         <Text style={[styles.text, styles.textTypo]}>
           <Text style={styles.text1Typo}>7.3</Text>
-          <Text style={styles.r532Typo}>/10</Text>
+          <Text style={styles.RegistraionTypo}>/10</Text>
         </Text>
       </View>
       <View style={styles.view}>
         <Text style={[styles.description, styles.descriptionTypo]}>
           Description
         </Text>
-        <Text style={[styles.estAspernaturNostrum, styles.descriptionTypo]}>
-          Est aspernatur nostrum et molestias perspiciatis eum vitae quia non
-          quod iste ex cumque doloribus aut repellat
+        <Text style={[styles.description1, styles.descriptionTypo]}>
+        Rectangular cargo area, varying dimensions, commonly transports diverse goods.
         </Text>
       </View>
       <View style={[styles.onboardingMessagesParent, styles.onboardingLayout]}>
@@ -97,47 +84,13 @@ const AttributeBasedBookingSearch1 = () => {
           source={require(".../../../assets/rectangle1.png")}
         />
 
-          <View style={[styles.textParent, styles.buttonsFlexBox]}>
-            <View style={styles.text3}>
-              <Text style={[styles.getAnOverview, styles.titleTypo]}>
-                Effortlessly book relaible mini trucks for all your logistics
-                needs with our user-friendly app
-              </Text>
-              <Text style={[styles.youOughtTo, styles.buttonsFlexBox]}>
-                Welcome to SHIPEASE
-              </Text>
-            </View>
-            <View style={styles.slidersParent}>
-              <View style={styles.sliders}>
-                <View style={[styles.slidersChild, styles.slidersPosition]} />
-                <View style={[styles.slidersItem, styles.slidersPosition]} />
-                <View style={styles.slidersInner} />
-                <View style={[styles.rectangleView, styles.slidersPosition]} />
-              </View>
-              <View
-                style={[styles.buttonhalffill, styles.buttonhalffillLayout]}
-              >
-                <View
-                  style={[styles.buttonhalffill1, styles.buttonhalffillLayout]}
-                >
-                  <Text style={[styles.button, styles.loginTypo]}>Next</Text>
-                </View>
-              </View>
-            </View>
-          </View>
-        <Image
-          style={styles.groupInner}
-          contentFit="cover"
-          source={require(".../../../assets/Rectangle 16875.png")}
-        />
+        
         <Text
           style={[styles.tenantDriver, styles.text1Typo]}
         >{`Tenant & Driver Information`}</Text>
-        <Pressable onPress={''}>
         <View style={[styles.buttons, styles.buttonsFlexBox]}>
           <Text style={[styles.login, styles.loginTypo]}>Book Truck</Text>
         </View>
-        </Pressable>
       </View>
       <Image
         style={[styles.image15Icon, styles.iconLayout]}
@@ -157,11 +110,15 @@ const AttributeBasedBookingSearch1 = () => {
         <View style={styles.infoChildShadowBox} />
         <Text style={styles.davidWill}>Will bravo</Text>
       </View>
+      <Pressable style={styles.button} onPress={handleSearchByVehicle}>
+      <View>
       <Image
         style={styles.swapIcon}
         contentFit="cover"
         source={require("../../../assets/swap icon.png")}
       />
+      </View>
+      </Pressable>
       <Image
         style={styles.verificationIcon}
         contentFit="cover"
@@ -170,6 +127,8 @@ const AttributeBasedBookingSearch1 = () => {
     </View>
   );
 };
+
+const { width, height } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   component1ItemPosition: {
@@ -200,36 +159,32 @@ const styles = StyleSheet.create({
   iconPosition: {
     height: 32,
     width: 32,
-    top: 4,
+    top: 1,
     left: 16,
     position: "absolute",
   },
-  arrowsChevronLeftLayout: {
-    maxHeight: "100%",
-    maxWidth: "100%",
+  heartlayout: {
     position: "absolute",
     overflow: "hidden",
   },
-  r532FlexBox: {
+  rComponent: {
     textAlign: "left",
     color: theme.palette.dashboard.black,
     position: "absolute",
   },
   groupLayout: {
     bottom: "20%",
-    top: "66.88%",
-    width: "1.09%",
-    height: "13.13%",
+    top: height * 0.01,
+    width: width * 0.01,
+    height: height * 0.003,
     maxHeight: "100%",
     maxWidth: "100%",
     position: "absolute",
     overflow: "hidden",
   },
   component1Position: {
-    width: "46.24%",
-    bottom: "0%",
-    top: "0%",
-    height: "100%",
+    width: width * 0.13,
+    height: height * 0.035,
     position: "absolute",
   },
   text1Typo: {
@@ -241,19 +196,18 @@ const styles = StyleSheet.create({
     width: "45.16%",
     height: "46.43%",
     textAlign: "left",
-    color: theme.palette.dashboard.black,
+    color: theme.palette.primary.mainwhite,
     position: "absolute",
   },
   descriptionTypo: {
     letterSpacing: 1,
-    fontSize: 12,
+    fontSize: 14,
     textAlign: "left",
     position: "absolute",
   },
   onboardingLayout: {
-    height: 672,
-    width: 377,
-    left: 0,
+    height: height * 1,
+    width: width,
     position: "absolute",
   },
   buttonsFlexBox: {
@@ -278,15 +232,15 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   iconLayout: {
-    height: 157,
-    width: 125,
+    height: height * 0.17,
+    width: width * 0.32,
     borderTopRightRadius: 12,
     borderTopLeftRadius: 12,
-    top: 579,
+    top: height * 0.62,
     position: "absolute",
   },
   infoPosition: {
-    top: 704,
+    top: height * 0.75,
     width: 125,
     height: 32,
     position: "absolute",
@@ -299,10 +253,10 @@ const styles = StyleSheet.create({
     left: 0,
     position: "absolute",
   },
-  card7Icon: {
-    height: 321,
-    top: 0,
-    width: 375,
+  vehicleImage: {
+    height: height * 0.36,
+    top: height * -0.08,
+    width: width ,
     left: 0,
     position: "absolute",
   },
@@ -426,7 +380,7 @@ const styles = StyleSheet.create({
     top: 38,
     width: 375,
   },
-  bestVehicleTextChild: {
+  RectangleChild: {
     borderRadius: 12,
     backgroundColor: "#d2d2d2",
     shadowOpacity: 1,
@@ -443,109 +397,103 @@ const styles = StyleSheet.create({
     left: 0,
     position: "absolute",
   },
-  bestVehicleText: {
-    top: 263,
-    left: 18,
-    height: 78,
-    width: 337,
+  Rectangle: {
+    top: height * 0.22,
+    left: width * 0.05,
+    height: height * 0.1,
+    width: width * 0.1,
     position: "absolute",
   },
-  faisalabad: {
-    width: "43.17%",
-    fontWeight: "300",
-    fontSize: 14,
+  city: {
+    width: width,
+    fontWeight: "600",
+    fontSize: 16,
     textAlign: "left",
-    top: "0%",
-    height: "100%",
-    left: "0%",
+    top: 0,
+    height: height,
+    left: 0,
   },
   groupChild: {
-    right: "24.59%",
-    left: "77.32%",
+    left: width * 0.42,
   },
-  sh13322: {
-    width: "30.05%",
-    left: "44.26%",
-    fontWeight: "300",
-    fontSize: 14,
+  vehicleNum: {
+    width: width,
+    left: width * 0.24,
+    fontWeight: "600",
+    fontSize: 15,
     textAlign: "left",
-    top: "0%",
-    height: "100%",
+    top: 0,
+    height: height,
   },
   groupItem: {
-    right: "57.92%",
     left: "40.98%",
   },
-  r532: {
-    width: "22.4%",
-    left: "77.6%",
-    fontWeight: "300",
-    fontSize: 12,
+  Registration: {
+    width: width * 0.2,
+    left: width * 0.44,
+    fontWeight: "600",
+    fontSize: 15,
     textAlign: "left",
-    top: "0%",
-    height: "100%",
+    top: 0,
+    height: height,
   },
-  faisalabadParent: {
-    height: "1.97%",
-    width: "48.8%",
-    top: "37.56%",
-    right: "42.67%",
-    bottom: "60.47%",
-    left: "8.53%",
+  cityParent: {
+    height: height,
+    width: width * 0.55,
+    top: height * 0.274,
+    right: 0,
+    bottom: 0,
+    left: width * 0.124,
     position: "absolute",
   },
-  boxTruck: {
-    height: "3.33%",
-    width: "40%",
-    top: "34.24%",
-    left: "8.53%",
+  truckType: {
+    height: height,
+    width: width,
+    top: height * 0.24,
+    left: width * 0.12,
     textAlign: "left",
     fontWeight: "700",
     fontSize: 18,
   },
-  adminSidebarcollapsable51: {
-    height: "3.82%",
-    width: "7.73%",
-    top: "33.74%",
-    right: "10.93%",
-    bottom: "62.44%",
-    left: "81.33%",
+  heart: {
+    height: height * 0.04,
+    width: width * 0.08,
+    top: height * 0.23,
+    left: width * 0.82,
   },
   component1Child: {
-    right: "53.76%",
-    borderTopLeftRadius: 12,
-    borderBottomLeftRadius: 12,
+    borderTopLeftRadius: 7,
+    borderBottomLeftRadius: 7,
     backgroundColor: theme.palette.dashboard.mainblue,
     left: "0%",
   },
   component1Item: {
-    right: "7.53%",
-    left: "46.24%",
-    backgroundColor: theme.palette.dashboard.darkgray,
-    borderBottomRightRadius: 12,
-    borderTopRightRadius: 12,
+    left: width * 0.13,
+    backgroundColor: theme.palette.dashboard.darkestgray,
+    borderBottomRightRadius: 7,
+    borderTopRightRadius: 7,
   },
   rating: {
-    left: "4.3%",
+    left: width * 0.02,
     fontSize: 12,
-    top: "21.43%",
-    width: "45.16%",
-    height: "46.43%",
+    top: height * 0.007,
+    width: width * 0.1,
+    height: height * 0.1,
     textAlign: "left",
-    color: theme.palette.dashboard.darkgray,
+    color: theme.palette.primary.mainwhite,
     position: "absolute",
   },
-  r532Typo: {
+RegistrationTypo: {
     fontWeight: "300",
   },
   text: {
-    left: "54.84%",
+    left: width * 0.15,
   },
   component1: {
-    top: 327,
-    left: 245,
-    width: 93,
-    height: 28,
+    top: height * 0.3,
+    left: width * 0.68,
+    width: width * 0.25,
+    height: height * 0.036,
     position: "absolute",
   },
   description: {
@@ -553,22 +501,22 @@ const styles = StyleSheet.create({
     width: 124,
     height: 15,
     color: theme.palette.dashboard.black,
-    fontWeight: "500",
+    fontWeight: "800",
     letterSpacing: 1,
     top: 0,
   },
-  estAspernaturNostrum: {
-    top: 24,
+  description1: {
+    top: height * 0.03,
     color: "rgba(0, 0, 0, 0.78)",
-    width: 314,
-    height: 44,
+    width: width * 0.86,
+    height: height * 0.1,
     left: 0,
   },
   view: {
-    top: 374,
-    height: 68,
-    width: 314,
-    left: 31,
+    top: height * 0.34,
+    height: height * 0.1,
+    width: width * 0.1,
+    left: width * 0.08,
     position: "absolute",
   },
   getAnOverview: {
@@ -615,8 +563,6 @@ const styles = StyleSheet.create({
     backgroundColor: theme.palette.dashboard.darkgray,
   },
   rectangleView: {
-    right: "5%",
-    left: "80%",
     display: "none",
   },
   sliders: {
@@ -657,7 +603,7 @@ const styles = StyleSheet.create({
     display: "none",
   },
   onboardingMessages: {
-    borderRadius: 12,
+    borderRadius: 7,
     shadowColor: "rgba(0, 0, 0, 0.24)",
     paddingHorizontal:12,
     paddingVertical: 12,
@@ -666,27 +612,25 @@ const styles = StyleSheet.create({
     shadowRadius: 24,
     shadowOpacity: 1,
     shadowOffset: {
-      width: 0,
-      height: 4,
+      width: width * 0,
+      height: height * 0.4,
     },
-    height: 672,
-    width: 377,
-    left: 0,
+    height: height * 0.76,
+    width: width * 1,
     position: "absolute",
-    top: 0,
   },
   groupInner: {
-    top: 9,
+    top: height * 0.1,
     left: 171,
     width: 35,
     height: 5,
     position: "absolute",
   },
   tenantDriver: {
-    height: "4.17%",
-    width: "61.8%",
-    top: "13.39%",
-    left: "19.1%",
+    height: height * 0.1,
+    width: width * 0.7,
+    top: height * 0.13,
+    left: width * 0.16,
     fontSize: 18,
     color: theme.palette.dashboard.darkgray,
     textAlign: "center",
@@ -705,11 +649,11 @@ const styles = StyleSheet.create({
     padding: 12,
     flexDirection: "row",
     position: "absolute",
-    backgroundColor: theme.palette.dashboard.darkgray,
+    backgroundColor: theme.palette.primary.mainwhite,
     justifyContent: "center",
   },
   onboardingMessagesParent: {
-    top: 461,
+    top: height * 0.45,
   },
   image15Icon: {
     left: 218,
@@ -746,23 +690,23 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   tenantInfo: {
-    left: 31,
+    left: width * 0.08,
   },
   driverInfo: {
-    left: 218,
+    left: width * 0.58,
   },
   swapIcon: {
-    top: 754,
+    top:height * 0.77,
     left: 51,
     width: 278,
     height: 40,
     position: "absolute",
   },
   verificationIcon: {
-    top: 470,
-    left: 140,
-    width: 93,
-    height: 94,
+    top: height * 0.48,
+    left: width * 0.4,
+    width: width * 0.2,
+    height: height * 0.09,
     position: "absolute",
   },
   attributeBasedBookingSearch: {

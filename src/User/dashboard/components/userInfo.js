@@ -105,7 +105,6 @@ const styles = StyleSheet.create({
       name: {
         letterSpacing: width * 0.001,
         lineHeight: height * 0.03,
-        fontFamily: theme.palette.FontFamily.regular,
         color: theme.palette.dashboard.black,
         fontWeight: "700",
         left: width * 0.12,
@@ -117,7 +116,6 @@ const styles = StyleSheet.create({
       username: {
         letterSpacing: width * 0.001,
         lineHeight: height * 0.023,
-        fontFamily: theme.palette.FontFamily.regular,
         color: theme.palette.primary.mainwhite,
         textAlign: "left",
         fontSize: width * 0.032,

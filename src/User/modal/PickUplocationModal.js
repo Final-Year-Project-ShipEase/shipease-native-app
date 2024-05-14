@@ -7,6 +7,7 @@ import {
   View,
   Dimensions,
   ImageBackground,
+  Image
 } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -15,9 +16,6 @@ import theme from '../../../theme';
 import BookingModal from '../modal/bookingModal';
 
 const PickUpLocationModal = ({ visible, onClose }) => {
-    
-    const [showModal, setShowModal] = useState(false);
-    const [closeModal, setCloseShowModal] = useState(false);
 
     const handleOpenModal = () => {
       setShowModal(true);
@@ -36,6 +34,8 @@ const PickUpLocationModal = ({ visible, onClose }) => {
 
   const navigation = useNavigation();
 
+  const [showModal, setShowModal] = useState(false);
+
 
 
   return (
@@ -51,13 +51,16 @@ const PickUpLocationModal = ({ visible, onClose }) => {
             style={[styles.modalView, styles.ImageBackground]}
             source={require("../assests/rectangle1.png")}
           >
+          <Pressable onPress={() => onClose()}>
             <View style={styles.outerRoundView}>
               <View style={styles.innerRoundView}>
-                <Icon name="edit" size={width * 0.1} style={styles.icon}>
-                  {' '}
-                </Icon>
+                <Image
+                    source={require('../assests/truck1.png')}
+                    style={{ width: width * 0.1, height: width * 0.1 }}
+                />
               </View>
             </View>
+            </Pressable>
             <Text style={styles.modalTitleText}>Select Location</Text>
 
             <View style={styles.form}>
@@ -86,7 +89,15 @@ const PickUpLocationModal = ({ visible, onClose }) => {
                 style={styles.passwordInput}
               />
             </View>
-            <Pressable style={styles.button} onPress={ handleBookingPress} accessible={true} accessibilityLabel="Booking">
+            <Pressable
+              style={styles.button}
+              onPress={() => {
+                handleBookingPress();
+                onClose();
+              }}
+              accessible={true}
+              accessibilityLabel="Booking"
+            >
               <Text style={styles.textStyle}>Started</Text>
               <BookingModal visible={showModal} onClose={handleCloseModal} />
             </Pressable>
@@ -142,6 +153,8 @@ const styles = StyleSheet.create({
     color: theme.palette.changePasswordModal.buttonTextColor,
     backgroundColor: theme.palette.changePasswordModal.buttonBackgroundColor,
     textAlign: 'center',
+    top: height * 0.02,
+    fontSize: 20
   },
   modalTitleText: {
     color: theme.palette.verificationSuccessfulModal.modalTitleText,
@@ -193,7 +206,7 @@ const styles = StyleSheet.create({
     color: theme.palette.verificationSuccessfulModal.checkDone,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: height * 0.01,
+    marginTop: height * 0.09,
     marginLeft: width * 0.02,
   },
 });

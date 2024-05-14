@@ -42,21 +42,17 @@ return (
       <View style={[styles.topTenants]}>
         <TopTenant/>
       </View>
-      <Pressable onPress={''}>
       <View style={[styles.VehiclesComponent]}>
         <VehiclesComponent/>
       </View>
-      </Pressable>
       <View style={styles.component1}>
       <View style={styles.bestVehicle}>
         <Text style={styles.bestVehicles}>Best Vehicles</Text>
         </View>
         </View>
-        <Pressable onPress={''}>
       <View style={[styles.VehiclesComponent2]}>
         <VehiclesComponent/>
       </View>
-      </Pressable>
     </View>
 );
 };
@@ -90,7 +86,6 @@ const styles = StyleSheet.create({
       addTypo: {
         fontSize: width * 0.034,
         textAlign: "left",
-        fontFamily: theme.palette.FontFamily.regular,
       },
 
       buttons1: {
