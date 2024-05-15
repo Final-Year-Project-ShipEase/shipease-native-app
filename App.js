@@ -32,6 +32,7 @@ import AttributebasedBooking1 from './src/User/searchByAttribute/attributeBasedB
 import AttributebasedBooking2 from './src/User/searchByAttribute/attributeBasedBooking2';
 import AttributebasedBooking3 from './src/User/searchByAttribute/attributeBasedBooking3';
 import AttributebasedBooking4 from './src/User/searchByAttribute/attributeBasedBooking4';
+import SearchByTenant1 from './src/User/searchByTenant/searchbytenant1';
 import favourite from './src/User/FavouriteDriver&Tenant/favourite';
 import SearchByAttribute from './src/User/searchByAttribute/searchAttribute';
 import VehiclesInfoForAttribute from './src/User/searchByAttribute/component/vehicllesInfo';
@@ -126,6 +127,7 @@ export default function App() {
           <Stack.Screen name="VehicleComponent" component={VehicleComponent} />
           <Stack.Screen name="TopTenant" component={TopTenant} />
           <Stack.Screen name="SearchBarForAttribute" component={SearchBarForAttribute} />
+          <Stack.Screen name="SearchByTenant" component={SearchByTenant1} /> 
 
           <Stack.Screen name="AttributeModal" component={AttributeModal} />
           <Stack.Screen name="Favourite" component={Favourite } />

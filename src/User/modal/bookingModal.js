@@ -28,7 +28,7 @@ const PickUpLocationModal = ({ visible, onClose }) => {
 
   const handleSearchByTenant = () => {
     onClose();
-    navigation.navigate('SearchByAttribute');
+    navigation.navigate('SearchByTenant');
   };
 
   return (
