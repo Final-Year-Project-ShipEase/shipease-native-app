@@ -16,7 +16,8 @@ const VehicleComponent = () => {
   
 
   const handleSearchByVehicle = () => {
-    navigation.navigate('AttributebasedBooking2');
+    console.log("ugdcg");
+    navigation.navigate('SearchByTenant2');
   };
   return (
     <View>
@@ -45,7 +46,6 @@ const VehicleComponent = () => {
       </View>
     </View>
     </Pressable>
-    <Pressable style={styles.button} onPress={handleSearchByVehicle}>
     <View style={styles.component2}>
       <View style={styles.bestVehicle}>
         <View style={styles.bestVehicleChild} />
@@ -69,7 +69,6 @@ const VehicleComponent = () => {
         </View>
       </View>
     </View>
-    </Pressable>
     </View>
   );
 };

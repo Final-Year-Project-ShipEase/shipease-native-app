@@ -34,6 +34,8 @@ const SignUpScreen = () => {
   };
 
   const handleSignUpSuccess = () => {
+    const otp = generateOTP(); // Generate OTP
+    console.log(otp);
     setSnackBarVisible(true);
     setTimeout(() => {
       setSnackBarVisible(false);
@@ -42,10 +44,9 @@ const SignUpScreen = () => {
   };
 
   const handleSignUp = async (values) => {
-    const otp = generateOTP(); // Generate OTP
-    console.log(otp);
+
     console.log(values.email);
-    await createUser({ ...values, otp }) // Pass OTP to createUser function
+    await createUser(values) // Pass OTP to createUser function
       .then((response) => {
         handleSignUpSuccess();
       })

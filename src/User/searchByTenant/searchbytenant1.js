@@ -10,44 +10,47 @@ import theme from '../../../theme';
 import SearchBar from '../searchByAttribute/component/searchBar';
 import TopTenant from '../searchByAttribute/component/topTenants';
 import VehiclesComponent from './component/TenantComponent';
-
+import { useNavigation } from '@react-navigation/native';
 
 const AttributebasedBooking = () => {
+
+  
+  const navigation = useNavigation();
+  
+
+  const handleSearchByVehicle = () => {
+    console.log("ugdcg");
+    navigation.navigate('SearchByTenant2');
+  };
 
 return (
     <View style={[styles.pages]}>
       <View style={[styles.SearchBar]}>
       <SearchBar/>
       </View>
-      <Pressable onPress={''}>
       <View style={styles.buttons}>
         <Text style={[styles.addNew, styles.addTypo]}>All</Text>
       </View>
-      </Pressable>
-      <Pressable onPress={''}>
       <View style={[styles.buttons1, styles.buttonsBorder]}>
         <Text style={[styles.addNew1, styles.addTypo]}>FLATBED</Text>
       </View>
-      </Pressable>
-      <Pressable onPress={''}>
       <View style={[styles.buttons2, styles.buttonsBorder]}>
         <Text style={[styles.addNew1, styles.addTypo]}>Box</Text>
       </View>
-      </Pressable>
-      <Pressable onPress={''}>
       <View style={[styles.buttons3, styles.buttonsBorder]}>
         <Text style={[styles.addNew1, styles.addTypo]}>Jumbo</Text>
       </View>
-      </Pressable>
       <View style={[styles.topTenants]}>
         <TopTenant/>
       </View>
+      <Pressable style={styles.button} onPress={handleSearchByVehicle}>
       <View style={[styles.VehiclesComponent]}>
         <VehiclesComponent/>
       </View>
+      </Pressable>
       <View style={styles.component1}>
       <View style={styles.bestVehicle}>
-        <Text style={styles.bestVehicles}>Best Vehicles</Text>
+        <Text style={styles.bestVehicles}>Others</Text>
         </View>
         </View>
       <View style={[styles.VehiclesComponent2]}>

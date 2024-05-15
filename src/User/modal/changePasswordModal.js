@@ -25,14 +25,18 @@ const ChangePasswordModal = ({ visible, onClose }) => {
 
 
   useEffect(() => {
-    fetchUserId();
-  }, []);
+    const fetchUserId = async () => {
+      try{
+        const id = await getUserId();
+        setUserId(id);
+        // Fetch user data based on user ID...
+      }catch (error) {
+        console.error('Error fetching user data:', error);
+      }   
+    };
 
-  const fetchUserId = async () => {
-    const id = await getUserId();
-    setUserId(id);
-    // Fetch user data based on user ID...
-  };
+    fetchUserId();
+  });
 
   const validationSchema = Yup.object().shape({
     password: Yup.string().required('Password is required').min(8),
@@ -51,10 +55,11 @@ const ChangePasswordModal = ({ visible, onClose }) => {
   const handlePassword = async (values) => {
     if (values.password === values.confirmPassword) {
       console.log('Password Matched');
-      await updateUser(userId, {values});
+      await updateUser(4, {values});
       const otp = generateOTP();
+      console.log(otp);
       visible= false;
-      navigation.navigate('OPTVerification', {otp});
+      navigation.navigate('OTPVerification', { otpCode: otp });
     }
   };
 

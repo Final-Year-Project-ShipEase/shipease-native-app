@@ -14,7 +14,7 @@ import theme from '../../../theme';
 const VerificationSuccessfulModal = ({ visible, onClose }) => {
   const navigation = useNavigation();
   const handleLoginSubmit = () => {
-    visible = false;
+    onClose();
     navigation.navigate('LoginScreen');
   };
   return (

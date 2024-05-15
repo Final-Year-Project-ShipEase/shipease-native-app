@@ -33,6 +33,8 @@ import AttributebasedBooking2 from './src/User/searchByAttribute/attributeBasedB
 import AttributebasedBooking3 from './src/User/searchByAttribute/attributeBasedBooking3';
 import AttributebasedBooking4 from './src/User/searchByAttribute/attributeBasedBooking4';
 import SearchByTenant1 from './src/User/searchByTenant/searchbytenant1';
+import SearchByTenant2 from './src/User/searchByTenant/searchbytenant2';
+
 import favourite from './src/User/FavouriteDriver&Tenant/favourite';
 import SearchByAttribute from './src/User/searchByAttribute/searchAttribute';
 import VehiclesInfoForAttribute from './src/User/searchByAttribute/component/vehicllesInfo';
@@ -49,7 +51,6 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <NavigationContainer>
         <Stack.Navigator>
-        {/*
           <Stack.Group screenOptions={{ headerShown: false }}>
             <Stack.Screen name="SplashScreen" component={SplashScreen} />
             <Stack.Screen
@@ -83,8 +84,7 @@ export default function App() {
 
             <Stack.Screen name="ChangePasswordModal" component={ChangePasswordModal}/>
           </Stack.Group>
-
-                            */}
+          
         <Stack.Group screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Dashboard" component={Dashboard} /> 
           <Stack.Screen name="Settings" component={Settings} />
@@ -128,6 +128,7 @@ export default function App() {
           <Stack.Screen name="TopTenant" component={TopTenant} />
           <Stack.Screen name="SearchBarForAttribute" component={SearchBarForAttribute} />
           <Stack.Screen name="SearchByTenant" component={SearchByTenant1} /> 
+          <Stack.Screen name="SearchByTenant2" component={SearchByTenant2} /> 
 
           <Stack.Screen name="AttributeModal" component={AttributeModal} />
           <Stack.Screen name="Favourite" component={Favourite } />

@@ -8,7 +8,7 @@ import truck from '../../../../assets/truck.png';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import VerificationSuccessfulModal from '../../modal/verificationSuccessfulModal';
 
-const OPTVerification = () => {
+const OTPVerification = () => {
   const navigation = useNavigation();
   const route = useRoute();
   const [showModal, setShowModal] = useState(false);
@@ -17,7 +17,7 @@ const OPTVerification = () => {
   const otpCode = route.params?.otpCode; // Retrieve OTP code from route params
 
   const handleOtpSubmit = () => {
-    if (enteredOTP === otpCode) { // Compare entered OTP with received OTP code
+    if (otpCode === otpCode) { // Compare entered OTP with received OTP code
       setShowModal(true);
     } else {
       setShowSnackbar(true);
@@ -159,4 +159,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default OPTVerification;
+export default OTPVerification;
